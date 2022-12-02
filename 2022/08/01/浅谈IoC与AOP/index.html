@@ -1,0 +1,706 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Snowflyt">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="浅谈IoC与AOP 谈到IoC，就会想到Spring，然后就会想到依赖注入与AOP。Java程序员的想象力唯有在这个层面上能如此飞跃。 ——Snowflyt  好吧，这个前言只是开个玩笑，没有任何讽刺意味在里面。说起IoC和AOP，许多人的第一反应就是Spring，而很少会想到其他语言或框架中类似的思想。当然，这说明了Spring对IoC和AOP的应用很深入人心，也在商业上取得了巨大的成功。然而，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="浅谈IoC与AOP">
+<meta property="og:url" content="https://snowfly-t.github.io/2022/08/01/%E6%B5%85%E8%B0%88IoC%E4%B8%8EAOP/index.html">
+<meta property="og:site_name" content="Snowflyt的博客">
+<meta property="og:description" content="浅谈IoC与AOP 谈到IoC，就会想到Spring，然后就会想到依赖注入与AOP。Java程序员的想象力唯有在这个层面上能如此飞跃。 ——Snowflyt  好吧，这个前言只是开个玩笑，没有任何讽刺意味在里面。说起IoC和AOP，许多人的第一反应就是Spring，而很少会想到其他语言或框架中类似的思想。当然，这说明了Spring对IoC和AOP的应用很深入人心，也在商业上取得了巨大的成功。然而，">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-07-31T17:43:47.000Z">
+<meta property="article:modified_time" content="2022-11-11T15:57:36.864Z">
+<meta property="article:author" content="Snowflyt">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>浅谈IoC与AOP - Snowflyt的博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"snowfly-t.github.io","root":"/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Snowflyt的博客</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="浅谈IoC与AOP"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-08-01 01:43" pubdate>
+          2022年8月1日 凌晨
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          7k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          59 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">浅谈IoC与AOP</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="浅谈IoC与AOP"><a href="#浅谈IoC与AOP" class="headerlink" title="浅谈IoC与AOP"></a>浅谈IoC与AOP</h1><blockquote>
+<p>谈到IoC，就会想到Spring，然后就会想到依赖注入与AOP。Java程序员的想象力唯有在这个层面上能如此飞跃。</p>
+<p>——Snowflyt</p>
+</blockquote>
+<p>好吧，这个前言只是开个玩笑，没有任何讽刺意味在里面。说起IoC和AOP，许多人的第一反应就是Spring，而很少会想到其他语言或框架中类似的思想。当然，这说明了Spring对IoC和AOP的应用很深入人心，也在商业上取得了巨大的成功。然而，我们不该将目光就放在Spring这一个框架上，从其他语言或框架的角度考虑，也许能够帮助我们更好地理解这些概念。</p>
+<p>首先，解释一下什么是IoC与AOP。IoC的全称是Inversion of Control，控制反转；AOP的全称是Aspect Oriented Programming，面向切面编程。这两个概念从字面意义上似乎不太容易理解，下面分别解释这两个概念。</p>
+<h2 id="什么是IoC？"><a href="#什么是IoC？" class="headerlink" title="什么是IoC？"></a>什么是IoC？</h2><p>IoC，即Inversion of Control，控制反转。我们可以将IoC理解成“控制权”的反转。那么，什么是“控制权”，什么又是“反转”？</p>
+<p>为了解释这个概念，首先考虑在不引入框架的情况下，一般情况下的程序开发过程。假设现在正在开发一个网站的评论模块，通常的做法是引入一个CommentService类，然后使用这个类发布评论：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">CommentService</span> <span class="hljs-variable">service</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">CommentService</span>();<br>service.publishComment(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Comment</span>(<span class="hljs-string">&quot;John&quot;</span>, <span class="hljs-string">&quot;Test Comment&quot;</span>));<br></code></pre></td></tr></table></figure>
+
+<p>上面用一段简单的Java代码演示了这一过程。可以看到，在通常的情况下，我们通过手动引入相关的服务类或控制类来完成相应的工作。在上面的代码中，我们就说该<code>CommentService</code>类的“控制权”在我们手中。</p>
+<p>而使用IoC，“控制权”被“反转”给了框架。字面意思不太容易理解，看一段代码就明白了：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">CommentService</span> <span class="hljs-variable">service</span> <span class="hljs-operator">=</span> context.getBean(CommentService.class);<br>service.publishComment(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Comment</span>(<span class="hljs-string">&quot;John&quot;</span>, <span class="hljs-string">&quot;Test Comment&quot;</span>));<br></code></pre></td></tr></table></figure>
+
+<p>可以看到，现在我们使用<code>context.getBean()</code>方法（一段Spring代码），从上下文中获取一个<code>CommentService</code>类的实例。我们并不会手动创建一个<code>CommentService</code>类的实例，而是依赖于框架自动创建这个实例，然后我们通过其他途径获取这个已经创建的实例。我们说现在<code>CommentService</code>类的“控制权”在框架手中，而非我们自己手中。</p>
+<p>很自然地，框架不可能自动知道需要创建哪些类的实例，因此需要我们手动指定。实际上，完整的代码可能如下所示：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// config/ProjectConfig.java</span><br><span class="hljs-keyword">package</span> config;<br><br><span class="hljs-keyword">import</span> ...<br><br><span class="hljs-meta">@Configuration</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ProjectConfig</span> &#123;<br><br>    <span class="hljs-meta">@Bean</span><br>    <span class="hljs-keyword">public</span> CommentService <span class="hljs-title function_">commentService</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">CommentService</span>();<br>    &#125;<br><br>&#125;<br><br><span class="hljs-comment">// main/Main.java</span><br><span class="hljs-keyword">package</span> main;<br><br><span class="hljs-keyword">import</span> ...<br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Main</span> &#123;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        <span class="hljs-type">var</span> <span class="hljs-variable">context</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">AnnotationConfigApplicationContext</span>(ProjectConfig.class);<br>        <span class="hljs-type">CommentService</span> <span class="hljs-variable">service</span> <span class="hljs-operator">=</span> context.getBean(CommentService.class);<br>        service.publishComment(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Comment</span>(<span class="hljs-string">&quot;John&quot;</span>, <span class="hljs-string">&quot;Test Comment&quot;</span>));<br>    &#125;<br>    <br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p><em>为了简单起见，我并没有使用SpringBoot，而是直接使用了原生Spring。好吧，尽管这可能让一些只接触过Spring Boot地人更加困惑也说不准</em></p>
+<p>可以看到，要使框架管理<code>CommentService</code>类，我们需要使用一个配置类（在这里是<code>ProjectConfig</code>类）创建上下文，然后通过该上下文获取<code>CommentService</code>类的实例。为了使该上下文包含我们需要的类，需要使用<code>@Bean</code>注解将其注册到配置类中。于是，我们就能够无需手动创建业务类，而是利用框架帮助我们管理业务类了。</p>
+<p>“控制反转”的意义就是这么简单——将控制权交给框架而非我们自身来处理，这就是“反转”的意义。</p>
+<h2 id="IoC有什么好处？"><a href="#IoC有什么好处？" class="headerlink" title="IoC有什么好处？"></a>IoC有什么好处？</h2><p>然而，“<strong>为什么要这么麻烦</strong>”？很显然，在上面这个简单的示例中，直接手动创建业务类更简单，而利用上下文来“反转”对这个业务类的控制权似乎没什么必要，反而增加了许多代码量。</p>
+<p>我们知道，框架的目的是为了减少我们的心智负担，让我们更关注业务逻辑本身而非一些无关的实现细节。显然，IoC应该具有某些好处，可以减少程序员编写代码的心智负担。很多人会说，“IoC的价值在于和AOP的配合”，然而IoC本身其实也有一些好处。下面我们更深入地挖掘<code>CommentService</code>类的实现，考虑一些更实际的情况。</p>
+<p>显然，在上面的例子中，我们简化了<code>CommentService</code>类的使用。在实际情况中，<code>CommentService</code>类可能需要接受一些参数。例如<code>CommentService(CommentNotificationProxy proxy, CommentRepository repository)</code>，它接受两个对象作为参数，分别是一个用于提醒其他用户新增评论的代理对象，和一个用于保存评论的仓库对象。如果我们手动管理代码，可能需要这么写：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">CommentService</span> <span class="hljs-variable">service</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">CommentService</span>(<br>        <span class="hljs-comment">// CommentPushNotificationProxy实现了CommentNotificationProxy接口</span><br>        <span class="hljs-keyword">new</span> <span class="hljs-title class_">CommentPushNotificationProxy</span>(),<br>        <span class="hljs-comment">// DBCommentRepository实现了CommentRepository接口</span><br>        <span class="hljs-keyword">new</span> <span class="hljs-title class_">DBCommentRepository</span>());<br>service.publishComment(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Comment</span>(<span class="hljs-string">&quot;John&quot;</span>, <span class="hljs-string">&quot;Test Comment&quot;</span>));<br></code></pre></td></tr></table></figure>
+
+<p>我们在代码中手动指定了<code>Proxy</code>类和<code>Repository</code>类使用哪个实现（在这里分别使用了一个简单推送消息的代理类实例，和一个将评论数据存储到数据库中的仓库类实例）。可以想象，若项目中需要多次调用这个类，它的具体实现就会分散在各处。当然，我们可以考虑通过单例模式缓解这种尴尬局面：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">CommentUtils</span> &#123;<br><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-type">CommentService</span> <span class="hljs-variable">service</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">CommentService</span>(<br>            <span class="hljs-keyword">new</span> <span class="hljs-title class_">CommentPushNotificationProxy</span>(),<br>            <span class="hljs-keyword">new</span> <span class="hljs-title class_">DBCommentRepository</span>());<br>    <br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> CommentService <span class="hljs-title function_">getService</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">return</span> service;<br>    &#125;<br><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>然后稍微修改一下上面的代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">CommentService</span> <span class="hljs-variable">service</span> <span class="hljs-operator">=</span> CommentUtils.getService();<br>service.publishComment(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Comment</span>(<span class="hljs-string">&quot;John&quot;</span>, <span class="hljs-string">&quot;Test Comment&quot;</span>));<br></code></pre></td></tr></table></figure>
+
+<p>发现了吗？其实这种解决思路和Spring中的IoC方案有些类似。广义上来说，我们相当于是手动实现了一个简陋的IoC，这其实不比使用Spring-IoC更加清晰。</p>
+<p>如果使用Spring-IoC，就可以直接为需要添加到Spring上下文中的类添加<code>@Component</code>注解，Spring会为我们自动创建该类的一个实例。</p>
+<p>先看看如何修改配置类以指示Spring发现<code>@Component</code>注解。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// config/ProjectConfig.java</span><br><span class="hljs-keyword">package</span> config;<br><br><span class="hljs-keyword">import</span> ...<br><br><span class="hljs-meta">@Configuration</span><br><span class="hljs-meta">@ComponentScan(basePackages = &#123; &quot;service&quot;, &quot;repository&quot;, &quot;proxy&quot; &#125;)</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ProjectConfig</span> &#123;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>可以看到，现在我们不再显式地在<code>ProjectConfig</code>类中创建Bean，而是添加了<code>@ComponentScan</code>注解，并指示Spring在<code>repository</code>和<code>proxy</code>这两个包中查找被注解上<code>@Component</code>的类，然后自动创建它们的实例并加入上下文。</p>
+<p>现在项目结构大致如下：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><span class="hljs-bullet">-</span> src<br><span class="hljs-bullet">  -</span> config<br><span class="hljs-bullet">    -</span> ProjectConfig.java<br><span class="hljs-bullet">  -</span> repository<br><span class="hljs-bullet">    -</span> CommentNotificationProxy.java<br><span class="hljs-bullet">    -</span> CommentPushNotificationProxy.java<br><span class="hljs-bullet">  -</span> proxy<br><span class="hljs-bullet">    -</span> CommentRepository.java<br><span class="hljs-bullet">    -</span> DBCommentRepository.java<br><span class="hljs-bullet">  -</span> service<br><span class="hljs-bullet">    -</span> CommentService.java<br></code></pre></td></tr></table></figure>
+
+<p>现在我们只需简单为<code>CommentPushNotificationProxy</code>和<code>DBCommentRepository</code>这两个类添加注解。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// repository/CommentPushNotificationProxy.java</span><br><span class="hljs-keyword">package</span> repository;<br><br><span class="hljs-keyword">import</span> ...<br><br><span class="hljs-meta">@Component</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">CommentPushNotificationProxy</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">CommentNotificationProxy</span> &#123;<br>    ...<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// proxy/DBCommentRepository.java</span><br><span class="hljs-keyword">package</span> proxy;<br><br><span class="hljs-keyword">import</span> ...<br><br><span class="hljs-meta">@Component</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">DBCommentRepository</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">CommentRepository</span> &#123;<br>    ...<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>然后为<code>CommentService</code>类添加注解。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// service/CommentService.java</span><br><span class="hljs-keyword">package</span> service;<br><br><span class="hljs-keyword">import</span> ...<br><br><span class="hljs-meta">@Component</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">CommentService</span> &#123;<br><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> CommentNotificationProxy commentNotificationProxy;<br>    <br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> CommentRepository commentRepository;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">CommentService</span><span class="hljs-params">(</span><br><span class="hljs-params">            CommentNotificationProxy commentNotificationProxy, </span><br><span class="hljs-params">            CommentRepository commentRepository)</span> &#123;<br>        <span class="hljs-built_in">this</span>.commentNotificationProxy = commentNotificationProxy;<br>        <span class="hljs-built_in">this</span>.commentRepository = commentRepository;<br>    &#125;<br><br>    ...<br><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>上面的代码做了一些有些“神奇”的工作。可以看到，我们仅仅是为<code>CommentService</code>类创建了一个构造函数，它接受两个类型分别为<code>CommentNotificationProxy</code>和<code>CommentRepository</code>，并加上了<code>@Component</code>注解，于是Spring便能够从上下文中发现合适的这两个类的实例并自动以它们为参数创建<code>CommentService</code>类的实现——这就是所谓的“<strong>依赖注入（Dependency Injection）</strong>”。</p>
+<p>现在我们可以很简单地从上下文中获取自动创建的<code>CommentService</code>类实例。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">CommentService</span> <span class="hljs-variable">service</span> <span class="hljs-operator">=</span> context.getBean(CommentService.class);<br>service.publishComment(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Comment</span>(<span class="hljs-string">&quot;John&quot;</span>, <span class="hljs-string">&quot;Test Comment&quot;</span>));<br></code></pre></td></tr></table></figure>
+
+<p>这有哪些好处？事实上，现在如果我们希望修改<code>CommentService</code>类使用的<code>CommentNotificationProxy</code>或<code>CommentRepository</code>就非常简单了。试想一下，现在我们试图不使用<code>CommentPushNotificationProxy</code>类，而改用<code>CommentEmailNotificationProxy</code>，这只需要将<code>CommentEmailNotificationProxy</code>类注解上<code>@Component</code>，并取消<code>CommentPushNotificationProxy</code>类的注解即可。我们不需要改动一行与<code>CommentService</code>类有关的代码，这非常方便。</p>
+<h2 id="这就是IoC吗？"><a href="#这就是IoC吗？" class="headerlink" title="这就是IoC吗？"></a>这就是IoC吗？</h2><p>在上面的例子中，我们看到了IoC这一概念在Spring中的价值——它使得程序员不用手动管理类实例的创建，仅需加上一个简单的注解就可以让Spring自动管理类实例的创建，并进行“依赖注入”。</p>
+<p>然而，IoC显然不仅仅是个独属于Spring的概念——虽然很多人确实这么认为。让我们看一个来自JavaScript的例子。</p>
+<p>JavaScript经常用于处理UI事件和HTTP交互，因而经常要处理异步问题——即当某个响应事件需要耗费大量时间才能完成时，如何让程序在响应期间不会阻塞？Java程序员往往习惯于多线程方式，这也是Java生态中主流的方式。也许有一部分Java程序员接触过如WebFlux这样的响应式Web框架，但应当仍占少数。</p>
+<p>而在JavaScript中，异步问题的主流处理方式是通过回调函数（至少在async&#x2F;await无栈协程出现之前）。回调函数的逻辑很简单，当执行一项耗时任务时，传入一个函数，并让任务执行完毕时自动执行这个函数。在简单触发任务并传入回调函数后，程序便不再关心耗时任务的执行情况——因为任务执行完后自然会执行传入的回调函数，这样就无需多线程来进行等待。这种调用方式也被称为非阻塞方式——通过传入回调函数而非使用多线程进行等待来触发下一步任务。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">function</span> <span class="hljs-title function_">costlyTask</span> (callbackFn) &#123;<br>    ... <span class="hljs-comment">// 耗时任务</span><br>    <span class="hljs-title function_">callbackFn</span>() <span class="hljs-comment">// 任务结束后调用回调函数</span><br>&#125;<br><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">nextStep</span> () &#123;<br>    ...<br>&#125;<br><br><span class="hljs-title function_">costlyTask</span>(nextStep) <span class="hljs-comment">// 非阻塞调用</span><br><span class="hljs-comment">// 做一些其他事情，不再关心costlyTask</span><br></code></pre></td></tr></table></figure>
+
+<p>这看起来很不错，但如果nextStep执行后还需执行下一步呢？答案很简单，再传入一个回调函数。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">function</span> <span class="hljs-title function_">costlyTask</span> (callbackFn) &#123;<br>    ... <span class="hljs-comment">// 耗时任务</span><br>    <span class="hljs-title function_">callbackFn</span>() <span class="hljs-comment">// 任务结束后调用回调函数</span><br>&#125;<br><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">nextStep1</span> (callbackFn) &#123;<br>    ... <span class="hljs-comment">// 耗时任务</span><br>    <span class="hljs-title function_">callbackFn</span>() <span class="hljs-comment">// 任务结束后调用回调函数</span><br>&#125;<br><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">nextStep2</span> () &#123;<br>    ...<br>&#125;<br><br><span class="hljs-title function_">costlyTask</span>(<span class="hljs-function">() =&gt;</span> <span class="hljs-title function_">nextStep1</span>(nextStep2)) <span class="hljs-comment">// 非阻塞调用</span><br></code></pre></td></tr></table></figure>
+
+<p>在上面的代码中使用了JavaScript的匿名函数语法，我想即使是Java程序员，只要基本了解lambda应该也会对此感到熟悉。</p>
+<p>那么，如果有很多这样的步骤呢？</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-title function_">costlyTask</span>(<span class="hljs-function">() =&gt;</span> <span class="hljs-title function_">nextStep1</span>(<span class="hljs-function">() =&gt;</span> <span class="hljs-title function_">nextStep2</span>(<span class="hljs-function">() =&gt;</span> <span class="hljs-title function_">nextStep3</span>()))) <span class="hljs-comment">// 非阻塞调用</span><br></code></pre></td></tr></table></figure>
+
+<p>如果全部使用匿名函数，问题就会一下子凸显出来：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-title function_">getData</span>(<span class="hljs-function"><span class="hljs-params">a</span> =&gt;</span> &#123;<br>    <span class="hljs-title function_">getMoreData</span>(a, <span class="hljs-function"><span class="hljs-params">b</span> =&gt;</span> &#123;<br>        <span class="hljs-title function_">getMoreData</span>(b, <span class="hljs-function"><span class="hljs-params">c</span> =&gt;</span> &#123;<br>            <span class="hljs-title function_">getMoreData</span>(c, <span class="hljs-function"><span class="hljs-params">d</span> =&gt;</span> &#123;<br>                ...<br>            &#125;)<br>        &#125;)<br>    &#125;)<br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<p>可以看到，缩进呈现了一个“三角”。可以想见，如果这样的回调函数继续增多，代码可读性将飞快下降。这也被称为“回调地狱”。</p>
+<p>很多人指出，回调地狱的本质问题在于“控制反转”。这里指的是当你传入一个回调函数时，该函数的控制权就不在你手中了。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>浅谈IoC与AOP</div>
+      <div>https://snowfly-t.github.io/2022/08/01/浅谈IoC与AOP/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Snowflyt</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年8月1日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'Snowfly-T/Snowfly-T.github.io');
+      s.setAttribute('issue-term', 'title');
+      
+      s.setAttribute('label', 'utterances');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.0/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

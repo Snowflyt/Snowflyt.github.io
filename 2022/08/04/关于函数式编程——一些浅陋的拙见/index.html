@@ -1,0 +1,679 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Snowflyt">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="关于函数式编程——一些浅陋的拙见 如果有读者是被头图吸引进来的，可能要失望了，因为本文既不讲λ演算，也不讲Elixir。只是谈一些浅陋的拙见。 正如标题所示，这不是一篇专业的文章，只是我个人关于函数式编程产生的一些杂乱无章（而且很可能不正确）的想法。我不是个专业的函数式编程程序员。实话实说，函数式编程技巧对我而言主要使用在JavaScript、Java和Python中，我从没有真的实际拿纯函数式语">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于函数式编程——一些浅陋的拙见">
+<meta property="og:url" content="https://snowfly-t.github.io/2022/08/04/%E5%85%B3%E4%BA%8E%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B%E2%80%94%E2%80%94%E4%B8%80%E4%BA%9B%E6%B5%85%E9%99%8B%E7%9A%84%E6%8B%99%E8%A7%81/index.html">
+<meta property="og:site_name" content="Snowflyt的博客">
+<meta property="og:description" content="关于函数式编程——一些浅陋的拙见 如果有读者是被头图吸引进来的，可能要失望了，因为本文既不讲λ演算，也不讲Elixir。只是谈一些浅陋的拙见。 正如标题所示，这不是一篇专业的文章，只是我个人关于函数式编程产生的一些杂乱无章（而且很可能不正确）的想法。我不是个专业的函数式编程程序员。实话实说，函数式编程技巧对我而言主要使用在JavaScript、Java和Python中，我从没有真的实际拿纯函数式语">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s3.bmp.ovh/imgs/2022/08/04/a301ce66e92a98db.jpeg">
+<meta property="article:published_time" content="2022-08-04T13:46:59.000Z">
+<meta property="article:modified_time" content="2022-09-07T14:07:35.014Z">
+<meta property="article:author" content="Snowflyt">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://s3.bmp.ovh/imgs/2022/08/04/a301ce66e92a98db.jpeg">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>关于函数式编程——一些浅陋的拙见 - Snowflyt的博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"snowfly-t.github.io","root":"/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Snowflyt的博客</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('https://s3.bmp.ovh/imgs/2022/08/04/a301ce66e92a98db.jpeg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="关于函数式编程——一些浅陋的拙见"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-08-04 21:46" pubdate>
+          2022年8月4日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3.2k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          27 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">关于函数式编程——一些浅陋的拙见</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="关于函数式编程——一些浅陋的拙见"><a href="#关于函数式编程——一些浅陋的拙见" class="headerlink" title="关于函数式编程——一些浅陋的拙见"></a>关于函数式编程——一些浅陋的拙见</h1><p><img src="https://s3.bmp.ovh/imgs/2022/08/04/a301ce66e92a98db.jpeg" srcset="/img/loading.gif" lazyload alt="λ演算"></p>
+<p><em>如果有读者是被头图吸引进来的，可能要失望了，因为本文既不讲λ演算，也不讲Elixir。只是谈一些浅陋的拙见。</em></p>
+<p>正如标题所示，<strong>这不是一篇专业的文章</strong>，只是我个人关于函数式编程产生的一些杂乱无章（而且很可能不正确）的想法。我不是个专业的函数式编程程序员。实话实说，函数式编程技巧对我而言主要使用在JavaScript、Java和Python中，我从没有真的实际拿纯函数式语言开发过什么像样的应用。</p>
+<p>我对函数式编程的了解主要来自几本小薄书和网络上碎片化知识的获取。对于那些偏向函数式的语言，我基本只有LISP语系（Scheme与Clojure）和Scala是相对熟悉的，但也并没有真的拿它们开发过什么超越玩具性质的项目。我离散数学学得很差，对PL的认知也很浅，甚至现在要让我背诵一下群论中的某些基础定义，我一时半会也想不起来。我对Haskell和ML语系也只有一些比较浅薄的了解，因此这一定是一篇很不专业的文章。</p>
+<p>我知道一定有富有经验的读者读到这里就意识到继续读本文是浪费时间，然后划走本文了，我很尊重这些知识水平超过我的读者，也希望这些读者真的不要在本文上浪费时间了。但是，如果你是和曾经的我一样对函数式编程几乎一无所知的新手，或许我这些<strong>冗长的碎碎念</strong>能给你一些启发。</p>
+<h2 id="函数式编程是未来吗"><a href="#函数式编程是未来吗" class="headerlink" title="函数式编程是未来吗"></a>函数式编程是未来吗</h2><p>这要看如何定义“未来”。如果“未来”指基础设施开发，那么我不排除函数式编程成为“未来”的可能，毕竟在分布式越来越火的当下，函数式编程以很优雅的方式解决了并发问题，且具有很高的安全性与较快的开发速度（对于熟悉者而言），相比之下它在学习成本和编译速度上的缺点就不是那么严重了，毕竟开发基础设施的团队往往具有较高的素质，这对他们来说不会是很大的问题。</p>
+<p>如果“未来”指底层硬件开发，那别想了，底层开发要求的是尽可能压榨硬件性能。在性能极度敏感的情况下，如操作系统编程，面向对象都嫌复杂，函数式编程编译出来的代码再优化效率也比不过纯过程式，肯定取代不了。如果要问有哪门编程语言三十年后还能活着，其他语言我都不敢百分百肯定，但C语言肯定能活着，还能活得好好的。</p>
+<p>如果“未来”指业务开发，很遗憾，我不认为函数式编程能翻起太大的浪花，至少一定无法“替代”面向对象编程。即使是Scala这种把OOP和FP糅在一起，且倾向于FP的语言也做不到。面向对象应当仍然会作为项目代码的主体，然后辅以少量的函数式代码实现逻辑细节，如经典的列表数据处理。至于为什么，我将在下面谈函数式编程的问题时指出。</p>
+<p>所以说有几点可以总结出来：</p>
+<ul>
+<li>摩尔定律的失效逐渐使机器性能的增长速度渐渐无法满足高速增长的性能需求，因此多核与分布式方案得到了愈发广泛的应用，这使得并发编程受到重视，而在这方面，毫无疑问函数式编程的思路比起面向对象的思路相性更好。</li>
+<li>得益于基础工作的完善，如今很多任务已经不需要程序员从头开始用命令式的逻辑去写执行步骤了。在业务逻辑相对固定的情况下，大多数业务实现都可以成为一连串函数的组合，因此函数式编程由于其更好的可读性与简洁性受到欢迎。</li>
+<li>对于底层硬件开发，函数式编程由于性能问题很难真正被大规模使用。</li>
+<li>对于更高层级的业务逻辑组织，函数式编程由于其固有的复杂性不太可能成为主流。纯FP想在这一层面上发挥作用不大可能写出比OOP更简洁易读的代码，不如说反而可能会更加冗长难读。</li>
+<li>由于GUI开发不再是主流，这一与OOP最契合的使用场景之一也渐渐没落了，那么函数式编程自然也少了一些劣势。</li>
+<li>显然，纯函数式编程几乎不可能在实际项目成为主流。或者说，至少是多人团队开发的项目中不太可能使用纯函数式编程，这带来了过重的思维负担。如WhatsApp当初五十个人使用Erlang开发后端已经是极限了。</li>
+</ul>
+<p>那么，有没有可能函数式编程会成为真正的“未来”呢？有可能，还不少，可惜都不太现实：</p>
+<ul>
+<li>发生核战争或致死率极高的传染病，人类死了一大半，大家自然就不用怎么考虑超大规模业务了，少人团队甚至单人开发都能成为常态，那自然可以怎么爽怎么来。</li>
+<li>计算机行业因不明原因受到重击，开发者大规模减少，凑巧的是这些留下来的开发者水平都很不错。这时使用超大型团队维护超大规模项目的逻辑已经行不通了，这时若仍需维持之前的业务规模，就必须要找到能够充分发挥个体生产力的编程方式，那么函数式编程显然会被主流采用。而由于遗留下来的开发者水平都很不错，因此函数式编程学习成本过高的问题也就不是问题了。</li>
+</ul>
+<p>但是，也有更多的可能会使函数式编程比现在更凉，而且这些可能甚至更贴近现实：</p>
+<ul>
+<li>物理学迎来又一次突破，摩尔定律再次生效，单核性能飞速上涨，并行编程热度大幅下降，函数式编程的“无副作用”、“不变性”变得不再那么具有吸引力。</li>
+<li>机器性能在横向发展上也遇到了瓶颈。由于性能发展长时间停滞，函数式编程的“不变性”思路反而成为了性能负担，有状态的“对象”更受青睐。</li>
+</ul>
+<p>可以看到，FP受到的限制很多，几乎只在特定时代背景下具有优势。比如机器性能问题既可以成为函数式编程逐渐受到欢迎的原因（摩尔定律失效，性能提升开始追求多核与分布式，即横向扩展），也可以成为函数式编程再一次没落的理由（机器性能长期停滞，函数式编程遇到性能瓶颈）。</p>
+<h2 id="函数式编程的问题"><a href="#函数式编程的问题" class="headerlink" title="函数式编程的问题"></a>函数式编程的问题</h2><p>我认为很难是。函数式编程最大的问题在于其学习成本太高，且对使用者有较高的数学要求。十多年前就有人预言函数式编程（FP）会逐渐代替面向对象编程（OOP），然后十几年过去了，并没见太大起色。说到底，这几年函数式编程有些抬头的兆头，其实要感谢JavaScript（和更早的Java 8）。我知道，很多Haskell使用者瞧不起JS，但现在在Google Images上搜索Functional Programming，一眼看下去大部分都是JS代码。这其实有点讽刺，纯函数式语言发展了这么多年，指望出一个能大规模被应用于工程的FP语言，结果FP最近渐渐有起色居然要归功于JavaScript——一个因早年设计缺陷而只能拥有残废class，因而不得不诉求于FP的语言。</p>
+<p>老实说，我认为目前前端用的那点充其量只能算是“技巧”的“函数式编程”已经接近函数式编程在<strong>业务逻辑</strong>中的使用极限了。当然，我不排除函数式编程逐渐在基础设施开发中越来越受欢迎的可能，毕竟函数式编程能够以非常巧妙和优雅的方式解决并发问题，不如说我很看好函数式编程在这方面的发展。</p>
+<p>可以看到，2014出现的Java 8中引入的lambda和stream如今都未被完全接受，反倒是前端这边因为React的偶然崛起以惊人地速度接受了函数式编程的一些思想。很多人会指出，函数式编程的一些核心思想如类型系统、柯里化、模式匹配等思想无论在前端还是后端开发中都未被广泛使用，将这些浅薄的应用称为“函数式编程”并不合适。但是，即使是这些“浅薄”的应用推广起来也困难重重。</p>
+<p>让我们思考程序员为什么从一种编程范式切换到另一种编程范式：</p>
+<ul>
+<li>更简洁可读的代码</li>
+<li>更好地组织代码结构</li>
+<li>减少出错的可能（更高的安全性）</li>
+<li>更强的可维护性</li>
+<li>减少程序员的思维负担</li>
+<li>更高的开发效率</li>
+<li>……</li>
+</ul>
+<p>上面只列举了少数几点。观察历史，从滥用<code>goto</code>到结构化编程，从结构化编程到面向对象编程，都符合上面这几点。有趣的是，这几点中（也包括未列出来的更多点）并未包括“更高的性能”。毫无疑问，理论性能最强的是手写汇编，接着是<code>goto</code>乱飞把高级编程语言当汇编使的方式，但这两种方式显然都会为代码带来极高的维护成本，而且这种“高性能”也只存在理论上——很少有人的脑子能在这种编程范式下塞下</p>
+<h2 id="声明式与命令式"><a href="#声明式与命令式" class="headerlink" title="声明式与命令式"></a>声明式与命令式</h2><p>面向对象（OOP）与函数式编程（FP）之争，其实本质在于命令式与声明式编程之争。我们有时会说，“OOP与FP并不冲突”，我也会说这样的话。但老实说，纯FP的代码几乎是掺不进一点OOP的代码的。OOP核心在于状态和消息，FP核心在于函数的组合与不变性。函数没有状态，因此根本上是与存在状态的OOP对象冲突的。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>关于函数式编程——一些浅陋的拙见</div>
+      <div>https://snowfly-t.github.io/2022/08/04/关于函数式编程——一些浅陋的拙见/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Snowflyt</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年8月4日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'Snowfly-T/Snowfly-T.github.io');
+      s.setAttribute('issue-term', 'title');
+      
+      s.setAttribute('label', 'utterances');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.0/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

@@ -1,0 +1,737 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Snowflyt">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Rhyme——在程序语言设计上的一次尝试Rhyme是我设想中的一门新语言，它现在还没有一个可用的编译器实现，也仍有许多内容处于设计阶段。Rhyme的初步设想是编译成JavaScript实现，这可能被称为RhymeScript，这也许会在未来几年被实现。我试图将一些我认为很有趣的新想法加入到这一实验性语言中。当然，目前这一想法仅停留于自娱自乐阶段，很多东西非常不严谨，所以也不用太过严肃。 我这里不会">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Rhyme——在程序语言设计上的一次尝试">
+<meta property="og:url" content="https://snowfly-t.github.io/2022/05/29/Rhyme%E2%80%94%E2%80%94%E5%9C%A8%E7%A8%8B%E5%BA%8F%E8%AF%AD%E8%A8%80%E8%AE%BE%E8%AE%A1%E4%B8%8A%E7%9A%84%E4%B8%80%E6%AC%A1%E5%B0%9D%E8%AF%95/index.html">
+<meta property="og:site_name" content="Snowflyt的博客">
+<meta property="og:description" content="Rhyme——在程序语言设计上的一次尝试Rhyme是我设想中的一门新语言，它现在还没有一个可用的编译器实现，也仍有许多内容处于设计阶段。Rhyme的初步设想是编译成JavaScript实现，这可能被称为RhymeScript，这也许会在未来几年被实现。我试图将一些我认为很有趣的新想法加入到这一实验性语言中。当然，目前这一想法仅停留于自娱自乐阶段，很多东西非常不严谨，所以也不用太过严肃。 我这里不会">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-05-29T08:28:53.000Z">
+<meta property="article:modified_time" content="2022-09-07T14:05:20.785Z">
+<meta property="article:author" content="Snowflyt">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>Rhyme——在程序语言设计上的一次尝试 - Snowflyt的博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"snowfly-t.github.io","root":"/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Snowflyt的博客</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Rhyme——在程序语言设计上的一次尝试"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-05-29 16:28" pubdate>
+          2022年5月29日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          6.7k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          57 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Rhyme——在程序语言设计上的一次尝试</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="Rhyme——在程序语言设计上的一次尝试"><a href="#Rhyme——在程序语言设计上的一次尝试" class="headerlink" title="Rhyme——在程序语言设计上的一次尝试"></a>Rhyme——在程序语言设计上的一次尝试</h1><p>Rhyme是我设想中的一门新语言，<strong>它现在还没有一个可用的编译器实现</strong>，也仍有许多内容处于设计阶段。Rhyme的初步设想是编译成JavaScript实现，这可能被称为RhymeScript，这也许会在未来几年被实现。我试图将一些我认为很有趣的新想法加入到这一实验性语言中。当然，目前这一想法仅停留于自娱自乐阶段，很多东西非常不严谨，所以也不用太过严肃。</p>
+<p>我这里不会详细描述Rhyme的每一个部分，只是简单提出几点我个人认为很有趣（当然不一定实用的设计），写在这里自娱自乐一下。</p>
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p>为了直观起见，先贴一点示例（自然是跑不起来的，因为目前这门语言只存在于想象中）：</p>
+<h2 id="核心设计思路"><a href="#核心设计思路" class="headerlink" title="核心设计思路"></a>核心设计思路</h2><ul>
+<li>Rhyme是静态强类型、渐进类型与结构化类型的，这和TypeScript很相似</li>
+<li>Rhyme试图尽可能使得编程像是英文写作，并提供强大的元编程能力最大程度地实现“自然语言编程”，这使得DSL的设计变得非常简单，这和Ruby是类似的；同理，为了尽可能使得代码易读，Rhyme也会使用”and””or”这些关键字而非”&amp;&amp;””||”</li>
+<li>Rhyme试图尽可能减少程序员的打字负担。因此Rhyme会较常使用简写，例如function被简写成fn，operator被简写成op，string被简写成str，number被简写成num等</li>
+<li>在Rhyme中空格的地位被极端强调，所有的二元运算符两边必须加上空格，因此1+1会报错，1+ 1也会报错，只有1 + 1不会。同理，赋值运算符”&#x3D;”、乘方运算符”^”等使用时两边也必须加上空格。除此之外，一元运算符中除了负号必须不带空格使用（例如- 1会报错，而-1不会），其他所有一元运算符必须带上空格使用</li>
+<li>承接上一条，Rhyme对空格的重视不仅限于运算符。例如函数定义时”fn”关键字与后面的括号之间必须带空格，比如”fn() {}”会报错，而”fn () {}”不会。泛型必须和”fn”后的括号结合，比如”fn<T> () {}”会报错，而”fn <T>()”不会。</li>
+<li>对空格的重视使得Rhyme获得以下好处：①代码风格统一；②编译速度快，因为这使得编译器不用再考虑很多二义性问题；③变量命名自由，这使得变量命名可以带”-“作为连字符而不再被二义性所困扰。</li>
+<li>Rhyme底层采用原型继承，这使得元编程变得更加灵活。不过Rhyme同时也提供class语法糖将底层的原型继承模式隐藏了起来，而且有额外的优化（这甚至更胜于JavaScript ES6加入的class语法糖）。一般来说，当用户不需要使用元编程时，他就不需要了解有关底层原型继承机制的任何知识。</li>
+<li>Rhyme会在编译期进行大量的性能优化，例如单类型的list会有额外的性能优化。</li>
+<li>Rhyme原生对科学计算有很好的支持，标量（Scaler）、向量（Vector）、矩阵（Matrix）及张量（Tensor）这几个数据类型是内置的。同时也对向量化有很好的支持。</li>
+<li>考虑到多数程序员并不经常使用位运算符，但位运算符实质上又诡异地占据了许多语言中那些最宝贵的运算符，因此Rhyme将取消位运算符。当然，位运算本身仍是被保留的，如果确实需要大量使用位运算符，例如嵌入式开发，可以通过其他方式重新引入位运算符。</li>
+<li>Rhyme的所有语句按理来说都不需要在末尾加上分号，不过这仍是可选的。Rhyme会按照换行符尽可能解析代码直到其不能解析为止，类似JavaScript，不过当一行以”(“”[“”+”等符号开头时，Rhyme会强制将其视作新一行代码，这是与JavaScript不同的。</li>
+<li>Rhyme没有new关键字，所有的类都可以直接创建实例，Rhyme选择相信程序员。</li>
+<li>Rhyme拥抱函数式编程，鼓励尽可能使用foreach&#x2F;map&#x2F;filter&#x2F;reduce等函数而非使用for循环。同时Rhyme不提供类似”fn fnName () {}”的函数定义方式，只提供”const&#x2F;let fnName &#x3D; fn () {}”的函数定义方式（或是”const&#x2F;let fnName &#x3D; () &#x3D;&gt; {}”）。甚至类定义也是如此，只提供类似”const&#x2F;let className &#x3D; class () {}”的定义方式。自然，只有这类函数&#x2F;类定义方式的Rhyme不存在函数&#x2F;类作用域提升。</li>
+</ul>
+<p>好了，枯燥的文字到此结束了，下面谈谈一些存在于我设想中的有趣设计。</p>
+<h2 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h2><p>在Rhyme中，运算符的定义被极大扩展。运算符可以是一元或二元的，一元运算符只能是前置运算符。用户自定义运算符的优先级永远是最低的，这可以防止一些意料之外的问题。所有运算符调用时都必须在两边加上空格，只有取负运算符”-“是例外，它必须不加空格调用。</p>
+<p>多说无益，直接上代码。由于Rhyme尽量以“自然语言编程”的设计哲学，因此Rhyme中应当不会加入管道运算符”|&gt;”，但通过自定义运算符，用户可以轻松实现它：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs TypeScript"><span class="hljs-variable constant_">IKWID</span> &#123;<br>  <span class="hljs-title class_">Object</span>.|&gt; = op &lt;T, U&gt;(self, <span class="hljs-attr">f</span>: <span class="hljs-function"><span class="hljs-params">T</span> =&gt;</span> U) -&gt; U &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-title function_">f</span>(self)<br>  &#125;<br>&#125;<br><br><span class="hljs-number">1</span> |&gt; <span class="hljs-function"><span class="hljs-params">x</span> =&gt;</span> x + <span class="hljs-number">1</span> |&gt; <span class="hljs-function"><span class="hljs-params">x</span> =&gt;</span> x ^ <span class="hljs-number">2</span> <span class="hljs-comment">// =&gt; 4</span><br></code></pre></td></tr></table></figure>
+
+<p>在上面的代码中，<code>IKWID</code>是”I Know What I’m Doing”的缩写。当用户尝试进行危险操作，例如直接修改内置类时，需要将代码放在<code>IKWID</code>块中。</p>
+<p>在Ruby中，2.days.ago是吸引人入坑的一大特色，在Rhyme中甚至可以更好地实现它：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs TypeScript"><span class="hljs-variable constant_">IKWID</span> &#123;<br>  <span class="hljs-title class_">Number</span>.<span class="hljs-property">days</span> = op &lt;T, E&gt;(self, <span class="hljs-attr">rhs</span>: <span class="hljs-title class_">Symbol</span>) -&gt; <span class="hljs-title class_">Either</span>&lt;T, E&gt; =&gt; &#123;<br>    <span class="hljs-keyword">if</span> rhs == :ago &#123;<br>      <span class="hljs-keyword">return</span> datetime.<span class="hljs-title function_">now</span>() - self * <span class="hljs-number">24</span> * <span class="hljs-number">60</span> * <span class="hljs-number">60</span> * <span class="hljs-number">1000</span><br>    &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> rhs == :later &#123;<br>      <span class="hljs-keyword">return</span> datetime.<span class="hljs-title function_">now</span>() + self * <span class="hljs-number">24</span> * <span class="hljs-number">60</span> * <span class="hljs-number">60</span> * <span class="hljs-number">1000</span><br>    &#125;<br>    <span class="hljs-keyword">throw</span> <span class="hljs-title class_">TypeError</span>(<span class="hljs-string">&#x27;operator &quot;days&quot; must be called with &quot;ago&quot; or &quot;later&quot;&#x27;</span>)<br>  &#125;<br>&#125;<br><br><span class="hljs-comment">// 假设当前时间为2022-03-19 01:15:52</span><br><span class="hljs-keyword">const</span> t = <span class="hljs-number">2</span> days ago<br><span class="hljs-title function_">print</span>(t) <span class="hljs-comment">// =&gt; 2022-03-17 01:15:52</span><br></code></pre></td></tr></table></figure>
+
+<p>上述代码将”days”定义为了一个在num类型上使用的运算符，它只接受一个值为”ago”或”later”的Symbol作为右值，返回n天前&#x2F;后的时间。</p>
+<p>可以看到，运算符某种意义上可以视作接收一个或两个参数的函数的另一种形式。因此，普通的函数如果接收一个或两个参数，也可以通过这种方式调用，只需加上一个装饰器，例如：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs TypeScript"><span class="hljs-keyword">const</span> add = <span class="hljs-meta">@operator</span> (<span class="hljs-attr">lhs</span>: num, <span class="hljs-attr">rhs</span>: num) =&gt; lhs + rhs<br><br><span class="hljs-title function_">add</span>(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>) <span class="hljs-comment">// =&gt; 3</span><br><span class="hljs-number">1</span> add <span class="hljs-number">2</span>   <span class="hljs-comment">// =&gt; 3</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="匿名函数"><a href="#匿名函数" class="headerlink" title="匿名函数"></a>匿名函数</h2><p>虽然在Rhyme中无法直接通过<code>fn fnName () &#123;&#125;</code>定义函数，但可以在<code>const/let fnName = fn () &#123;&#125;</code>中加上可选的函数名，例如<code>const/let fnName = fn fnName () &#123;&#125;</code>，这主要是为了方便递归。不过通常来说，不必为函数标上函数名，而且即使不标函数名Rhyme也会对报错信息进行优化。</p>
+<p>Rhyme中定义匿名函数的形式多种多样。上面已经演示过的fn和箭头函数就不展示了，这里展示一下通过”it”关键字定义的匿名函数。显然，该灵感来自于Clojure。</p>
+<p>先看下面这段代码：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs TypeScript">[<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>] filter #&#123;it % <span class="hljs-number">2</span> == <span class="hljs-number">0</span>&#125; <span class="hljs-comment">// =&gt; [2, 4]</span><br></code></pre></td></tr></table></figure>
+
+<p>显然，可以看到<code>filter</code>应当已经被定义在列表类型上的运算符，其右值接收一个函数作为参数，而这里的<code>#&#123;it % 2 == 0&#125;</code>就是这个被接收的函数。</p>
+<p>一个由<code>#&#123;&#125;</code>包裹的代码块会被视为一个匿名函数，而<code>it</code>就表示该函数接收的参数。当仅接收一个参数时，<code>it</code>很自然地就表示那个唯一的参数；当接收多个参数时，<code>it</code>表示一个包含多个参数的元组，可以通过<code>it[0]</code>、<code>it[1]</code>等调用这些参数。</p>
+<p>有时，包裹it匿名函数的<code>#&#123;&#125;</code>可以省略，例如：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs TypeScript">[<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>].<span class="hljs-title function_">filter</span>(it % <span class="hljs-number">2</span> == <span class="hljs-number">0</span>) <span class="hljs-comment">// =&gt; [2, 4]</span><br></code></pre></td></tr></table></figure>
+
+<p>仅当其作为函数参数时能够省略<code>#&#123;&#125;</code>。此外省略形式的匿名函数不能包含逗号，逗号将截断表达式并将其视作两个参数。不过，如<code>div(a, b) == 0</code>这样的代码不会有问题。</p>
+<h2 id="管道"><a href="#管道" class="headerlink" title="管道"></a>管道</h2><p>Rhyme不提供<code>|&gt;</code>作为管道操作符，因为这不符合“自然语言编程”的设计思路。但Rhyme以其他方式提供管道操作。</p>
+<p>在Rhyme中，管道操作通过.then方法实现。该方法存在于Object对象上：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs TypeScript"><span class="hljs-keyword">const</span> x = <span class="hljs-number">1</span><br><span class="hljs-keyword">const</span> result = x<br>  .<span class="hljs-title function_">then</span>(it + <span class="hljs-number">1</span>)<br>  .<span class="hljs-title function_">then</span>(it * <span class="hljs-number">2</span>)<br>  .<span class="hljs-title function_">then</span>(it ^ <span class="hljs-number">2</span>)<br>x       <span class="hljs-comment">// =&gt; 1</span><br>result  <span class="hljs-comment">// =&gt; 8</span><br></code></pre></td></tr></table></figure>
+
+<p>值得注意的是，这里的.then()是同步的，它只是用于表示管道操作的方法，与JavaScript中的Promise没有任何关系。</p>
+<p>当然，自定义一个全局的<code>|&gt;</code>运算符也没什么问题：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs TypeScript"><span class="hljs-variable constant_">IKWID</span> &#123;<br>  <span class="hljs-title class_">Object</span>.|&gt; = op &lt;T, U&gt;(self, <span class="hljs-attr">f</span>: <span class="hljs-function"><span class="hljs-params">T</span> =&gt;</span> U) -&gt; <span class="hljs-function"><span class="hljs-params">U</span> =&gt;</span> <span class="hljs-title function_">f</span>(self)<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>Rhyme并不禁止为内置对象添加属性，这意味着程序员可以直接更改内置API。然而，当进行类似的修改时，Rhyme的编译器会发出警告，以确保你确实知道自己在做什么，因此上面使用了<code>@suppress-warning</code>装饰器来抑制警告。</p>
+<p>然后，你就可以轻松地使用管道运算符了：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs TypeScript"><span class="hljs-keyword">const</span> x = <span class="hljs-number">1</span><br><span class="hljs-keyword">const</span> result = x |&gt; #&#123; it + <span class="hljs-number">1</span> &#125; |&gt; #&#123; it * <span class="hljs-number">1</span> &#125; |&gt; #&#123; it ^ <span class="hljs-number">2</span> &#125;<br>x       <span class="hljs-comment">// =&gt; 1</span><br>result  <span class="hljs-comment">// =&gt; 8</span><br></code></pre></td></tr></table></figure>
+
+<p>当然，由于这不太符合Rhyme的设计哲学，因此建议使用.then()方法，而不是自定义的管道运算符。这里仅做演示用。</p>
+<h2 id="空格"><a href="#空格" class="headerlink" title="空格"></a>空格</h2><p>在Rhyme中，空格是有意义的，并且无论什么情况下都不可省略。</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs TypeScript"><span class="hljs-keyword">let</span> a = <span class="hljs-number">10</span><br><span class="hljs-keyword">let</span> b =<span class="hljs-number">10</span> <span class="hljs-comment">// !SyntaxError</span><br></code></pre></td></tr></table></figure>
+
+<p>空格以外的空白字符是可以省略的，例如换行。Rhyme在编译时会智能为行末加上<code>;</code>，参考JavaScript。然而，不同于JavaScript的是，当下一行以<code>()[]</code>及运算符开头时，Rhyme会直接在上一行的末尾加上<code>;</code>。</p>
+<p>Rhyme对空格的严格限制远不仅限于此。有些限制似乎毫无必要，例如要求在<code>fn</code>关键字后加上空格，这甚至与多数人的习惯相悖。然而严格限制空格带来很多好处，例如更好的编译效率、更自由的变量命名（例如可使用<code>-</code>连字符），这也能强制所有Rhyme代码维持相对统一的代码规范。</p>
+<h2 id="模式匹配"><a href="#模式匹配" class="headerlink" title="模式匹配"></a>模式匹配</h2><p>在Rhyme中，模式匹配使用switch…case…语句实现。需要注意的是，Rhyme中不存在“fallthrough”语法，因此不需要写break。</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs TypeScript">match letter &#123;<br>  <span class="hljs-string">&#x27;a&#x27;</span> | <span class="hljs-string">&#x27;e&#x27;</span> | <span class="hljs-string">&#x27;i&#x27;</span> | <span class="hljs-string">&#x27;o&#x27;</span> | <span class="hljs-string">&#x27;u&#x27;</span> -&gt; &#123;<br>    <span class="hljs-title function_">println</span>(<span class="hljs-string">&#x27;Vowel&#x27;</span>)<br>  &#125;<br>  <span class="hljs-string">&#x27;y&#x27;</span> | <span class="hljs-string">&#x27;w&#x27;</span> -&gt; &#123;<br>    <span class="hljs-title function_">println</span>(<span class="hljs-string">&#x27;Sometimes Vowel&#x27;</span>)<br>  &#125;<br>  <span class="hljs-keyword">default</span> -&gt; &#123;<br>    <span class="hljs-title function_">println</span>(<span class="hljs-string">&#x27;consonant&#x27;</span>)<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="面向对象"><a href="#面向对象" class="headerlink" title="面向对象"></a>面向对象</h2><p>与许多语言一样，Rhyme同样使用class关键字进行类定义。通过class关键字定义的类名不得以小写字母开头，若用下划线开头，则在若干下划线之后的第一个非下划线字符不得是小写字母或数字。不过，Rhyme并不限制其他Unicode字符，例如使用中文命名类名，这将没有大小写字母的限制。</p>
+<p>值得注意的是，Rhyme直接使用方法的第一个参数区分实例方法、类方法以及静态方法。若第一个参数为<code>self</code>，则认为该方法为实例方法；若第一个参数为<code>cls</code>，则认为该方法为类方法；否则认为该方法为静态方法。因此，在Rhyme中<code>self</code>和<code>cls</code>为保留字。</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs TypeScript"><span class="hljs-keyword">const</span> <span class="hljs-title class_">Point</span> = <span class="hljs-keyword">class</span> (restricted <span class="hljs-attr">x</span>: num, restricted <span class="hljs-attr">y</span>: num) &#123;&#125;<br><br><span class="hljs-keyword">const</span> point1 = <span class="hljs-title class_">Point</span>() <span class="hljs-comment">// Error</span><br><span class="hljs-keyword">const</span> point1 = <span class="hljs-title class_">Point</span>(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>)<br><span class="hljs-keyword">const</span> point2 = <span class="hljs-title class_">Point</span>(<span class="hljs-number">3</span>, <span class="hljs-number">4</span>)<br></code></pre></td></tr></table></figure>
+
+<p>Rhyme提供抽象类和特性（trait）。</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs TypeScript"><span class="hljs-keyword">const</span> <span class="hljs-title class_">Person</span> = abs <span class="hljs-keyword">class</span> (...) &#123;<br>  <span class="hljs-comment">// 不能实例化</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs TypeScript"><span class="hljs-keyword">const</span> <span class="hljs-title class_">Human</span> = trait &#123;<br>  <span class="hljs-comment">// ...</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>同许多语言一样，类支持继承（且支持多重继承，使用线性化实现）。</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs TypeScript"><span class="hljs-keyword">const</span> <span class="hljs-title class_">Teacher</span> = <span class="hljs-keyword">class</span> (...) &lt; <span class="hljs-title class_">Person</span>, <span class="hljs-title class_">Human</span> &#123;<br>  <span class="hljs-comment">// 继承</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>Rhyme强制规定继承时，trait必须放在class之后，否则无法通过编译。</p>
+<p>另外，实际上由于Rhyme使用鸭子类型，因此显式继承trait是可选的，但仍推荐这么做。当声明继承某个trait的类被发现未实现trait中规定的某些方法时，将编译失败。</p>
+<p>类本质上仍是对象，因此支持动态修改。</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs TypeScript"><span class="hljs-title class_">Point</span>.<span class="hljs-property">distanceTo</span> = (self, <span class="hljs-attr">point</span>: <span class="hljs-title class_">Point</span>) -&gt; <span class="hljs-function"><span class="hljs-params">num</span> =&gt;</span> &#123;<br>  <span class="hljs-keyword">return</span> ((self.<span class="hljs-property">x</span> - point.<span class="hljs-property">x</span>) ^ <span class="hljs-number">2</span> + (self.<span class="hljs-property">y</span> - point.<span class="hljs-property">y</span>) ^ <span class="hljs-number">2</span>) ^ <span class="hljs-number">0.5</span><br>&#125; <span class="hljs-comment">// 需要注意的是，如果没有template，创建的是静态方法（类方法），而非实例方法</span><br><br>point1.<span class="hljs-title function_">distanceTo</span>(point2) <span class="hljs-comment">// =&gt; 2.8284271247461903</span><br><br><span class="hljs-title class_">Point</span>.<span class="hljs-property">__options__</span>.<span class="hljs-property">extensible</span> = <span class="hljs-literal">false</span> <span class="hljs-comment">// 当然也支持禁止这一特性</span><br></code></pre></td></tr></table></figure>
+
+<p>在默认情况下，一个通过class创建的类是支持动态修改的，然而这可能造成原型链污染。如果对此感到厌恶，可以在配置文件里将其关掉。</p>
+<p>下面演示Range类的实现：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs TypeScript"><span class="hljs-keyword">const</span> <span class="hljs-title class_">Range</span> = <span class="hljs-keyword">class</span> (<br>  <span class="hljs-attr">start</span>: num,<br>  <span class="hljs-attr">end</span>: num,<br>  <span class="hljs-attr">step</span>: num = <span class="hljs-number">1</span><br>) &#123;<br>  def current = start - step<br><br>  ovld init = <span class="hljs-function">(<span class="hljs-params">self, end: num</span>) =&gt;</span> &#123;<br>    self.<span class="hljs-title function_">init</span>(<span class="hljs-number">0</span>, end, <span class="hljs-number">1</span>)<br>  &#125;<br><br>  def __iter__ = <span class="hljs-function"><span class="hljs-params">self</span> =&gt;</span> &#123;<br>    <span class="hljs-keyword">return</span> self<br>  &#125;<br><br>  def __next__ = <span class="hljs-function"><span class="hljs-params">self</span> =&gt;</span> &#123;<br>    self.<span class="hljs-property">current</span> += self.<span class="hljs-property">step</span><br>    <span class="hljs-keyword">if</span> self.<span class="hljs-property">current</span> &gt;= self.<span class="hljs-property">end</span> &#123;<br>      raise <span class="hljs-title class_">IterationEndError</span>()<br>    &#125;<br>    <span class="hljs-keyword">return</span> self.<span class="hljs-property">current</span><br>  &#125;<br>  <br>  def range = <span class="hljs-function">(<span class="hljs-params">cls, start: num, end: num, step: num = <span class="hljs-number">1</span></span>) =&gt;</span> &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-title function_">cls</span>(start, end, step)<br>  &#125;<br>  <br>  ovld range = <span class="hljs-function">(<span class="hljs-params">cls, end: num</span>) =&gt;</span> &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-title function_">cls</span>(end)<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>在类定义中只能包含<code>def</code>、<code>ovld</code>（重载）和<code>ovrd</code>（重写）语句，<code>def</code>可以用来定义属性或方法，它们本质上没什么不同。此外，Rhyme使用不同前缀区分私有（<code>_</code>）、公有（默认）和受保护（<code>#</code>）。</p>
+<p>Rhyme并不认为继承有什么坏处，甚至也不禁止多重继承，因为这是一种很直接的思维方式。继承产生问题的根源在于滥用继承的人身上，而不在于继承本身。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Rhyme——在程序语言设计上的一次尝试</div>
+      <div>https://snowfly-t.github.io/2022/05/29/Rhyme——在程序语言设计上的一次尝试/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Snowflyt</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年5月29日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/06/29/Java%E4%BB%8D%E6%98%AF%E6%9C%80%E9%80%82%E5%90%88%E5%AD%A6%E4%B9%A0%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E7%9A%84%E8%AF%AD%E8%A8%80/" title="Java仍是最适合学习软件工程的语言">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Java仍是最适合学习软件工程的语言</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'Snowfly-T/Snowfly-T.github.io');
+      s.setAttribute('issue-term', 'title');
+      
+      s.setAttribute('label', 'utterances');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.0/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
