@@ -23,12 +23,12 @@
 <meta property="og:site_name" content="Snowflyt的博客">
 <meta property="og:description" content="关于函数式编程——一些浅陋的拙见 如果有读者是被头图吸引进来的，可能要失望了，因为本文既不讲λ演算，也不讲Elixir。只是谈一些浅陋的拙见。 正如标题所示，这不是一篇专业的文章，只是我个人关于函数式编程产生的一些杂乱无章（而且很可能不正确）的想法。我不是个专业的函数式编程程序员。实话实说，函数式编程技巧对我而言主要使用在JavaScript、Java和Python中，我从没有真的实际拿纯函数式语">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://s3.bmp.ovh/imgs/2022/08/04/a301ce66e92a98db.jpeg">
+<meta property="og:image" content="https://snowfly-t.github.io/img/%E5%85%B3%E4%BA%8E%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B%E2%80%94%E2%80%94%E4%B8%80%E4%BA%9B%E6%B5%85%E9%99%8B%E7%9A%84%E6%8B%99%E8%A7%81/banner.jpeg">
 <meta property="article:published_time" content="2022-08-04T13:46:59.000Z">
-<meta property="article:modified_time" content="2022-09-07T14:07:35.014Z">
+<meta property="article:modified_time" content="2022-12-02T16:47:45.726Z">
 <meta property="article:author" content="Snowflyt">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://s3.bmp.ovh/imgs/2022/08/04/a301ce66e92a98db.jpeg">
+<meta name="twitter:image" content="https://snowfly-t.github.io/img/%E5%85%B3%E4%BA%8E%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B%E2%80%94%E2%80%94%E4%B8%80%E4%BA%9B%E6%B5%85%E9%99%8B%E7%9A%84%E6%8B%99%E8%A7%81/banner.jpeg">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
@@ -193,7 +193,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('https://s3.bmp.ovh/imgs/2022/08/04/a301ce66e92a98db.jpeg') no-repeat center center; background-size: cover;">
+     style="background: url('/img/%E5%85%B3%E4%BA%8E%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B%E2%80%94%E2%80%94%E4%B8%80%E4%BA%9B%E6%B5%85%E9%99%8B%E7%9A%84%E6%8B%99%E8%A7%81/banner.jpeg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -284,7 +284,7 @@
             
               <div class="markdown-body">
                 
-                <h1 id="关于函数式编程——一些浅陋的拙见"><a href="#关于函数式编程——一些浅陋的拙见" class="headerlink" title="关于函数式编程——一些浅陋的拙见"></a>关于函数式编程——一些浅陋的拙见</h1><p><img src="https://s3.bmp.ovh/imgs/2022/08/04/a301ce66e92a98db.jpeg" srcset="/img/loading.gif" lazyload alt="λ演算"></p>
+                <h1 id="关于函数式编程——一些浅陋的拙见"><a href="#关于函数式编程——一些浅陋的拙见" class="headerlink" title="关于函数式编程——一些浅陋的拙见"></a>关于函数式编程——一些浅陋的拙见</h1><p><img src="/img/%E5%85%B3%E4%BA%8E%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B%E2%80%94%E2%80%94%E4%B8%80%E4%BA%9B%E6%B5%85%E9%99%8B%E7%9A%84%E6%8B%99%E8%A7%81/banner.jpeg" srcset="/img/loading.gif" lazyload alt="λ演算"></p>
 <p><em>如果有读者是被头图吸引进来的，可能要失望了，因为本文既不讲λ演算，也不讲Elixir。只是谈一些浅陋的拙见。</em></p>
 <p>正如标题所示，<strong>这不是一篇专业的文章</strong>，只是我个人关于函数式编程产生的一些杂乱无章（而且很可能不正确）的想法。我不是个专业的函数式编程程序员。实话实说，函数式编程技巧对我而言主要使用在JavaScript、Java和Python中，我从没有真的实际拿纯函数式语言开发过什么像样的应用。</p>
 <p>我对函数式编程的了解主要来自几本小薄书和网络上碎片化知识的获取。对于那些偏向函数式的语言，我基本只有LISP语系（Scheme与Clojure）和Scala是相对熟悉的，但也并没有真的拿它们开发过什么超越玩具性质的项目。我离散数学学得很差，对PL的认知也很浅，甚至现在要让我背诵一下群论中的某些基础定义，我一时半会也想不起来。我对Haskell和ML语系也只有一些比较浅薄的了解，因此这一定是一篇很不专业的文章。</p>
