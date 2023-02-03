@@ -16,25 +16,23 @@
   <meta name="author" content="Snowflyt">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Spring为何总是受到青睐Java的方式是冗长与简单，这两者并不矛盾。Java简单在于它屏蔽了许多底层概念，如从C&#x2F;C++带过来的指针，同时屏蔽了许多更高层次的概念，如函数式抽象；Java冗长在于它缺少语法糖，一切都必须以类的形式封装，用对象传递一切，且缺乏对函数式编程更进一步的支持。这两者本就是一体两面的，它们共同构成了Java。 作为Java生态中可能是被最广泛使用的框架，Spri">
+    <meta name="description" content="对编程语言“孰优孰劣”的一些理解编程语言标准与编程语言实现我很想提出的一件事是所有高级编程语言本身在实现上是没有上下之分的。很多人听闻Python的官方解释器CPython是用C写的，就以为Python只不过是基于C的一层封装，认为关键还是C，学好C就学会了一切——这是极其错误的。 编程语言本身指代的不是任何一种实现，而是一种规范。一门语言的编译器和解释器如何实现，实际上只是细枝末节的实现问题，和">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Spring为何总是受到青睐">
-<meta property="og:url" content="https://snowfly-t.github.io/2023/01/31/Spring%E4%B8%BA%E4%BD%95%E6%80%BB%E6%98%AF%E5%8F%97%E5%88%B0%E9%9D%92%E7%9D%90/index.html">
+<meta property="og:title" content="对编程语言“孰优孰劣”的一些理解">
+<meta property="og:url" content="https://snowfly-t.github.io/2023/02/03/%E5%AF%B9%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E2%80%9C%E5%AD%B0%E4%BC%98%E5%AD%B0%E5%8A%A3%E2%80%9D%E7%9A%84%E4%B8%80%E4%BA%9B%E7%90%86%E8%A7%A3/index.html">
 <meta property="og:site_name" content="Snowflyt的博客">
-<meta property="og:description" content="Spring为何总是受到青睐Java的方式是冗长与简单，这两者并不矛盾。Java简单在于它屏蔽了许多底层概念，如从C&#x2F;C++带过来的指针，同时屏蔽了许多更高层次的概念，如函数式抽象；Java冗长在于它缺少语法糖，一切都必须以类的形式封装，用对象传递一切，且缺乏对函数式编程更进一步的支持。这两者本就是一体两面的，它们共同构成了Java。 作为Java生态中可能是被最广泛使用的框架，Spri">
+<meta property="og:description" content="对编程语言“孰优孰劣”的一些理解编程语言标准与编程语言实现我很想提出的一件事是所有高级编程语言本身在实现上是没有上下之分的。很多人听闻Python的官方解释器CPython是用C写的，就以为Python只不过是基于C的一层封装，认为关键还是C，学好C就学会了一切——这是极其错误的。 编程语言本身指代的不是任何一种实现，而是一种规范。一门语言的编译器和解释器如何实现，实际上只是细枝末节的实现问题，和">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://snowfly-t.github.io/img/Spring%E4%B8%BA%E4%BD%95%E6%80%BB%E6%98%AF%E5%8F%97%E5%88%B0%E9%9D%92%E7%9D%90/banner.svg">
-<meta property="article:published_time" content="2023-01-31T10:56:17.000Z">
-<meta property="article:modified_time" content="2023-01-31T11:29:20.348Z">
+<meta property="article:published_time" content="2023-02-03T04:43:52.000Z">
+<meta property="article:modified_time" content="2023-02-03T04:52:00.207Z">
 <meta property="article:author" content="Snowflyt">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://snowfly-t.github.io/img/Spring%E4%B8%BA%E4%BD%95%E6%80%BB%E6%98%AF%E5%8F%97%E5%88%B0%E9%9D%92%E7%9D%90/banner.svg">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>Spring为何总是受到青睐 - Snowflyt的博客</title>
+  <title>对编程语言“孰优孰劣”的一些理解 - Snowflyt的博客</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -193,13 +191,13 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/Spring%E4%B8%BA%E4%BD%95%E6%80%BB%E6%98%AF%E5%8F%97%E5%88%B0%E9%9D%92%E7%9D%90/banner.svg') no-repeat center center; background-size: cover;">
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Spring为何总是受到青睐"></span>
+            <span id="subtitle" data-typed-text="对编程语言“孰优孰劣”的一些理解"></span>
           
         </div>
 
@@ -210,8 +208,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-01-31 18:56" pubdate>
-          2023年1月31日 晚上
+        <time datetime="2023-02-03 12:43" pubdate>
+          2023年2月3日 下午
         </time>
       </span>
     
@@ -222,7 +220,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.6k 字
+          4.1k 字
         
       </span>
     
@@ -233,7 +231,7 @@
         
         
         
-          14 分钟
+          35 分钟
         
       </span>
     
@@ -279,19 +277,31 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Spring为何总是受到青睐</h1>
+            <h1 style="display: none">对编程语言“孰优孰劣”的一些理解</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="Spring为何总是受到青睐"><a href="#Spring为何总是受到青睐" class="headerlink" title="Spring为何总是受到青睐"></a>Spring为何总是受到青睐</h1><p>Java的方式是冗长与简单，这两者并不矛盾。Java简单在于它屏蔽了许多底层概念，如从C&#x2F;C++带过来的指针，同时屏蔽了许多更高层次的概念，如函数式抽象；Java冗长在于它缺少语法糖，一切都必须以类的形式封装，用对象传递一切，且缺乏对函数式编程更进一步的支持。这两者本就是一体两面的，它们共同构成了Java。</p>
-<p>作为Java生态中可能是被最广泛使用的框架，Spring继承了Java的许多原则，其中最重要的就是规范与限制。Spring近乎强制性地使用Controller、Service、Repository的三层结构组织代码，要编写任何一个接口，都必须把这套逻辑自底向上走一遍。有人会说，这并非强制性的，完全可以只写一个Controller然后拿JDBC操纵一切，的确如此，但Spring和它的约定与惯例绑定得那么紧密，以至于任何一个初学者从他第一次接触Spring时，就几乎必然接触到Spring的项目结构与逻辑。Spring框架自身与它的各种“最佳实践”绑定得如此紧密，以至于许多人都没有意识到他们其实可以不用为每个Service添加一个Interface。</p>
-<p>我们很少看到有其他编程语言社区像Java一样如此注重“最佳实践”和“设计模式”。Java社区的人总是想要为每个场景都找到唯一一种编写代码的方式，并且乐此不疲，然后消灭每一个代码中的if语句，编写一大堆类来解决一切。这种风气是如此的根深蒂固，以至于每当有新人学完了Java问下一步要学什么，Java程序员们异口同声地回答“设计模式”。</p>
-<p>我想说的是——Java与Spring的这种对“最佳实践”的极端追求，反而大大提高了Java代码的下限。即使再烂的程序员，只要让他写Spring，那总是能看到数据库访问层和服务层是解耦的，而很少会看到在前端中经常发生的，直接在视图层中把接口地址写死。即使确实有一些习惯糟糕的程序员经常搞不清楚Controller和Service的区别，一通乱糊，但终归是将数据本身和服务解耦了。而在MVC时代，后端程序员除Controller外还需要单独编写一个视图层，把数据显式地从Controller传到View中，这又进一步解耦了服务逻辑和视图。</p>
-<p>得益于Java自身对面向对象结构（主要是类结构）的严格限制，如一个文件只能存在一个public接口，Spring程序员不得不为每一个Controller、每一个Service、每一个Repository建立单独的文件，完美解决了其他后端语言中程序员为了图省事把代码糊到一起的问题。这使得你总是能够相信Java项目的文件树，你总是能够直接通过文件树看到每一个Controller、Service和Repository，而不用担心任何一个文件莫名其妙地包含了多个类体。</p>
-<p>当然，由于历史原因，Java还有一些微不足道的问题。例如NPE问题，如果能在编译时报错显然好得多。例如未标上泛型参数的泛型本应该像C++一样直接报错，但当时为了兼容Java 1.4放弃了这一点。例如所有类本应该默认为final，但当时还没有认识到滥用继承的弊端，所以并没有这样设计。还有很多这样的不足。但是在这些不足中，除NPE的确是实实在在的大问题之外，其他都真的只是微不足道的小问题。</p>
-<p>于是我们看到Spring项目几乎总是类似的，类似的代码组织形式，类似的处理模式，类似的响应机制。一切都是那么相像。给Spring项目作Code Review几乎总是能够看懂代码的，而为JavaScript项目，尤其是React项目Code Review，则总是陷入两个极端——要么代码组织得极端漂亮，要么组织得极端恶心。</p>
-<p>Spring之所以成功，且至今仍为大多数公司的后端选择，显然是有原因的。其中的原因就是Spring最大程度地保证了极烂的程序员能写出大致可读的代码。放到前端那块，我就不敢如此信任了。</p>
+                <h1 id="对编程语言“孰优孰劣”的一些理解"><a href="#对编程语言“孰优孰劣”的一些理解" class="headerlink" title="对编程语言“孰优孰劣”的一些理解"></a>对编程语言“孰优孰劣”的一些理解</h1><h2 id="编程语言标准与编程语言实现"><a href="#编程语言标准与编程语言实现" class="headerlink" title="编程语言标准与编程语言实现"></a>编程语言标准与编程语言实现</h2><p>我很想提出的一件事是所有高级编程语言本身在实现上是没有上下之分的。很多人听闻Python的官方解释器CPython是用C写的，就以为Python只不过是基于C的一层封装，认为关键还是C，学好C就学会了一切——这是极其错误的。</p>
+<p>编程语言本身指代的不是任何一种实现，而是一种规范。一门语言的编译器和解释器如何实现，实际上只是细枝末节的实现问题，和语言自身的标准无关。Python的解释器可以拿C写，可以拿Java写（Jython），可以拿C#写（IronPython），可以拿Rust写（RustPython），甚至可以拿Python写（PyPy）。要是不在乎性能问题，也没人说不可以拿Ruby甚至PHP写，吃饱了撑的拿FORTRAN都能写。</p>
+<p>JavaScript那边有极多玩具解释器，其中不乏用Python、PHP甚至Lua、Kotlin等很多人完全想象不到可以用来写编译器&#x2F;解释器的语言写的。这些解释器，效率肯定不如V8，但都是可以实现的。</p>
+<p>现在我们看到许多主流语言将解释器&#x2F;编译器基于C&#x2F;C++&#x2F;Rust实现，或者至少它们非自举版本的解释器&#x2F;编译器基于这些我们通常认为“偏底层”的语言实现，那只是为了性能考虑——但说实话，如果做好JIT，不用这些偏底层语言性能一样好，比如PyPy。</p>
+<p>大多数主流语言的官方编译器&#x2F;解释器其实都是自举的。Go的编译器是Go写的，C#的编译器是C#写的，Java的编译器（前端）是Java写的，而C&#x2F;C++那块自然是C++写的。</p>
+<p>甚至连Racket——很多人应该没听过这个名字，它是Scheme的现代继承者——最近都把解释器改成了“自举”的，加个引号是因为现在Racket的解释器是Chez Scheme写的，而Chez Scheme其实是基于C实现的，而Chez Scheme的语法本身就是Racket的一个子集。Racket社区选择这么套娃主要是为了证明咱们Lisp也可以自举Lisp，至于带来的性能损失（指性能还不如Python的一半）——Lisp社区一直不大在意。如果在意的话，可以去用Clojure啊！虽然Clojure已经被开除Lisp籍了。</p>
+<p>所以关键问题是，<strong>语言本身的实现是很次要的一件事</strong>。虽然在实用上这再重要不过，但我们要把语言标准和语言实现分开来看。说实话，我一直以来看到什么类似“Python更新3.11，提速30%”或“Ruby更新3.0，提速三倍”之类的话都觉得多少带点别扭——这里将语言等同于它的官方实现了，但这俩语言都不只一个实现。当然，我们在C&#x2F;C++这块就很少听到类似的说法，毕竟C++本来就是MSVC、GCC、Clang三家分立，不分上下，所以不经常看见有人直接拿C&#x2F;C++直接指代这三者其一的。</p>
+<h2 id="底层并不意味着“高级”"><a href="#底层并不意味着“高级”" class="headerlink" title="底层并不意味着“高级”"></a>底层并不意味着“高级”</h2><p>有时候我怀疑很多人不会区分编程语言的标准与实现，其根本原因是<strong>许多人会在脑中自发地形成一条编程语言鄙视链，觉得越偏底层越厉害</strong>，对于大多数人而言，那就是C&#x2F;C++了，那自然会以这个方向去思考问题。</p>
+<p>有时候看到有人吹嘘C++多么厉害，什么软件都是拿C++写的——Office、Chrome、操作系统（主要是UI，非底层）、Unity之前的大多数游戏、MySQL、大量的基础设施……但这是因为那时候只有C++能用而已——总不能用Java吧。现在微软那边一直在用C#替换内核代码，再过几年应该能看到C#大量侵入Office了；Linux已经在大量引入Rust了，尽管这可能带来5%~10%的理论性能损失，但相比于弱类型的C带来的BUG来说，这根本不是问题，说不定少了一大堆BUG性能反而能大幅提升了；游戏开发则早已多数迁移到使用C#开发的Unity；至于数据库，实际上很多数据库都在使用Rust替换底层，有些会使用Go做上层，比如TiDB；基础设施这边，新出来的基础设施已经很少直接用C++写了，有用Rust的，也有用Go的。</p>
+<p>我们其实应该认清楚C++的统治地位已经不如以往了，虽然它在音视频解码、图像处理、工业软件开发等领域的地位暂时还不可替代，但它终究是太老了。与其给它续命，不如让它慢慢结束自己的超长服役期。</p>
+<p>——不过暂时看来，C++有可能以另外一种形式继续苟下去。C++标准委员会现在看起来就是想在这上面发明一门新语言，连<code>int main</code>都进化成<code>auto main() -&gt; int</code>了，而<code>std::vector&lt;int&gt; nums = &#123;1, 2, 3&#125;</code>也进化成<code>auto nums&#123;std::vector&#123;1, 2, 3&#125;&#125;</code>了，模块也加进来了。未来说不定C++要引入个和ES5类似的严格模式，禁止旧语法的使用，到时候看起来就和C是完全两门语言了。我很期待全是auto的日子的到来。</p>
+<h2 id="低抽象与高抽象——两种方向"><a href="#低抽象与高抽象——两种方向" class="headerlink" title="低抽象与高抽象——两种方向"></a>低抽象与高抽象——两种方向</h2><p>不谈C++，谈谈语言本身。其实<strong>编程语言有两种方向，即低抽象与高抽象</strong>。低级抽象，如C，直接将内存暴露在程序员眼中，随便操纵地址。别看大家都说C恶心，弱类型、随便操纵指针引发成吨BUG，而Rust、Go把指针运算直接放到Unsafe里了，但有些时候很多偏底层的逻辑C操作起来就是方便，虽然Rust这类也能做，但确实没有C方便。这类语言的逻辑就是直接对应到机器具体执行上去，熟练的C程序员是很容易直接从C看到汇编上去的。而C++就不同了，语法太多，而编译器又做了太多魔法优化，根本没人搞得懂会编译成啥样。</p>
+<p>稍微往后一点的语言，引入<strong>面向对象</strong>的思路进行建模，如C++、Java。但它们在业务逻辑上实际上还是C的思路，一堆循环、flag变量、if语句。在编写业务逻辑上，它们的思路还是让程序员“写出代码的具体执行步骤”，而不是“告诉程序要怎么做”。其实这就是<code>SELECT * from table</code>和<code>for (int i = 0; i &lt; table.rows.length; i++) &#123; ... &#125;</code>的区别，而C++和Java（至少在当时）显然是后者。</p>
+<p>后来的语言多少受到了一些<strong>函数式编程</strong>的影响，抽象程度进一步增强。如JS那边ES5引入的map&#x2F;filter&#x2F;reduce，Python从Haskell里抄来的推导式。当然Java、C++这些语言也与时俱进，Java 8引入了Stream API，虽然写着还是吃力，但也算是有map&#x2F;filter&#x2F;reduce了；C++与众不同，就像unordered_map这个诡异名字一样，它对于map&#x2F;filter&#x2F;reduce也有一套独特的命名规范，那就是C++ 11加入的transform&#x2F;remove_if&#x2F;accumulate（其实17有reduce来着）。当然，我们可喜可贺地看到许多现代编程语言都有了这<strong>三个基本的组合子</strong>，这代表了编程语言抽象程度的进一步提升。</p>
+<p><strong>很多时候我们说什么类似“你代码写的不Pythonic”这种话，其实说的是代码抽象程度太低。</strong>比如Python里有列表推导式不用，偏偏写个双层循环放一堆if，这就是不Pythonic。当然要是有人写JS从不用map&#x2F;filter&#x2F;reduce&#x2F;flatMap&#x2F;some&#x2F;every，总是要定义个布尔类型的flag，搞一堆循环，弄几个if，再加几个continue和break，除非你的代码要兼容IE6，否则也肯定有人要看着不爽。比较悲伤的是C++和Java那边不这样，就算你不用组合子也没人会觉得有什么不对。2014年Java出的Stream API，现在还有那么多人从不用lambda！</p>
+<p>这几个组合子当然只是函数式的皮毛。再往上一些有比如Maybe、IO Monad、Either这些<strong>Functor</strong>对可能不返回值的函数、有副作用的外部操作（如IO）、错误处理等做抽象。在这个程度上，抽象是为了将一些核心逻辑从语言内部剥离，放到库函数的实现上，比如这里很大程度上就是要<strong>把异常给剥离出去</strong>。</p>
+<p>然后，很多“纯净”的语言是<strong>不提供循环</strong>的，只有递归，并且认为其实你通常情况下也用不到递归，map&#x2F;filter&#x2F;reduce（或者叫foldLeft&#x2F;foldRight）可以解决绝大多数问题。考虑到性能问题，一般这些语言会做尾递归优化。其实这么做的原因很简单，因为循环本身的求值顺序是很怪异的，while括号里的东西其实可以被理解为一个函数闭包，每次循环都要做一次判断，是没法直接求值的，这很奇怪，所以去掉是理所当然的，反正大家可以用<strong>递归和Y组合子</strong>，没什么影响。</p>
+<p>除此之外，有些语言有趣地将语言中大多数东西都实现为了<strong>宏</strong>。当然这个宏不是C的那个——我得说C把它那个东西叫“宏”严重影响了大众对Macro这一概念的正确认知，C那个应该叫字符串替换，请大家不要误解了。这样做有个很有趣的好处，就是像if语句这种也可以在管道里传递了，比如<code>fn |&gt; if(condition)</code>这样的写法都是合理的了。这进一步增强了语法的简洁性与通用性，减少了很多特殊情况。</p>
+<p>函数式语言往上便是<strong>逻辑式语言</strong>，如Prolog。比较遗憾的是由于抽象程度太高，很多时候逻辑式语言解决问题反而会带来更大的思维负担，所以很少有人用。不过逻辑式语言的好处是做查询很方便，比如有些图数据库将查询语言做成像Prolog的三元组格式，就很合适。逻辑式语言也很方便解决一些数学证明问题，比如八皇后问题，只需要告诉Prolog几条基本规则就可以自动算出来，不需要你编写具体的计算逻辑。比较遗憾的是，这种偏向数学的应用场景使逻辑式编程要真的被广泛使用困难重重。目前我见到被最广泛使用的近似逻辑式编程的范式在Wolfram Language里，也只有数学工作者会用到。</p>
+<p>总体上讲，我们不应该真的对编程语言做高下之分。在我看来它们只是对代码逻辑不同程度上的抽象而已。图灵完备的语言能做的工作都是一样多的，没有孰优孰劣。</p>
 
                 
               </div>
@@ -309,8 +319,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Spring为何总是受到青睐</div>
-      <div>https://snowfly-t.github.io/2023/01/31/Spring为何总是受到青睐/</div>
+      <div>对编程语言“孰优孰劣”的一些理解</div>
+      <div>https://snowfly-t.github.io/2023/02/03/对编程语言“孰优孰劣”的一些理解/</div>
     </div>
     <div class="license-meta">
       
@@ -322,7 +332,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年1月31日</div>
+          <div>2023年2月3日</div>
         </div>
       
       
@@ -354,18 +364,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/02/03/%E5%AF%B9%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E2%80%9C%E5%AD%B0%E4%BC%98%E5%AD%B0%E5%8A%A3%E2%80%9D%E7%9A%84%E4%B8%80%E4%BA%9B%E7%90%86%E8%A7%A3/" title="对编程语言“孰优孰劣”的一些理解">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">对编程语言“孰优孰劣”的一些理解</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/01/31/%E5%85%B3%E4%BA%8ENotePad-%E4%BD%9C%E8%80%85%E8%BE%B1%E5%8D%8E%E7%9A%84%E4%B8%80%E4%BA%9B%E8%AF%84%E4%BB%B7/" title="关于NotePad++作者辱华的一些评价">
-                        <span class="hidden-mobile">关于NotePad++作者辱华的一些评价</span>
+                      <a href="/2023/01/31/Spring%E4%B8%BA%E4%BD%95%E6%80%BB%E6%98%AF%E5%8F%97%E5%88%B0%E9%9D%92%E7%9D%90/" title="Spring为何总是受到青睐">
+                        <span class="hidden-mobile">Spring为何总是受到青睐</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
