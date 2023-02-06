@@ -16,15 +16,15 @@
   <meta name="author" content="Snowflyt">
   <meta name="keywords" content="">
   
-    <meta name="description" content="编程的本质是状态机越来越觉得大多数编程工作本质上就是在写状态机。特别是Web开发这块，前后端本质上都在写状态机，而前端尤甚——视图层不就是个不能更明显的状态机。 状态机与视图在各个前端框架中，React尤其体现了“状态机”这一概念——它都有一个hook叫useState了，“state”这个关键词都明明白白地写了出来，这可不就是状态机。在React函数式组件中，我们用setState切换到下一个状">
+    <meta name="description" content="目前互联网企业的大多数应用，似乎不应该使用关系型数据库目前互联网企业的大多数应用，似乎不应该使用关系型数据库。 这听起来是一句暴论，不是吗？ 但是问题在于，现在很多互联网企业，尤其是国内大厂（当然，小厂更严重），只是将数据库当作一个存储数据的介质。其中阿里尤甚。对于关系型数据库辛辛苦苦开发的高级功能，锁、并发读写、触发器、存储过程，那是一个也不用。我听说阿里还禁止使用外键，以优化性能，我不知道是不">
 <meta property="og:type" content="article">
-<meta property="og:title" content="编程的本质是状态机">
-<meta property="og:url" content="https://snowfly-t.github.io/2023/02/06/%E7%BC%96%E7%A8%8B%E7%9A%84%E6%9C%AC%E8%B4%A8%E6%98%AF%E7%8A%B6%E6%80%81%E6%9C%BA/index.html">
+<meta property="og:title" content="目前互联网企业的大多数应用，似乎不应该使用关系型数据库">
+<meta property="og:url" content="https://snowfly-t.github.io/2023/02/06/%E7%9B%AE%E5%89%8D%E4%BA%92%E8%81%94%E7%BD%91%E4%BC%81%E4%B8%9A%E7%9A%84%E5%A4%A7%E5%A4%9A%E6%95%B0%E5%BA%94%E7%94%A8%EF%BC%8C%E4%BC%BC%E4%B9%8E%E4%B8%8D%E5%BA%94%E8%AF%A5%E4%BD%BF%E7%94%A8%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93/index.html">
 <meta property="og:site_name" content="Snowflyt的博客">
-<meta property="og:description" content="编程的本质是状态机越来越觉得大多数编程工作本质上就是在写状态机。特别是Web开发这块，前后端本质上都在写状态机，而前端尤甚——视图层不就是个不能更明显的状态机。 状态机与视图在各个前端框架中，React尤其体现了“状态机”这一概念——它都有一个hook叫useState了，“state”这个关键词都明明白白地写了出来，这可不就是状态机。在React函数式组件中，我们用setState切换到下一个状">
+<meta property="og:description" content="目前互联网企业的大多数应用，似乎不应该使用关系型数据库目前互联网企业的大多数应用，似乎不应该使用关系型数据库。 这听起来是一句暴论，不是吗？ 但是问题在于，现在很多互联网企业，尤其是国内大厂（当然，小厂更严重），只是将数据库当作一个存储数据的介质。其中阿里尤甚。对于关系型数据库辛辛苦苦开发的高级功能，锁、并发读写、触发器、存储过程，那是一个也不用。我听说阿里还禁止使用外键，以优化性能，我不知道是不">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-02-06T10:48:12.000Z">
-<meta property="article:modified_time" content="2023-02-06T10:49:33.202Z">
+<meta property="article:published_time" content="2023-02-06T13:19:59.000Z">
+<meta property="article:modified_time" content="2023-02-06T13:21:06.172Z">
 <meta property="article:author" content="Snowflyt">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -32,7 +32,7 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>编程的本质是状态机 - Snowflyt的博客</title>
+  <title>目前互联网企业的大多数应用，似乎不应该使用关系型数据库 - Snowflyt的博客</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -197,7 +197,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="编程的本质是状态机"></span>
+            <span id="subtitle" data-typed-text="目前互联网企业的大多数应用，似乎不应该使用关系型数据库"></span>
           
         </div>
 
@@ -208,7 +208,7 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-02-06 18:48" pubdate>
+        <time datetime="2023-02-06 21:19" pubdate>
           2023年2月6日 晚上
         </time>
       </span>
@@ -220,7 +220,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.7k 字
+          1.6k 字
         
       </span>
     
@@ -231,7 +231,7 @@
         
         
         
-          15 分钟
+          14 分钟
         
       </span>
     
@@ -277,22 +277,22 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">编程的本质是状态机</h1>
+            <h1 style="display: none">目前互联网企业的大多数应用，似乎不应该使用关系型数据库</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="编程的本质是状态机"><a href="#编程的本质是状态机" class="headerlink" title="编程的本质是状态机"></a>编程的本质是状态机</h1><p>越来越觉得大多数编程工作本质上就是在写状态机。特别是Web开发这块，前后端本质上都在写状态机，而前端尤甚——视图层不就是个不能更明显的状态机。</p>
-<h2 id="状态机与视图"><a href="#状态机与视图" class="headerlink" title="状态机与视图"></a>状态机与视图</h2><p>在各个前端框架中，React尤其体现了“状态机”这一概念——它都有一个hook叫<code>useState</code>了，“state”这个关键词都明明白白地写了出来，这可不就是状态机。在React函数式组件中，我们用setState切换到下一个状态，然后根据当前状态渲染视图，这再明显不过。</p>
-<p>而一切状态管理方案，本质上就是让状态之间的切换更清晰且可控，比如经典的Flux方案——Redux和Vuex都是该方案的实现。只允许定义一连串action来修改state，即通过dispatch函数调用dispatch({ type: …, payload: … })来修改状态，其中的{ type: …, payload: … }就是action，用type来标识是哪一个action，用payload传参。Flux方案使用单向数据流，数据只能从上往下传，不能从下往上，并且每一次修改状态都要通过action，这就保证了状态切换的清晰性，也（在项目比较复杂的时候）提高了程序的可维护性。</p>
-<p>很多“响应式方案”，如Vue的ref&#x2F;reactive和MobX，状态切换并不明显，但其背后的原理是一致的。这不过是在ref对象（或其他框架中随便什么叫法，叫什么无所谓）上挂了个监听器，当监听到修改时去切换状态，其实是一致的。其实我认为响应式的方案会比较好，它虽然模糊了状态切换的清晰性，但使用更符合直觉的方式编程。即使遇到复杂的状态，也有其他的状态管理库做单向数据流，比如Vue自己出的Vuex就是为了补足这点。</p>
-<h2 id="状态机与协程"><a href="#状态机与协程" class="headerlink" title="状态机与协程"></a>状态机与协程</h2><p>再扩展一些，一切“协程”或类似的如Goroutine之类的变形，甚至JS&#x2F;Python里面带的那个基于事件循环的勉强可以被称作“协程”的async&#x2F;await，都是状态机。无论它们的实现如何，究竟是传统的为每个协程保留一个栈然后用状态机管理，还是无栈协程保留一个Global栈，还是Goroutine那种轻量级的变形，还是JS&#x2F;Python这种基于生成器+事件循环的方式，也都是在做状态之间的切换。</p>
-<p>这里尤其要讲一下生成器。据我所知被广泛使用的生成器可能只有JS和Python的生成器，当然自从JS有了async&#x2F;await以来用生成器的人也很少了。如果有人看过JS生成器编译到ES5的代码的话，可以发现转译器通常将生成器转译为一个状态机，会在里面写一个大大的Switch，根据不同的state执行不同代码片段。</p>
-<p>在JS的async&#x2F;await出现之前，就出现了大量诸如co的库使用生成器来模拟协程，其实相比现在只是把await改成了yield，然后需要在每个async函数外面包个co并且声明为生成器函数而已，甚至有些地方还比现在更强大。</p>
-<p>协程的目的仅仅是在合适的时候主动交出执行权，并且合适的时候拿回它，比如一个文件IO协程在等待IO前将执行权交出，然后在IO结束时恢复，在这期间可以由其他等待的协程获取执行权，不浪费等待的时间。而生成器的yield做的事情和协程刚好一样，只需要在外面包装个环境协调多个生成器函数即可。因此生成器完全是可以模拟协程的。</p>
-<p>而生成器本身又可以轻松转译为状态机，而写个状态机对于绝大多数语言来说都是非常轻松的事情。这也意味着协程本质上是不依赖于语言自身提供的什么高级特性的。C语言都不是不可以实现协程，只是缺少关键字支持用起来会很别扭而已。协程本身也是可以作为标准库的一部分而实现的，如Kotlin就是这么做的。</p>
-<p>可见协程并非如线程、进程这样的底层概念，它只是在此之上的一层抽象，一层状态机抽象。协程不一定需要操作系统甚至编程语言的原生支持。</p>
-<p>我逐渐认识到状态机应该是每个人，或者至少计算机相关专业的学生应该掌握的东西。而这些年来国内各高校都逐渐减少了对计算理论相关知识的教学，很多相关课程成为选修甚至直接消失，只有编译原理中还会教授一些相关知识，告诉你可以用FA做解析器，这是很遗憾的</p>
+                <h1 id="目前互联网企业的大多数应用，似乎不应该使用关系型数据库"><a href="#目前互联网企业的大多数应用，似乎不应该使用关系型数据库" class="headerlink" title="目前互联网企业的大多数应用，似乎不应该使用关系型数据库"></a>目前互联网企业的大多数应用，似乎不应该使用关系型数据库</h1><p>目前互联网企业的大多数应用，似乎不应该使用关系型数据库。</p>
+<p>这听起来是一句暴论，不是吗？</p>
+<p>但是问题在于，现在很多互联网企业，尤其是国内大厂（当然，小厂更严重），只是将数据库当作一个存储数据的介质。其中阿里尤甚。对于关系型数据库辛辛苦苦开发的高级功能，锁、并发读写、触发器、存储过程，那是一个也不用。我听说阿里还禁止使用外键，以优化性能，我不知道是不是真的。</p>
+<p>所以在很多互联网企业那里，关系型数据库退化成了单纯的表格。他们成天在上面建索引，完全不按照范式设计数据库，拼命搞冗余字段，整天纠结<code>SELECT *</code>是不是性能比<code>SELECT 1</code>性能差这种问题，就为了提高一点性能。</p>
+<p>结果本来应该数据库帮他们做的事情，他们全移到Java上，人工管理。本来应该依赖于数据库自身的优化，他们人工搞一堆冗余字段，上消息队列，用Redis，人工搞了一套缓存方案优化性能。怪不得互联网大厂都那么喜欢MySQL——因为它一开始这上面提到的“高级功能”都没有，只能当作表格使，而且快得简单粗暴，这很符合他们的需求。</p>
+<p>那问题就来了。他们都这么辛苦地自己建了一套逻辑去干关系型数据库应该干的事情，把关系型数据库当表格使，为啥不自己开发一套文件系统，直接读取硬盘簇？就算没这个能力，自己造个适应自身业务的小数据库也要比整天去调MySQL方便得多。就算再不济，也可以在MySQL基础上做一层封装，比如直接把Protocol Buffer序列化往MySQL里装，再做个中间层做性能优化。这不比直接在Java那边手撕业务好得多？</p>
+<p>这就是矛盾的地方。关系型数据库源自关系代数，它要做的就是通过那几个声明式的SQL语句，让你在不用关心具体数据库执行流程的情况下，快速地得到数据。结果现在一众大厂可以说对数据库自己的性能完全不抱信任，通过各种奇淫巧计，以一种极其Ugly的方式侵入底层去，自己去做本应该让数据库做的事。我不觉得这很聪明，我只觉得整天纠结MyBatis和<code>SELECT *</code>与<code>SELECT 1</code>的人很傻逼。</p>
+<p>关键问题是，很多小企业还以跟随大企业的技术栈为荣。在日访问量不过数万的网站上也跟着用MyBatis，面试必问高并发。这是很奇怪的。我以为工具造出来的目的是为了让人省心，而不是为了让人不得不去适应工具，把工具拼命改造以适应自己的需求——那你就根本不该用这个工具。</p>
+<p>我认为西方互联网公司倾向于使用NoSQL是有这个原因的。实际上照我看来，NoSQL本应最先在国内得到大范围应用。由于双十一的存在，阿里应当是全世界第一个遇到这样规模超高并发量的公司。而在这种情况下，阿里本应考虑是否因为关系型数据库的限制而无法处理更高的并发量，以此思考NoSQL方案的可行性。结果是，阿里选择继续深造MySQL，开发了更多的MySQL调优奇淫巧计，成功处理了更高的并发量。这某种程度上体现了中外的思维差异——我们善于压榨已有工具的潜力，而西方常常在发现当前工具不适合时，使用甚至发明新的工具。</p>
+<p>后来Google、Meta等遇到了类似的高并发情景，发觉当前的关系型数据库模型不能很好地支持日益增加的并发量与互联网上缺乏结构化的、杂乱无章的信息，因此使用并发明了许多NoSQL方案，比如著名的BigTable。</p>
+<p>我当然并非只是一味地夸赞“西方公司具有创新性”这种不能更公知的发言。只是国内技术的这种单一性，经常让我奇怪——我们这么大一个国家，这么多完全不同的业务需求，真的应该全都使用一套技术栈解决问题？我们在已有技术上的压榨并不一文不值，相反这些是西方很多企业做不到的。但是当手上的锤子不好用时，为什么我们很少考虑换个工具，而是看什么都像钉子？很多技术都有足够的理由在国内诞生与发展，只可惜我们现在的做法仅仅是追随着国外大厂的研究方向，然后做个Chinese Version，仅此而已，不再有更多的创新了。</p>
 
                 
               </div>
@@ -310,8 +310,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>编程的本质是状态机</div>
-      <div>https://snowfly-t.github.io/2023/02/06/编程的本质是状态机/</div>
+      <div>目前互联网企业的大多数应用，似乎不应该使用关系型数据库</div>
+      <div>https://snowfly-t.github.io/2023/02/06/目前互联网企业的大多数应用，似乎不应该使用关系型数据库/</div>
     </div>
     <div class="license-meta">
       
@@ -355,18 +355,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/02/06/%E7%9B%AE%E5%89%8D%E4%BA%92%E8%81%94%E7%BD%91%E4%BC%81%E4%B8%9A%E7%9A%84%E5%A4%A7%E5%A4%9A%E6%95%B0%E5%BA%94%E7%94%A8%EF%BC%8C%E4%BC%BC%E4%B9%8E%E4%B8%8D%E5%BA%94%E8%AF%A5%E4%BD%BF%E7%94%A8%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93/" title="目前互联网企业的大多数应用，似乎不应该使用关系型数据库">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">目前互联网企业的大多数应用，似乎不应该使用关系型数据库</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/02/03/%E4%B8%AA%E4%BA%BAIntellij-IDEA%E9%85%8D%E7%BD%AE%E6%83%85%E5%86%B5/" title="个人Intellij IDEA配置情况">
-                        <span class="hidden-mobile">个人Intellij IDEA配置情况</span>
+                      <a href="/2023/02/06/%E7%BC%96%E7%A8%8B%E7%9A%84%E6%9C%AC%E8%B4%A8%E6%98%AF%E7%8A%B6%E6%80%81%E6%9C%BA/" title="编程的本质是状态机">
+                        <span class="hidden-mobile">编程的本质是状态机</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
