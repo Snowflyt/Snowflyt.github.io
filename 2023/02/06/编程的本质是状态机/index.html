@@ -24,7 +24,7 @@
 <meta property="og:description" content="编程的本质是状态机越来越觉得大多数编程工作本质上就是在写状态机。特别是Web开发这块，前后端本质上都在写状态机，而前端尤甚——视图层不就是个不能更明显的状态机。 状态机与视图在各个前端框架中，React尤其体现了“状态机”这一概念——它都有一个hook叫useState了，“state”这个关键词都明明白白地写了出来，这可不就是状态机。在React函数式组件中，我们用setState切换到下一个状">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-02-06T10:48:12.000Z">
-<meta property="article:modified_time" content="2023-02-06T13:22:13.000Z">
+<meta property="article:modified_time" content="2023-03-11T05:26:04.400Z">
 <meta property="article:author" content="Snowflyt">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -283,8 +283,8 @@
               <div class="markdown-body">
                 
                 <h1 id="编程的本质是状态机"><a href="#编程的本质是状态机" class="headerlink" title="编程的本质是状态机"></a>编程的本质是状态机</h1><p>越来越觉得大多数编程工作本质上就是在写状态机。特别是Web开发这块，前后端本质上都在写状态机，而前端尤甚——视图层不就是个不能更明显的状态机。</p>
-<h2 id="状态机与视图"><a href="#状态机与视图" class="headerlink" title="状态机与视图"></a>状态机与视图</h2><p>在各个前端框架中，React尤其体现了“状态机”这一概念——它都有一个hook叫<code>useState</code>了，“state”这个关键词都明明白白地写了出来，这可不就是状态机。在React函数式组件中，我们用setState切换到下一个状态，然后根据当前状态渲染视图，这再明显不过。</p>
-<p>而一切状态管理方案，本质上就是让状态之间的切换更清晰且可控，比如经典的Flux方案——Redux和Vuex都是该方案的实现。只允许定义一连串action来修改state，即通过dispatch函数调用dispatch({ type: …, payload: … })来修改状态，其中的{ type: …, payload: … }就是action，用type来标识是哪一个action，用payload传参。Flux方案使用单向数据流，数据只能从上往下传，不能从下往上，并且每一次修改状态都要通过action，这就保证了状态切换的清晰性，也（在项目比较复杂的时候）提高了程序的可维护性。</p>
+<h2 id="状态机与视图"><a href="#状态机与视图" class="headerlink" title="状态机与视图"></a>状态机与视图</h2><p>在各个前端框架中，React尤其体现了“状态机”这一概念——它都有一个hook叫<code>useState</code>了，“state”这个关键词都明明白白地写了出来，这可不就是状态机。在React函数式组件中，我们用<code>setState</code>切换到下一个状态，然后根据当前状态渲染视图，这再明显不过。</p>
+<p>而一切状态管理方案，本质上就是让状态之间的切换更清晰且可控，比如经典的Flux方案——Redux和Vuex都是该方案的实现。只允许定义一连串action来修改state，即通过dispatch函数调用<code>dispatch(&#123; type: ..., payload: ... &#125;)</code>来修改状态，其中的<code>&#123; type: ..., payload: ... &#125;</code>就是action，用type来标识是哪一个action，用payload传参。Flux方案使用单向数据流，数据只能从上往下传，不能从下往上，并且每一次修改状态都要通过action，这就保证了状态切换的清晰性，也（在项目比较复杂的时候）提高了程序的可维护性。</p>
 <p>很多“响应式方案”，如Vue的ref&#x2F;reactive和MobX，状态切换并不明显，但其背后的原理是一致的。这不过是在ref对象（或其他框架中随便什么叫法，叫什么无所谓）上挂了个监听器，当监听到修改时去切换状态，其实是一致的。其实我认为响应式的方案会比较好，它虽然模糊了状态切换的清晰性，但使用更符合直觉的方式编程。即使遇到复杂的状态，也有其他的状态管理库做单向数据流，比如Vue自己出的Vuex就是为了补足这点。</p>
 <h2 id="状态机与协程"><a href="#状态机与协程" class="headerlink" title="状态机与协程"></a>状态机与协程</h2><p>再扩展一些，一切“协程”或类似的如Goroutine之类的变形，甚至JS&#x2F;Python里面带的那个基于事件循环的勉强可以被称作“协程”的async&#x2F;await，都是状态机。无论它们的实现如何，究竟是传统的为每个协程保留一个栈然后用状态机管理，还是无栈协程保留一个Global栈，还是Goroutine那种轻量级的变形，还是JS&#x2F;Python这种基于生成器+事件循环的方式，也都是在做状态之间的切换。</p>
 <p>这里尤其要讲一下生成器。据我所知被广泛使用的生成器可能只有JS和Python的生成器，当然自从JS有了async&#x2F;await以来用生成器的人也很少了。如果有人看过JS生成器编译到ES5的代码的话，可以发现转译器通常将生成器转译为一个状态机，会在里面写一个大大的Switch，根据不同的state执行不同代码片段。</p>
