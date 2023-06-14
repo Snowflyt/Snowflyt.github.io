@@ -16,16 +16,16 @@
   <meta name="author" content="Snowflyt">
   <meta name="keywords" content="">
   
-    <meta name="description" content="WebAssembly会取代JavaScript吗？  有些程序员不管什么新编程语言出来都要说个“取代”，“Rust会取代C++吗”、“Go会取代Java吗？”、“TypeScript会取代JavaScript吗？”，都什么√⑧问题，你咋不问问“三体人会不会取代人类”呢？ ——Snowflyt  按照惯例，开篇的引言只是句逆天调侃，不针对任何人，也不要放心里去。 在分析这个问题前，考虑一下Java">
+    <meta name="description" content="WebAssembly 会取代 JavaScript 吗？  有些程序员不管什么新编程语言出来都要说个“取代”，“Rust 会取代 C++吗”、“Go 会取代 Java 吗？”、“TypeScript 会取代 JavaScript 吗？”，都什么 √⑧ 问题，你咋不问问“三体人会不会取代人类”呢？ ——Snowflyt  按照惯例，开篇的引言只是句逆天调侃，不针对任何人，也不要放心里去。 在分析这">
 <meta property="og:type" content="article">
-<meta property="og:title" content="WebAssembly会取代JavaScript吗？">
+<meta property="og:title" content="WebAssembly 会取代 JavaScript 吗？">
 <meta property="og:url" content="https://snowfly-t.github.io/2022/08/10/WebAssembly%E4%BC%9A%E5%8F%96%E4%BB%A3JavaScript%E5%90%97%EF%BC%9F/index.html">
 <meta property="og:site_name" content="Snowflyt的博客">
-<meta property="og:description" content="WebAssembly会取代JavaScript吗？  有些程序员不管什么新编程语言出来都要说个“取代”，“Rust会取代C++吗”、“Go会取代Java吗？”、“TypeScript会取代JavaScript吗？”，都什么√⑧问题，你咋不问问“三体人会不会取代人类”呢？ ——Snowflyt  按照惯例，开篇的引言只是句逆天调侃，不针对任何人，也不要放心里去。 在分析这个问题前，考虑一下Java">
+<meta property="og:description" content="WebAssembly 会取代 JavaScript 吗？  有些程序员不管什么新编程语言出来都要说个“取代”，“Rust 会取代 C++吗”、“Go 会取代 Java 吗？”、“TypeScript 会取代 JavaScript 吗？”，都什么 √⑧ 问题，你咋不问问“三体人会不会取代人类”呢？ ——Snowflyt  按照惯例，开篇的引言只是句逆天调侃，不针对任何人，也不要放心里去。 在分析这">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://snowfly-t.github.io/img/WebAssembly%E4%BC%9A%E5%8F%96%E4%BB%A3JavaScript%E5%90%97%EF%BC%9F/banner.png">
 <meta property="article:published_time" content="2022-08-09T16:19:36.000Z">
-<meta property="article:modified_time" content="2022-12-02T16:50:24.000Z">
+<meta property="article:modified_time" content="2023-06-14T02:41:28.055Z">
 <meta property="article:author" content="Snowflyt">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://snowfly-t.github.io/img/WebAssembly%E4%BC%9A%E5%8F%96%E4%BB%A3JavaScript%E5%90%97%EF%BC%9F/banner.png">
@@ -34,7 +34,7 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>WebAssembly会取代JavaScript吗？ - Snowflyt的博客</title>
+  <title>WebAssembly 会取代 JavaScript 吗？ - Snowflyt的博客</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -199,7 +199,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="WebAssembly会取代JavaScript吗？"></span>
+            <span id="subtitle" data-typed-text="WebAssembly 会取代 JavaScript 吗？"></span>
           
         </div>
 
@@ -279,22 +279,22 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">WebAssembly会取代JavaScript吗？</h1>
+            <h1 style="display: none">WebAssembly 会取代 JavaScript 吗？</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="WebAssembly会取代JavaScript吗？"><a href="#WebAssembly会取代JavaScript吗？" class="headerlink" title="WebAssembly会取代JavaScript吗？"></a>WebAssembly会取代JavaScript吗？</h1><p><img src="/img/WebAssembly%E4%BC%9A%E5%8F%96%E4%BB%A3JavaScript%E5%90%97%EF%BC%9F/banner.png" srcset="/img/loading.gif" lazyload alt="WebAssembly与WAT"></p>
+                <h1 id="WebAssembly-会取代-JavaScript-吗？"><a href="#WebAssembly-会取代-JavaScript-吗？" class="headerlink" title="WebAssembly 会取代 JavaScript 吗？"></a>WebAssembly 会取代 JavaScript 吗？</h1><p><img src="/img/WebAssembly%E4%BC%9A%E5%8F%96%E4%BB%A3JavaScript%E5%90%97%EF%BC%9F/banner.png" srcset="/img/loading.gif" lazyload alt="WebAssembly与WAT"></p>
 <blockquote>
-<p>有些程序员不管什么新编程语言出来都要说个“取代”，“Rust会取代C++吗”、“Go会取代Java吗？”、“TypeScript会取代JavaScript吗？”，都什么√⑧问题，你咋不问问“三体人会不会取代人类”呢？</p>
+<p>有些程序员不管什么新编程语言出来都要说个“取代”，“Rust 会取代 C++吗”、“Go 会取代 Java 吗？”、“TypeScript 会取代 JavaScript 吗？”，都什么 √⑧ 问题，你咋不问问“三体人会不会取代人类”呢？</p>
 <p>——Snowflyt</p>
 </blockquote>
 <p>按照惯例，开篇的引言只是句逆天调侃，不针对任何人，也不要放心里去。</p>
-<p>在分析这个问题前，考虑一下JavaScript有哪些优势：</p>
+<p>在分析这个问题前，考虑一下 JavaScript 有哪些优势：</p>
 <ul>
-<li>V8，全世界最好的两个runtime之一，通过十多年的黑魔法优化使得JavaScript的运行效率已经提高了几个量级，另一个是JVM</li>
-<li>开发速度快，即使加上了TypeScript依旧很快，不如说某种意义上TS的渐进类型反而加快了JS的开发速度</li>
-<li>JavaScript语言本身的设计非常简洁</li>
+<li>V8，全世界最好的两个 runtime 之一，通过十多年的黑魔法优化使得 JavaScript 的运行效率已经提高了几个量级，另一个是 JVM</li>
+<li>开发速度快，即使加上了 TypeScript 依旧很快，不如说某种意义上 TS 的渐进类型反而加快了 JS 的开发速度</li>
+<li>JavaScript 语言本身的设计非常简洁</li>
 </ul>
 
                 
@@ -313,7 +313,7 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>WebAssembly会取代JavaScript吗？</div>
+      <div>WebAssembly 会取代 JavaScript 吗？</div>
       <div>https://snowfly-t.github.io/2022/08/10/WebAssembly会取代JavaScript吗？/</div>
     </div>
     <div class="license-meta">

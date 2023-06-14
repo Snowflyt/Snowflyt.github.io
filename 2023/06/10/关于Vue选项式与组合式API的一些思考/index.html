@@ -16,15 +16,15 @@
   <meta name="author" content="Snowflyt">
   <meta name="keywords" content="">
   
-    <meta name="description" content="关于 NotePad++作者辱华的一些评价多年前 NotePad++ 因作者辱华而许多人呼吁删除 NP++ 时，我觉得无所谓，因为作者个人的政治观点不应影响我使用他自己的软件。React、Jenkins 等一众软件或框架至今还在官网上挂着“支持乌克兰”的标语，也不影响我用它们，因为作者或团队自身的政治观点本身是与我使用他们开发的软件无关的。 但 NP++ 的作者自从这两天宣布有意在代码中投毒，若使">
+    <meta name="description" content="关于 Vue 选项式与组合式 API 的一些思考 某种意义上，Vue 3 组合式 API 反而引入了比 Vue 2 更重的心智负担。  切换到 Vue 3 已经很久了，组合式 API、setup，都用着很舒服。因为某些原因，最近又写了 Vue 2 的一些代码了，反而感觉写起来有另一种奇怪的舒适感。要形容的话，就是感觉比 Vue 3 好像还更省心一点。 仔细想想，倒也的确如此。平时用 Vue 3 C">
 <meta property="og:type" content="article">
-<meta property="og:title" content="关于 NotePad++ 作者辱华的一些评价">
-<meta property="og:url" content="https://snowfly-t.github.io/2023/01/31/%E5%85%B3%E4%BA%8ENotePad-%E4%BD%9C%E8%80%85%E8%BE%B1%E5%8D%8E%E7%9A%84%E4%B8%80%E4%BA%9B%E8%AF%84%E4%BB%B7/index.html">
+<meta property="og:title" content="关于 Vue 选项式与组合式 API 的一些思考">
+<meta property="og:url" content="https://snowfly-t.github.io/2023/06/10/%E5%85%B3%E4%BA%8EVue%E9%80%89%E9%A1%B9%E5%BC%8F%E4%B8%8E%E7%BB%84%E5%90%88%E5%BC%8FAPI%E7%9A%84%E4%B8%80%E4%BA%9B%E6%80%9D%E8%80%83/index.html">
 <meta property="og:site_name" content="Snowflyt的博客">
-<meta property="og:description" content="关于 NotePad++作者辱华的一些评价多年前 NotePad++ 因作者辱华而许多人呼吁删除 NP++ 时，我觉得无所谓，因为作者个人的政治观点不应影响我使用他自己的软件。React、Jenkins 等一众软件或框架至今还在官网上挂着“支持乌克兰”的标语，也不影响我用它们，因为作者或团队自身的政治观点本身是与我使用他们开发的软件无关的。 但 NP++ 的作者自从这两天宣布有意在代码中投毒，若使">
+<meta property="og:description" content="关于 Vue 选项式与组合式 API 的一些思考 某种意义上，Vue 3 组合式 API 反而引入了比 Vue 2 更重的心智负担。  切换到 Vue 3 已经很久了，组合式 API、setup，都用着很舒服。因为某些原因，最近又写了 Vue 2 的一些代码了，反而感觉写起来有另一种奇怪的舒适感。要形容的话，就是感觉比 Vue 3 好像还更省心一点。 仔细想想，倒也的确如此。平时用 Vue 3 C">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-01-31T10:51:07.000Z">
-<meta property="article:modified_time" content="2023-06-14T02:36:44.177Z">
+<meta property="article:published_time" content="2023-06-10T09:00:00.000Z">
+<meta property="article:modified_time" content="2023-06-14T02:51:14.337Z">
 <meta property="article:author" content="Snowflyt">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -32,7 +32,7 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>关于 NotePad++ 作者辱华的一些评价 - Snowflyt的博客</title>
+  <title>关于 Vue 选项式与组合式 API 的一些思考 - Snowflyt的博客</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -197,7 +197,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="关于 NotePad++ 作者辱华的一些评价"></span>
+            <span id="subtitle" data-typed-text="关于 Vue 选项式与组合式 API 的一些思考"></span>
           
         </div>
 
@@ -208,8 +208,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-01-31 18:51" pubdate>
-          2023年1月31日 晚上
+        <time datetime="2023-06-10 17:00" pubdate>
+          2023年6月10日 下午
         </time>
       </span>
     
@@ -220,7 +220,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          701 字
+          1.7k 字
         
       </span>
     
@@ -231,7 +231,7 @@
         
         
         
-          6 分钟
+          14 分钟
         
       </span>
     
@@ -277,15 +277,26 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">关于 NotePad++ 作者辱华的一些评价</h1>
+            <h1 style="display: none">关于 Vue 选项式与组合式 API 的一些思考</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="关于-NotePad-作者辱华的一些评价"><a href="#关于-NotePad-作者辱华的一些评价" class="headerlink" title="关于 NotePad++作者辱华的一些评价"></a>关于 NotePad++作者辱华的一些评价</h1><p>多年前 NotePad++ 因作者辱华而许多人呼吁删除 NP++ 时，我觉得无所谓，因为作者个人的政治观点不应影响我使用他自己的软件。React、Jenkins 等一众软件或框架至今还在官网上挂着“支持乌克兰”的标语，也不影响我用它们，因为作者或团队自身的政治观点本身是与我使用他们开发的软件无关的。</p>
-<p>但 NP++ 的作者自从这两天宣布有意在代码中投毒，若使用者不符合他的政治观点就要在代码中插入随机字符，这就是两码事了。尽管之后 NP++ 作者就宣称之前的话只是个玩笑，但只要有任何软件作者表达了类似的倾向，那么这一软件即使再好也不应该使用了。这并非政治问题，而是若一个人以这样不负责任的态度对待自己的代码，那他就什么事都可能做得出来，而这个作者未来开发的任何软件也变得不可信了。即使 NP++ 的作者宣布要为美国用户而不是中国用户投毒，我也不会再使用它了，至少我不会。这也是为什么现在很多政府单位不再敢于使用 AntD 了，因为 AntD 之前出了一起圣诞节菜单事件，而这事没在文档中写明，属于严重的欺瞒行为，甚至已经近似于代码投毒。</p>
-<p>社区对任何开源项目的信任都来源于对作者自身责任心的信任，当这一点受到质疑，那么对于该作者的任何作品都不该抱有信任。社区便是如此，也应当如此。这无关政治态度。即使某一天有位国内开发者开发了某个被广泛使用的软件，然后某一天宣布要给美国用户“一点颜色看看”，我也会不会有任何开心，而是会立即停用该软件，因为这表明我不再能信任此作者的责任心。这无关政治态度。</p>
-<p>当然 NP++ 现在本来就不是很好用了，即使寻找平替 Sublime Text 也显然更好一些。我个人也早就不用了。</p>
+                <h1 id="关于-Vue-选项式与组合式-API-的一些思考"><a href="#关于-Vue-选项式与组合式-API-的一些思考" class="headerlink" title="关于 Vue 选项式与组合式 API 的一些思考"></a>关于 Vue 选项式与组合式 API 的一些思考</h1><blockquote>
+<p>某种意义上，Vue 3 组合式 API 反而引入了比 Vue 2 更重的心智负担。</p>
+</blockquote>
+<p>切换到 Vue 3 已经很久了，组合式 API、setup，都用着很舒服。因为某些原因，最近又写了 Vue 2 的一些代码了，反而感觉写起来有另一种奇怪的舒适感。要形容的话，就是感觉比 Vue 3 好像还更省心一点。</p>
+<p>仔细想想，倒也的确如此。平时用 Vue 3 Composition API 时还真没 Vue 2 时全绑 this 来得省心，某种意义上。</p>
+<p>Vue 3 引入组合式 API 的苦衷可以理解。一方面，this 确实是个问题严重的东西，很容易在回调中丢掉，而很多时候 TS 甚至报不出来错，写代码时不得不时刻留意 this 的作用域问题确实很令人难过。</p>
+<p>另一方面，选项式 API 本身对 TS 不友好，而组合式 API 那种简洁的“Type-Only”方式就更难实现，因为在选项式 API 里面你没有一个合适的位置来放类型……你只能 <code>type: Function as PropType&lt;...&gt;</code> 这样，这种断言真的挺不优雅的，而且这种方式 Vue 没办法在运行时做更深的检验，在这个例子里，Vue 只能检验这个 prop 是不是函数，返回类型甚至参数数量它都没办法检验。</p>
+<p>但是仔细想想，似乎为了解决选项式 API 的问题并不一定要引入组合式 API. 我怀疑这里边或许有一些 React Hooks 爱好者在里边起作用……组合式 API 带来了新的思维负担，其中一个就是 <code>ref.value</code>，而且还丢失了把属性挂在 this 上的思维负担优势……至少我这么认为。而且，<code>this.$refs，this.$store</code>，<code>this.$router</code> 这些真的很快乐啊。虽然现在 Vue 3 也能直接在 template 里这么写，但显然不能在 script 里这么写了，还是差点意思。</p>
+<p>其实也有一个避免 this 但吸取选项式 API 优势的好办法嘛：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">component</span>(<span class="hljs-function">(<span class="hljs-params">self</span>) =&gt;</span> (&#123;<br>  <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;post&#x27;</span>,<br>  <span class="hljs-attr">data</span>: <span class="hljs-function">() =&gt;</span> (&#123; <span class="hljs-attr">show</span>: <span class="hljs-literal">true</span>, &#125;),<br>  <span class="hljs-attr">props</span>: <span class="hljs-title function_">withDefaults</span>(<br>    <span class="hljs-title function_">type</span>(&#123;<br>      <span class="hljs-attr">time</span>: <span class="hljs-string">&#x27;string&#x27;</span>,<br>      <span class="hljs-string">&#x27;author?&#x27;</span>: <span class="hljs-string">&#x27;string&#x27;</span>,<br>    &#125;),<br>    &#123;<br>      <span class="hljs-attr">author</span>: <span class="hljs-function">() =&gt;</span> <span class="hljs-string">&#x27;Unknown&#x27;</span>,<br>    &#125;<br>  ),<br>  <span class="hljs-attr">mounted</span>: <span class="hljs-function">() =&gt;</span> &#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(self.<span class="hljs-property">time</span>, self.<span class="hljs-property">author</span>);<br>  &#125;,<br>  <span class="hljs-attr">methods</span>: &#123;<br>    <span class="hljs-attr">hidePost</span>: <span class="hljs-function">() =&gt;</span> &#123;<br>      self.<span class="hljs-property">show</span> = <span class="hljs-literal">false</span>;<br>    &#125;,<br>    <span class="hljs-attr">showPost</span>: <span class="hljs-function">() =&gt;</span> &#123;<br>      self.<span class="hljs-property">show</span> = <span class="hljs-literal">true</span>;<br>    &#125;,<br>  &#125;,<br>&#125;);<br></code></pre></td></tr></table></figure>
+<p> 在这里，self 是个代理对象，替代了 this 的功能，这样就避免了 this 动态作用域的问题。</p>
+<p> 而且，类型校验的问题也解决了，在这里使用了 Arktype 来做校验，这使得框架能够获得精准的类型，以此进行检验。</p>
+<p> Vue 2 的年代里，人们还普遍信任于 this 与面向对象，ES6 中 class 的引入也使各大框架纷纷考虑将其利用起来。当时，似乎很少有人想到可以使用一些简单的方法避免 this React 且也想不到有什么必要这么做。后来，React “倒行逆施”地引入了 FC，重新引起了各框架的思考，这才使框架们呈现了现在的状况。现在，大家一致认为通过闭包捕获的变量更加安全与可信。</p>
+<p> 并且，当时人们对 TS 的利用也没有现在这么疯狂。当时的人们认为 JS 还是一门非常动态的语言，TS 顶多用来补足一些常见的类型。而现在，事情已经完全倒转了。</p>
+<p> 或许我有可能真的实现这样一个新的框架？它相比 Vue 更类型安全，并且吸取了选项式 API 的优点，同时使用 JSX 以获得更好的兼容性。或许如此。但是这显然需要投入太多时间，我对此还不那么有信心。</p>
 
                 
               </div>
@@ -303,8 +314,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>关于 NotePad++ 作者辱华的一些评价</div>
-      <div>https://snowfly-t.github.io/2023/01/31/关于NotePad-作者辱华的一些评价/</div>
+      <div>关于 Vue 选项式与组合式 API 的一些思考</div>
+      <div>https://snowfly-t.github.io/2023/06/10/关于Vue选项式与组合式API的一些思考/</div>
     </div>
     <div class="license-meta">
       
@@ -316,7 +327,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年1月31日</div>
+          <div>2023年6月10日</div>
         </div>
       
       
@@ -348,18 +359,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/01/31/Spring%E4%B8%BA%E4%BD%95%E6%80%BB%E6%98%AF%E5%8F%97%E5%88%B0%E9%9D%92%E7%9D%90/" title="Spring 为何总是受到青睐">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Spring 为何总是受到青睐</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/12/15/Nginx%E9%83%A8%E7%BD%B2SPA%E7%9A%84%E7%8E%B0%E4%BB%A3%E6%96%B9%E6%B3%95/" title="Nginx 部署 SPA 的现代方法">
-                        <span class="hidden-mobile">Nginx 部署 SPA 的现代方法</span>
+                      <a href="/2023/03/13/%E4%BB%8EMaterial%20Design%E5%88%B0%E5%B7%A5%E7%A8%8B%E5%B8%88%E6%80%9D%E7%BB%B4/" title="从 Material Design 到工程师思维">
+                        <span class="hidden-mobile">从 Material Design 到工程师思维</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

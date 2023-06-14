@@ -16,15 +16,15 @@
   <meta name="author" content="Snowflyt">
   <meta name="keywords" content="">
   
-    <meta name="description" content="编程的本质是状态机越来越觉得大多数编程工作本质上就是在写状态机。特别是Web开发这块，前后端本质上都在写状态机，而前端尤甚——视图层不就是个不能更明显的状态机。 状态机与视图在各个前端框架中，React尤其体现了“状态机”这一概念——它都有一个hook叫useState了，“state”这个关键词都明明白白地写了出来，这可不就是状态机。在React函数式组件中，我们用setState切换到下一个状">
+    <meta name="description" content="编程的本质是状态机越来越觉得大多数编程工作本质上就是在写状态机。特别是 Web 开发这块，前后端本质上都在写状态机，而前端尤甚——视图层不就是个不能更明显的状态机。 状态机与视图在各个前端框架中，React 尤其体现了“状态机”这一概念——它都有一个 hook 叫useState了，“state”这个关键词都明明白白地写了出来，这可不就是状态机。在 React 函数式组件中，我们用setState">
 <meta property="og:type" content="article">
 <meta property="og:title" content="编程的本质是状态机">
 <meta property="og:url" content="https://snowfly-t.github.io/2023/02/06/%E7%BC%96%E7%A8%8B%E7%9A%84%E6%9C%AC%E8%B4%A8%E6%98%AF%E7%8A%B6%E6%80%81%E6%9C%BA/index.html">
 <meta property="og:site_name" content="Snowflyt的博客">
-<meta property="og:description" content="编程的本质是状态机越来越觉得大多数编程工作本质上就是在写状态机。特别是Web开发这块，前后端本质上都在写状态机，而前端尤甚——视图层不就是个不能更明显的状态机。 状态机与视图在各个前端框架中，React尤其体现了“状态机”这一概念——它都有一个hook叫useState了，“state”这个关键词都明明白白地写了出来，这可不就是状态机。在React函数式组件中，我们用setState切换到下一个状">
+<meta property="og:description" content="编程的本质是状态机越来越觉得大多数编程工作本质上就是在写状态机。特别是 Web 开发这块，前后端本质上都在写状态机，而前端尤甚——视图层不就是个不能更明显的状态机。 状态机与视图在各个前端框架中，React 尤其体现了“状态机”这一概念——它都有一个 hook 叫useState了，“state”这个关键词都明明白白地写了出来，这可不就是状态机。在 React 函数式组件中，我们用setState">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-02-06T10:48:12.000Z">
-<meta property="article:modified_time" content="2023-03-11T05:26:04.000Z">
+<meta property="article:modified_time" content="2023-06-14T02:35:48.003Z">
 <meta property="article:author" content="Snowflyt">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -282,17 +282,17 @@
             
               <div class="markdown-body">
                 
-                <h1 id="编程的本质是状态机"><a href="#编程的本质是状态机" class="headerlink" title="编程的本质是状态机"></a>编程的本质是状态机</h1><p>越来越觉得大多数编程工作本质上就是在写状态机。特别是Web开发这块，前后端本质上都在写状态机，而前端尤甚——视图层不就是个不能更明显的状态机。</p>
-<h2 id="状态机与视图"><a href="#状态机与视图" class="headerlink" title="状态机与视图"></a>状态机与视图</h2><p>在各个前端框架中，React尤其体现了“状态机”这一概念——它都有一个hook叫<code>useState</code>了，“state”这个关键词都明明白白地写了出来，这可不就是状态机。在React函数式组件中，我们用<code>setState</code>切换到下一个状态，然后根据当前状态渲染视图，这再明显不过。</p>
-<p>而一切状态管理方案，本质上就是让状态之间的切换更清晰且可控，比如经典的Flux方案——Redux和Vuex都是该方案的实现。只允许定义一连串action来修改state，即通过dispatch函数调用<code>dispatch(&#123; type: ..., payload: ... &#125;)</code>来修改状态，其中的<code>&#123; type: ..., payload: ... &#125;</code>就是action，用type来标识是哪一个action，用payload传参。Flux方案使用单向数据流，数据只能从上往下传，不能从下往上，并且每一次修改状态都要通过action，这就保证了状态切换的清晰性，也（在项目比较复杂的时候）提高了程序的可维护性。</p>
-<p>很多“响应式方案”，如Vue的ref&#x2F;reactive和MobX，状态切换并不明显，但其背后的原理是一致的。这不过是在ref对象（或其他框架中随便什么叫法，叫什么无所谓）上挂了个监听器，当监听到修改时去切换状态，其实是一致的。其实我认为响应式的方案会比较好，它虽然模糊了状态切换的清晰性，但使用更符合直觉的方式编程。即使遇到复杂的状态，也有其他的状态管理库做单向数据流，比如Vue自己出的Vuex就是为了补足这点。</p>
-<h2 id="状态机与协程"><a href="#状态机与协程" class="headerlink" title="状态机与协程"></a>状态机与协程</h2><p>再扩展一些，一切“协程”或类似的如Goroutine之类的变形，甚至JS&#x2F;Python里面带的那个基于事件循环的勉强可以被称作“协程”的async&#x2F;await，都是状态机。无论它们的实现如何，究竟是传统的为每个协程保留一个栈然后用状态机管理，还是无栈协程保留一个Global栈，还是Goroutine那种轻量级的变形，还是JS&#x2F;Python这种基于生成器+事件循环的方式，也都是在做状态之间的切换。</p>
-<p>这里尤其要讲一下生成器。据我所知被广泛使用的生成器可能只有JS和Python的生成器，当然自从JS有了async&#x2F;await以来用生成器的人也很少了。如果有人看过JS生成器编译到ES5的代码的话，可以发现转译器通常将生成器转译为一个状态机，会在里面写一个大大的Switch，根据不同的state执行不同代码片段。</p>
-<p>在JS的async&#x2F;await出现之前，就出现了大量诸如co的库使用生成器来模拟协程，其实相比现在只是把await改成了yield，然后需要在每个async函数外面包个co并且声明为生成器函数而已，甚至有些地方还比现在更强大。</p>
-<p>协程的目的仅仅是在合适的时候主动交出执行权，并且合适的时候拿回它，比如一个文件IO协程在等待IO前将执行权交出，然后在IO结束时恢复，在这期间可以由其他等待的协程获取执行权，不浪费等待的时间。而生成器的yield做的事情和协程刚好一样，只需要在外面包装个环境协调多个生成器函数即可。因此生成器完全是可以模拟协程的。</p>
-<p>而生成器本身又可以轻松转译为状态机，而写个状态机对于绝大多数语言来说都是非常轻松的事情。这也意味着协程本质上是不依赖于语言自身提供的什么高级特性的。C语言都不是不可以实现协程，只是缺少关键字支持用起来会很别扭而已。协程本身也是可以作为标准库的一部分而实现的，如Kotlin就是这么做的。</p>
+                <h1 id="编程的本质是状态机"><a href="#编程的本质是状态机" class="headerlink" title="编程的本质是状态机"></a>编程的本质是状态机</h1><p>越来越觉得大多数编程工作本质上就是在写状态机。特别是 Web 开发这块，前后端本质上都在写状态机，而前端尤甚——视图层不就是个不能更明显的状态机。</p>
+<h2 id="状态机与视图"><a href="#状态机与视图" class="headerlink" title="状态机与视图"></a>状态机与视图</h2><p>在各个前端框架中，React 尤其体现了“状态机”这一概念——它都有一个 hook 叫<code>useState</code>了，“state”这个关键词都明明白白地写了出来，这可不就是状态机。在 React 函数式组件中，我们用<code>setState</code>切换到下一个状态，然后根据当前状态渲染视图，这再明显不过。</p>
+<p>而一切状态管理方案，本质上就是让状态之间的切换更清晰且可控，比如经典的 Flux 方案——Redux 和 Vuex 都是该方案的实现。只允许定义一连串 action 来修改 state，即通过 dispatch 函数调用<code>dispatch(&#123; type: ..., payload: ... &#125;)</code>来修改状态，其中的<code>&#123; type: ..., payload: ... &#125;</code>就是 action，用 type 来标识是哪一个 action，用 payload 传参。Flux 方案使用单向数据流，数据只能从上往下传，不能从下往上，并且每一次修改状态都要通过 action，这就保证了状态切换的清晰性，也（在项目比较复杂的时候）提高了程序的可维护性。</p>
+<p>很多“响应式方案”，如 Vue 的 ref&#x2F;reactive 和 MobX，状态切换并不明显，但其背后的原理是一致的。这不过是在 ref 对象（或其他框架中随便什么叫法，叫什么无所谓）上挂了个监听器，当监听到修改时去切换状态，其实是一致的。其实我认为响应式的方案会比较好，它虽然模糊了状态切换的清晰性，但使用更符合直觉的方式编程。即使遇到复杂的状态，也有其他的状态管理库做单向数据流，比如 Vue 自己出的 Vuex 就是为了补足这点。</p>
+<h2 id="状态机与协程"><a href="#状态机与协程" class="headerlink" title="状态机与协程"></a>状态机与协程</h2><p>再扩展一些，一切“协程”或类似的如 Goroutine 之类的变形，甚至 JS&#x2F;Python 里面带的那个基于事件循环的勉强可以被称作“协程”的 async&#x2F;await，都是状态机。无论它们的实现如何，究竟是传统的为每个协程保留一个栈然后用状态机管理，还是无栈协程保留一个 Global 栈，还是 Goroutine 那种轻量级的变形，还是 JS&#x2F;Python 这种基于生成器+事件循环的方式，也都是在做状态之间的切换。</p>
+<p>这里尤其要讲一下生成器。据我所知被广泛使用的生成器可能只有 JS 和 Python 的生成器，当然自从 JS 有了 async&#x2F;await 以来用生成器的人也很少了。如果有人看过 JS 生成器编译到 ES5 的代码的话，可以发现转译器通常将生成器转译为一个状态机，会在里面写一个大大的 Switch，根据不同的 state 执行不同代码片段。</p>
+<p>在 JS 的 async&#x2F;await 出现之前，就出现了大量诸如 co 的库使用生成器来模拟协程，其实相比现在只是把 await 改成了 yield，然后需要在每个 async 函数外面包个 co 并且声明为生成器函数而已，甚至有些地方还比现在更强大。</p>
+<p>协程的目的仅仅是在合适的时候主动交出执行权，并且合适的时候拿回它，比如一个文件 IO 协程在等待 IO 前将执行权交出，然后在 IO 结束时恢复，在这期间可以由其他等待的协程获取执行权，不浪费等待的时间。而生成器的 yield 做的事情和协程刚好一样，只需要在外面包装个环境协调多个生成器函数即可。因此生成器完全是可以模拟协程的。</p>
+<p>而生成器本身又可以轻松转译为状态机，而写个状态机对于绝大多数语言来说都是非常轻松的事情。这也意味着协程本质上是不依赖于语言自身提供的什么高级特性的。C 语言都不是不可以实现协程，只是缺少关键字支持用起来会很别扭而已。协程本身也是可以作为标准库的一部分而实现的，如 Kotlin 就是这么做的。</p>
 <p>可见协程并非如线程、进程这样的底层概念，它只是在此之上的一层抽象，一层状态机抽象。协程不一定需要操作系统甚至编程语言的原生支持。</p>
-<p>我逐渐认识到状态机应该是每个人，或者至少计算机相关专业的学生应该掌握的东西。而这些年来国内各高校都逐渐减少了对计算理论相关知识的教学，很多相关课程成为选修甚至直接消失，只有编译原理中还会教授一些相关知识，告诉你可以用FA做解析器，这是很遗憾的。</p>
+<p>我逐渐认识到状态机应该是每个人，或者至少计算机相关专业的学生应该掌握的东西。而这些年来国内各高校都逐渐减少了对计算理论相关知识的教学，很多相关课程成为选修甚至直接消失，只有编译原理中还会教授一些相关知识，告诉你可以用 FA 做解析器，这是很遗憾的。</p>
 
                 
               </div>
@@ -365,8 +365,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/02/03/%E4%B8%AA%E4%BA%BAIntellij-IDEA%E9%85%8D%E7%BD%AE%E6%83%85%E5%86%B5/" title="个人Intellij IDEA配置情况">
-                        <span class="hidden-mobile">个人Intellij IDEA配置情况</span>
+                      <a href="/2023/02/03/%E4%B8%AA%E4%BA%BAIntellij-IDEA%E9%85%8D%E7%BD%AE%E6%83%85%E5%86%B5/" title="个人 Intellij IDEA 配置情况">
+                        <span class="hidden-mobile">个人 Intellij IDEA 配置情况</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

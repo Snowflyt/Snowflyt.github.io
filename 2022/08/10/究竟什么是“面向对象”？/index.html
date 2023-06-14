@@ -16,16 +16,16 @@
   <meta name="author" content="Snowflyt">
   <meta name="keywords" content="">
   
-    <meta name="description" content="究竟什么是“面向对象”？  很多人尝试告诉我面向对象的核心不是“继承”、“封装”和“多态”，他们告诉我面向对象的核心是“消息”，“一切皆是对象”，然后声称自己是“Smalltalk原教旨主义者”。我曾经信以为真，但后来我意识到这其实未尝不是一种“错误”。 ——Snowflyt  这不是一篇面向尚未熟悉面向对象这一概念读者的文章，而是一篇讨论面向对象实质的文章。 在我们学习“面向对象（Object">
+    <meta name="description" content="究竟什么是“面向对象”？  很多人尝试告诉我面向对象的核心不是“继承”、“封装”和“多态”，他们告诉我面向对象的核心是“消息”，“一切皆是对象”，然后声称自己是“Smalltalk 原教旨主义者”。我曾经信以为真，但后来我意识到这其实未尝不是一种“错误”。 ——Snowflyt  这不是一篇面向尚未熟悉面向对象这一概念读者的文章，而是一篇讨论面向对象实质的文章。 在我们学习“面向对象（Object">
 <meta property="og:type" content="article">
 <meta property="og:title" content="究竟什么是“面向对象”？">
 <meta property="og:url" content="https://snowfly-t.github.io/2022/08/10/%E7%A9%B6%E7%AB%9F%E4%BB%80%E4%B9%88%E6%98%AF%E2%80%9C%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E2%80%9D%EF%BC%9F/index.html">
 <meta property="og:site_name" content="Snowflyt的博客">
-<meta property="og:description" content="究竟什么是“面向对象”？  很多人尝试告诉我面向对象的核心不是“继承”、“封装”和“多态”，他们告诉我面向对象的核心是“消息”，“一切皆是对象”，然后声称自己是“Smalltalk原教旨主义者”。我曾经信以为真，但后来我意识到这其实未尝不是一种“错误”。 ——Snowflyt  这不是一篇面向尚未熟悉面向对象这一概念读者的文章，而是一篇讨论面向对象实质的文章。 在我们学习“面向对象（Object">
+<meta property="og:description" content="究竟什么是“面向对象”？  很多人尝试告诉我面向对象的核心不是“继承”、“封装”和“多态”，他们告诉我面向对象的核心是“消息”，“一切皆是对象”，然后声称自己是“Smalltalk 原教旨主义者”。我曾经信以为真，但后来我意识到这其实未尝不是一种“错误”。 ——Snowflyt  这不是一篇面向尚未熟悉面向对象这一概念读者的文章，而是一篇讨论面向对象实质的文章。 在我们学习“面向对象（Object">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://snowfly-t.github.io/img/%E7%A9%B6%E7%AB%9F%E4%BB%80%E4%B9%88%E6%98%AF%E2%80%9C%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E2%80%9D%EF%BC%9F/banner.jpg">
 <meta property="article:published_time" content="2022-08-10T11:50:29.000Z">
-<meta property="article:modified_time" content="2022-12-02T16:47:37.000Z">
+<meta property="article:modified_time" content="2023-06-14T02:37:48.526Z">
 <meta property="article:author" content="Snowflyt">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://snowfly-t.github.io/img/%E7%A9%B6%E7%AB%9F%E4%BB%80%E4%B9%88%E6%98%AF%E2%80%9C%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E2%80%9D%EF%BC%9F/banner.jpg">
@@ -286,15 +286,15 @@
                 
                 <h1 id="究竟什么是“面向对象”？"><a href="#究竟什么是“面向对象”？" class="headerlink" title="究竟什么是“面向对象”？"></a>究竟什么是“面向对象”？</h1><p><img src="/img/%E7%A9%B6%E7%AB%9F%E4%BB%80%E4%B9%88%E6%98%AF%E2%80%9C%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E2%80%9D%EF%BC%9F/banner.jpg" srcset="/img/loading.gif" lazyload alt="Smalltalk"></p>
 <blockquote>
-<p>很多人尝试告诉我面向对象的核心不是“继承”、“封装”和“多态”，他们告诉我面向对象的核心是“消息”，“一切皆是对象”，然后声称自己是“Smalltalk原教旨主义者”。我曾经信以为真，但后来我意识到这其实未尝不是一种“错误”。</p>
+<p>很多人尝试告诉我面向对象的核心不是“继承”、“封装”和“多态”，他们告诉我面向对象的核心是“消息”，“一切皆是对象”，然后声称自己是“Smalltalk 原教旨主义者”。我曾经信以为真，但后来我意识到这其实未尝不是一种“错误”。</p>
 <p>——Snowflyt</p>
 </blockquote>
 <p><em>这不是一篇面向尚未熟悉面向对象这一概念读者的文章，而是一篇讨论面向对象实质的文章。</em></p>
-<p>在我们学习“面向对象（Object Oriented Programming，OOP）时，我们第一个了解到的就是面向对象三要素：继承、封装与多态。按我个人的见解，这不是特别准确，改成“类”、“继承”和“多态”也许更好。除此之外，我并不认为用这三个词描述OOP有什么不合适的。</p>
-<p>“你竟然把‘类’当作面向对象的要素之一？Rust和Go实现的就不是面向对象了？这些语言中可没有类。”</p>
-<p>这话是对的，我认为Rust和Go中实现的也是面向对象，JavaScript中实现的也是面向对象，而C++和Java实现的自然也是面向对象。甚至C也不是不能写面向对象，如果你能接受函数指针乱飞的话。</p>
-<p>那么为什么我认为“类”是面向对象的要素之一？因为“类”不是指一个单纯且智障的<code>class</code>关键字，而是一个能够减少重复定义（汇总）、实现开闭原则与多态，并且能够以其为模板创建多个实例的某种事物。Go的struct完美符合上述条件，Rust也一样。不管采用什么替代品，是使用强化版struct还是学JavaScript直接整对象字面量，都至少要完成上述任务才能实现一个用着顺手的OOP机制。Go和Rust中的<code>struct</code>可不是C中的只能存数据的<code>struct</code>，它们完全两码事。最具影响力且被广泛使用的两个OOP语言，一个C++，一个Java，里面的这样一个东西都叫做<code>class</code>，那我就把这种东西叫作类，这也没什么不妥。</p>
-<p>然后谈到多态，对于这个要素的争议可能比继承要小点。OOP当然要具备多态，否则如何做到开闭原则？Smalltalk认为面向对象的核心是“消息”，这其中其实已经自然而然地隐含了多态——就算从字面意思来理解，向不同对象发送同一个消息产生不同反应也是理所当然的。老师在教室里大喊一声“下课”，教室里的学生和门外的清洁工反应能一样吗？“多态”隐藏了具体实现，使程序员不用写一大堆<code>if</code>或<code>switch</code>，这当然是OOP中极为重要的一个要素。</p>
+<p>在我们学习“面向对象（Object Oriented Programming，OOP）时，我们第一个了解到的就是面向对象三要素：继承、封装与多态。按我个人的见解，这不是特别准确，改成“类”、“继承”和“多态”也许更好。除此之外，我并不认为用这三个词描述 OOP 有什么不合适的。</p>
+<p>“你竟然把‘类’当作面向对象的要素之一？Rust 和 Go 实现的就不是面向对象了？这些语言中可没有类。”</p>
+<p>这话是对的，我认为 Rust 和 Go 中实现的也是面向对象，JavaScript 中实现的也是面向对象，而 C++和 Java 实现的自然也是面向对象。甚至 C 也不是不能写面向对象，如果你能接受函数指针乱飞的话。</p>
+<p>那么为什么我认为“类”是面向对象的要素之一？因为“类”不是指一个单纯且智障的<code>class</code>关键字，而是一个能够减少重复定义（汇总）、实现开闭原则与多态，并且能够以其为模板创建多个实例的某种事物。Go 的 struct 完美符合上述条件，Rust 也一样。不管采用什么替代品，是使用强化版 struct 还是学 JavaScript 直接整对象字面量，都至少要完成上述任务才能实现一个用着顺手的 OOP 机制。Go 和 Rust 中的<code>struct</code>可不是 C 中的只能存数据的<code>struct</code>，它们完全两码事。最具影响力且被广泛使用的两个 OOP 语言，一个 C++，一个 Java，里面的这样一个东西都叫做<code>class</code>，那我就把这种东西叫作类，这也没什么不妥。</p>
+<p>然后谈到多态，对于这个要素的争议可能比继承要小点。OOP 当然要具备多态，否则如何做到开闭原则？Smalltalk 认为面向对象的核心是“消息”，这其中其实已经自然而然地隐含了多态——就算从字面意思来理解，向不同对象发送同一个消息产生不同反应也是理所当然的。老师在教室里大喊一声“下课”，教室里的学生和门外的清洁工反应能一样吗？“多态”隐藏了具体实现，使程序员不用写一大堆<code>if</code>或<code>switch</code>，这当然是 OOP 中极为重要的一个要素。</p>
 <p>而关于继承，则一直存在巨大争议。“继承滥用”似乎总是会使程序渐渐变成屎山</p>
 
                 

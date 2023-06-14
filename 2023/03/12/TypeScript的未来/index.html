@@ -16,15 +16,15 @@
   <meta name="author" content="Snowflyt">
   <meta name="keywords" content="">
   
-    <meta name="description" content="TypeScript的未来 TypeScript的未来绝不仅仅是大多数人使用的“AnyScript”，更不仅仅是一个加入类型推导能力的JavaScript。TypeScript未来将成为一切DSL事实上的类型系统。  很早以前，当我接触到TypeScript时，我知道它是对JavaScript缺乏类型系统的一种补充，是一种最开始甚至不被认为是一门真正的“编程语言”的“转译器语言”。TypeScri">
+    <meta name="description" content="TypeScript 的未来 TypeScript 的未来绝不仅仅是大多数人使用的“AnyScript”，更不仅仅是一个加入类型推导能力的 JavaScript。TypeScript 未来将成为一切 DSL 事实上的类型系统。  很早以前，当我接触到 TypeScript 时，我知道它是对 JavaScript 缺乏类型系统的一种补充，是一种最开始甚至不被认为是一门真正的“编程语言”的“转译器语言">
 <meta property="og:type" content="article">
-<meta property="og:title" content="TypeScript的未来">
+<meta property="og:title" content="TypeScript 的未来">
 <meta property="og:url" content="https://snowfly-t.github.io/2023/03/12/TypeScript%E7%9A%84%E6%9C%AA%E6%9D%A5/index.html">
 <meta property="og:site_name" content="Snowflyt的博客">
-<meta property="og:description" content="TypeScript的未来 TypeScript的未来绝不仅仅是大多数人使用的“AnyScript”，更不仅仅是一个加入类型推导能力的JavaScript。TypeScript未来将成为一切DSL事实上的类型系统。  很早以前，当我接触到TypeScript时，我知道它是对JavaScript缺乏类型系统的一种补充，是一种最开始甚至不被认为是一门真正的“编程语言”的“转译器语言”。TypeScri">
+<meta property="og:description" content="TypeScript 的未来 TypeScript 的未来绝不仅仅是大多数人使用的“AnyScript”，更不仅仅是一个加入类型推导能力的 JavaScript。TypeScript 未来将成为一切 DSL 事实上的类型系统。  很早以前，当我接触到 TypeScript 时，我知道它是对 JavaScript 缺乏类型系统的一种补充，是一种最开始甚至不被认为是一门真正的“编程语言”的“转译器语言">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-03-12T05:29:00.000Z">
-<meta property="article:modified_time" content="2023-03-12T08:34:26.921Z">
+<meta property="article:modified_time" content="2023-06-14T02:42:10.987Z">
 <meta property="article:author" content="Snowflyt">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -32,7 +32,7 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>TypeScript的未来 - Snowflyt的博客</title>
+  <title>TypeScript 的未来 - Snowflyt的博客</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -197,7 +197,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="TypeScript的未来"></span>
+            <span id="subtitle" data-typed-text="TypeScript 的未来"></span>
           
         </div>
 
@@ -277,67 +277,67 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">TypeScript的未来</h1>
+            <h1 style="display: none">TypeScript 的未来</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="TypeScript的未来"><a href="#TypeScript的未来" class="headerlink" title="TypeScript的未来"></a>TypeScript的未来</h1><blockquote>
-<p>TypeScript的未来绝不仅仅是大多数人使用的“AnyScript”，更不仅仅是一个加入类型推导能力的JavaScript。TypeScript未来将成为一切DSL事实上的类型系统。</p>
+                <h1 id="TypeScript-的未来"><a href="#TypeScript-的未来" class="headerlink" title="TypeScript 的未来"></a>TypeScript 的未来</h1><blockquote>
+<p>TypeScript 的未来绝不仅仅是大多数人使用的“AnyScript”，更不仅仅是一个加入类型推导能力的 JavaScript。TypeScript 未来将成为一切 DSL 事实上的类型系统。</p>
 </blockquote>
-<p>很早以前，当我接触到TypeScript时，我知道它是对JavaScript缺乏类型系统的一种补充，是一种最开始甚至不被认为是一门真正的“编程语言”的“转译器语言”。TypeScript不是完备的，它依赖于JavaScript自身才能真正被称为一门编程语言。甚至TypeScript引以为傲的类型系统也不是所谓“Sound”的，这有时甚至被一些Dart支持者攻击。当然，我也不认为这些狂热的Dart支持者很聪明。</p>
-<p>后来我意识到，随着JavaScript成为事实上形成垄断的前端标准，成为世界上使用人数最多的编程语言，渐渐成为几乎所有终端的唯一编程语言，甚至侵入后端领域与嵌入式编程领域，TypeScript也不再仅仅是“JavaScript的类型系统”。</p>
-<h2 id="TS与前端框架"><a href="#TS与前端框架" class="headerlink" title="TS与前端框架"></a>TS与前端框架</h2><p>React刚推出时，JSX尚缺乏TypeScript支持。后来随着React流行起来，TS团队几乎不得不为JSX添加了支持，这才有了我们如今如此无缝的TSX开发体验。</p>
-<p>相比之下，Vue团队则要艰辛地多，由于Vue使用的模板语法侵入式太强，并且在背后大量使用了Proxy，导致TS这么一个几十人的团队不太可能专门为Vue添加支持，因此Vue团队不得不付出极大的努力才为Vue和TS之间搭起了桥梁。即使是Vue 2中直接把data中的属性变成TS keyword都是极其困难的事情，除了堆人力外没有任何取巧的解决方案。后来Vue甚至因为Vue 2实在是太难添加对TS的完善支持而直接开发了Vue 3。</p>
-<p>同时，为了使Vue开发者能够获得更好的TS支持，Vue团队还不惜血本专门为VSCode开发了官方的Vue支持插件——在其它语言里这听起来可不要太疯狂，一个框架的开发团队专门为使用某个编辑器的用户投入血本开发适配插件，而不是让编辑器&#x2F;IDE来适配自己，这是只有前端领域才能见到的奇景。</p>
-<p>不过，前端新秀Svelte看起来就要幸福得多。Svelte最开始也缺乏足够的TS支持，但不知道什么时候Svelte团队中混进来个人和某个TS团队成员很熟，于是一段时间之后，Svelte就神奇地有了TS支持，甚至Svelte团队中很多人都没意识到这是怎么发生的。</p>
-<p>显而易见，这些前端框架都并非完全使用“JavaScript”的框架。为了更流畅的开发体验，它们都在某种程度上“加强”了JavaScript的语法，而这也意味着在这些框架刚诞生的那段时间里，必然是缺乏或是只有不完善的TS支持的。为了获得完善的TS支持，它们要么能足够流行到等TS团队适配，要么开发者团队不惜血本专门给TS搭桥，要么这框架本来就没做太多侵入式的语法加强，TS团队看着你这框架流行度还可以，而且适配不困难，就顺手适配了。</p>
-<p>为什么要聊这些前端框架？因为它们对TS的支持已经不仅局限于“为JavaScript添加类型系统”，而是已经变成了“为某种基于JavaScript的DSL添上类型系统”了。实际上在这些框架中，TS已经不仅仅是JS的类型系统了，它已经成为了某种DSL的类型系统。</p>
-<h2 id="TS与生成器"><a href="#TS与生成器" class="headerlink" title="TS与生成器"></a>TS与生成器</h2><p>这里聊的“生成器”可不是JavaScript中那个从Python里“借鉴”而来的generator，而是真正的代码生成器。在这方面，一个比较典型的例子就是GraphQL.</p>
-<p>GraphQL本身作为一种查询语言，要接入TS的类型系统可谓是相当困难了。事实上，至今也没有一个被广泛采用的解决方案能够根据GraphQL查询字符串精准推导出返回值的类型，我怀疑可能也从没有人做过。但是，为了让GraphQL前后端开发能够与TS集成，社区还是做了不少努力。</p>
-<p>其中一个努力是type-graphql，它使用TS装饰器根据你使用TS编写的class自动生成GraphQL Schema，例如类型与Query&#x2F;Mutation定义。当然，也有反过来的方案，比如graphql-code-generator就提供了将GraphQL Schema反过来生成TS interface的方案，这通常被用于前端，而type-graphql通常被用于后端。</p>
-<p>通过type-graphql与graphql-code-generator的结合，你可以在后端直接编写TS class，使用type-graphql生成GraphQL Schema，然后前端使用graphql-code-generator根据后端生成的GraphQL Schema再生成TS interface供前端使用。这一过程甚至可以是同步的，如果后端已经部署到了服务器上，前端的graphql-code-generator只需要配置GraphQL后端的网址就可以自动获取Schema并自动更新生成的interface，达到近乎无缝的体验。当然，除了单纯生成简单的TS interface外，graphql-code-generator还支持各种GraphQL客户端和服务端框架，可以直接生成专用于各框架的TS代码，甚至是Java&#x2F;C#代码，框架开发者也可以编写graphql-code-generator的插件，供用户使用。</p>
-<p>可以看到，在这一过程中，TS成了无论前端还是后端的，事实上的“终端”语言。而在其中，GraphQL几乎仅仅是作为一个给代码生成器使用的“中间语言”在充当作用。当然，目前来说，前端还是不可避免地需要编写GraphQL查询字符串，这方面不太容易由代码生成器将TS代码转译成GraphQL字符串，那样就有些太傻了，反而降低了GraphQL的灵活性。但是，谁说未来不会出现能够纯粹使用TS编写GraphQL查询字符串的前端库呢？这个库的任务也很简单，只需要让用户通过某种方式用TS代码生成AST，然后将AST处理为GraphQL查询字符串就行——其实现在就可以这么做，你可以直接从graphql库中导入那些AST相关的类然后手动构建一个AST，但大家都嫌麻烦因此使用graphql-tag等方案直接写字符串。我相信未来会有比写字符串更优雅的解决方式。</p>
-<p>未来TS有没有可能成为SQL的类型系统？后端使用Spring Data JPA&#x2F;MyBatis Plus甚至Node&#x2F;Go&#x2F;PHP&#x2F;Ruby那边的ORM框架生成对应的SQL语句，然后由某个代码生成器根据这些SQL语句和数据库定义生成TS类型，供前端使用。中间我们完全不关心SQL语句长什么样的，它只是作为一种中间语言为我们的TS提供完善且准确的类型支持而已。事实上，这方面早有相关尝试，<a target="_blank" rel="noopener" href="https://github.com/adelsz/pgtyped">PgTyped</a>就是其中之一。</p>
-<p>上面这番关于SQL的讨论看起来有点奇怪——我们现在前后端分离式的开发已经不怎么关注SQL了。如果我们使用Spring Data JPA&#x2F;MyBatis Plus这样的ORM框架（严格来说，MP不算ORM框架，但这里就随意点了），本来SQL就几乎只是作为后端框架生成的查询语言存在，前端本来就不用关心这些SQL，为什么上面还要讨论通过SQL生成TS类型定义？</p>
-<p>事实上，在上面描述的这个流程中，SQL作为中间语言的关键在于提供精准的类型定义。目前来说，我们大多数的前后端分离开发还需依赖前端开发者手动根据后端提供的接口封装相应的API并且编写类型，而如果后端能够直接静态生成SQL，然后使用代码生成器直接编译成对应的前端API，就免去了前端手动适配后端API的过程。</p>
-<p>如今有很多“前后端一体化”的“快速CRUD”框架，其中很多采用Node.js作为后端，背后也采用了类似的思路。这些框架通常带有一个专用的代码生成器，后端编写了相应的API后，能够直接生成可供前端调用的封装好的接口函数。但是，这些框架存在的显著问题是不具备足够的泛用性，这样的代码生成器显然只能在该框架内部使用。而如果未来我们能够广泛地使用SQL作为中间语言进行传递，就能获得更好的泛用性，该代码生成器不需要依赖于某个特定的后端框架也能使用，只要那个后端框架做了生成静态SQL语句的适配，或者说有哪个人为这个后端框架做了适配也行。</p>
-<h2 id="TS与DSL"><a href="#TS与DSL" class="headerlink" title="TS与DSL"></a>TS与DSL</h2><p>在DSL（领域特定语言）方面，Ruby一直以来都呈现近乎垄断的地位。当然，也不是说其他编程语言不能做DSL，Chisel就是基于Scala的嵌入式领域的DSL，甚至要广义一点说，Python那边Pandas的那个语法也可以说是一种DSL，像Spark和Tensorflow这种，背后生成计算图的框架，其实也可以说是把宿主语言当作DSL在用。</p>
-<p>但是近年来，Ruby首先由于Rails渐渐不适应当前的主流开发模式而没落，其后由于Python的流行，甚至在DSL上也慢慢没了饭碗。不过，要我说这些方式大都存在一个问题，那就是缺乏足够的类型提示。</p>
-<p>DSL要什么类型提示？为了一个几十行顶多几百行的配置文件塞一个类型系统岂不是吃饱了撑的？在过去是这样。但随着静态类型DSL，像是kts、Chisel这些方案的推广，我们意识到在静态类型语言的基础上构建DSL是完全有可能的。只是过去静态类型语言的灵活度还不够，导致我们下意识地认为只有独立开发的DSL或基于动态类型语言的DSL才能胜任我们的需求。但现在发现，我们似乎只是陷入了一个思维定势。</p>
-<p>但是其实现在有更简单的选择：先搓一个Parser把你的DSL变成TS，于是TS就能为你的DSL提供type checking，然后你用tsc将DSL变成JS，再在你的框架里内嵌个JS解释器（如果你的框架本来就是JS写的就更简单了），读取JS代码进行配置就行了。</p>
-<p>好吧，我承认这其实是个非常逆天的方案。在这个过程中，你的DSL首先要经过你自己的Parser变成TS，然后经过TS的Parser变成JS，然后你的框架里还要内嵌个JS解释器来解释生成的JS。而现在很多方案都在极力避免这种套一堆Parser的情况，比如很多DSL之所以选择Ruby是因为你可以直接用Ruby的元编程能力定义一个看起来就像外部DSL的内部DSL，不用写Parser，直接就能用。同理，Chisel、kts等也是没经过Parser或是只用写个很小的Parser，几乎就是宿主语言。</p>
-<p>但是，谁说这就不行呢？使用TS作为DSL中间语言的最大好处是只需要编辑器有插件做简单适配就可以获得完备的类型提示，而不需要你额外塞个类型系统。而且得益于JS本身的灵活性和（相对较高的）速度，你的DSL也可以获得足够的灵活性和速度。</p>
-<p>比如我们考虑Pandas，我们经常编写这样的代码：</p>
+<p>很早以前，当我接触到 TypeScript 时，我知道它是对 JavaScript 缺乏类型系统的一种补充，是一种最开始甚至不被认为是一门真正的“编程语言”的“转译器语言”。TypeScript 不是完备的，它依赖于 JavaScript 自身才能真正被称为一门编程语言。甚至 TypeScript 引以为傲的类型系统也不是所谓“Sound”的，这有时甚至被一些 Dart 支持者攻击。当然，我也不认为这些狂热的 Dart 支持者很聪明。</p>
+<p>后来我意识到，随着 JavaScript 成为事实上形成垄断的前端标准，成为世界上使用人数最多的编程语言，渐渐成为几乎所有终端的唯一编程语言，甚至侵入后端领域与嵌入式编程领域，TypeScript 也不再仅仅是“JavaScript 的类型系统”。</p>
+<h2 id="TS-与前端框架"><a href="#TS-与前端框架" class="headerlink" title="TS 与前端框架"></a>TS 与前端框架</h2><p>React 刚推出时，JSX 尚缺乏 TypeScript 支持。后来随着 React 流行起来，TS 团队几乎不得不为 JSX 添加了支持，这才有了我们如今如此无缝的 TSX 开发体验。</p>
+<p>相比之下，Vue 团队则要艰辛地多，由于 Vue 使用的模板语法侵入式太强，并且在背后大量使用了 Proxy，导致 TS 这么一个几十人的团队不太可能专门为 Vue 添加支持，因此 Vue 团队不得不付出极大的努力才为 Vue 和 TS 之间搭起了桥梁。即使是 Vue 2 中直接把 data 中的属性变成 TS keyword 都是极其困难的事情，除了堆人力外没有任何取巧的解决方案。后来 Vue 甚至因为 Vue 2 实在是太难添加对 TS 的完善支持而直接开发了 Vue 3.</p>
+<p>同时，为了使 Vue 开发者能够获得更好的 TS 支持，Vue 团队还不惜血本专门为 VSCode 开发了官方的 Vue 支持插件——在其它语言里这听起来可不要太疯狂，一个框架的开发团队专门为使用某个编辑器的用户投入血本开发适配插件，而不是让编辑器&#x2F;IDE 来适配自己，这是只有前端领域才能见到的奇景。</p>
+<p>不过，前端新秀 Svelte 看起来就要幸福得多。Svelte 最开始也缺乏足够的 TS 支持，但不知道什么时候 Svelte 团队中混进来个人和某个 TS 团队成员很熟，于是一段时间之后，Svelte 就神奇地有了 TS 支持，甚至 Svelte 团队中很多人都没意识到这是怎么发生的。</p>
+<p>显而易见，这些前端框架都并非完全使用“JavaScript”的框架。为了更流畅的开发体验，它们都在某种程度上“加强”了 JavaScript 的语法，而这也意味着在这些框架刚诞生的那段时间里，必然是缺乏或是只有不完善的 TS 支持的。为了获得完善的 TS 支持，它们要么能足够流行到等 TS 团队适配，要么开发者团队不惜血本专门给 TS 搭桥，要么这框架本来就没做太多侵入式的语法加强，TS 团队看着你这框架流行度还可以，而且适配不困难，就顺手适配了。</p>
+<p>为什么要聊这些前端框架？因为它们对 TS 的支持已经不仅局限于“为 JavaScript 添加类型系统”，而是已经变成了“为某种基于 JavaScript 的 DSL 添上类型系统”了。实际上在这些框架中，TS 已经不仅仅是 JS 的类型系统了，它已经成为了某种 DSL 的类型系统。</p>
+<h2 id="TS-与生成器"><a href="#TS-与生成器" class="headerlink" title="TS 与生成器"></a>TS 与生成器</h2><p>这里聊的“生成器”可不是 JavaScript 中那个从 Python 里“借鉴”而来的 generator，而是真正的代码生成器。在这方面，一个比较典型的例子就是 GraphQL.</p>
+<p>GraphQL 本身作为一种查询语言，要接入 TS 的类型系统可谓是相当困难了。事实上，至今也没有一个被广泛采用的解决方案能够根据 GraphQL 查询字符串精准推导出返回值的类型，我怀疑可能也从没有人做过。但是，为了让 GraphQL 前后端开发能够与 TS 集成，社区还是做了不少努力。</p>
+<p>其中一个努力是 type-graphql，它使用 TS 装饰器根据你使用 TS 编写的 class 自动生成 GraphQL Schema，例如类型与 Query&#x2F;Mutation 定义。当然，也有反过来的方案，比如 graphql-code-generator 就提供了将 GraphQL Schema 反过来生成 TS interface 的方案，这通常被用于前端，而 type-graphql 通常被用于后端。</p>
+<p>通过 type-graphql 与 graphql-code-generator 的结合，你可以在后端直接编写 TS class，使用 type-graphql 生成 GraphQL Schema，然后前端使用 graphql-code-generator 根据后端生成的 GraphQL Schema 再生成 TS interface 供前端使用。这一过程甚至可以是同步的，如果后端已经部署到了服务器上，前端的 graphql-code-generator 只需要配置 GraphQL 后端的网址就可以自动获取 Schema 并自动更新生成的 interface，达到近乎无缝的体验。当然，除了单纯生成简单的 TS interface 外，graphql-code-generator 还支持各种 GraphQL 客户端和服务端框架，可以直接生成专用于各框架的 TS 代码，甚至是 Java&#x2F;C#代码，框架开发者也可以编写 graphql-code-generator 的插件，供用户使用。</p>
+<p>可以看到，在这一过程中，TS 成了无论前端还是后端的，事实上的“终端”语言。而在其中，GraphQL 几乎仅仅是作为一个给代码生成器使用的“中间语言”在充当作用。当然，目前来说，前端还是不可避免地需要编写 GraphQL 查询字符串，这方面不太容易由代码生成器将 TS 代码转译成 GraphQL 字符串，那样就有些太傻了，反而降低了 GraphQL 的灵活性。但是，谁说未来不会出现能够纯粹使用 TS 编写 GraphQL 查询字符串的前端库呢？这个库的任务也很简单，只需要让用户通过某种方式用 TS 代码生成 AST，然后将 AST 处理为 GraphQL 查询字符串就行——其实现在就可以这么做，你可以直接从 graphql 库中导入那些 AST 相关的类然后手动构建一个 AST，但大家都嫌麻烦因此使用 graphql-tag 等方案直接写字符串。我相信未来会有比写字符串更优雅的解决方式。</p>
+<p>未来 TS 有没有可能成为 SQL 的类型系统？后端使用 Spring Data JPA&#x2F;MyBatis Plus 甚至 Node&#x2F;Go&#x2F;PHP&#x2F;Ruby 那边的 ORM 框架生成对应的 SQL 语句，然后由某个代码生成器根据这些 SQL 语句和数据库定义生成 TS 类型，供前端使用。中间我们完全不关心 SQL 语句长什么样的，它只是作为一种中间语言为我们的 TS 提供完善且准确的类型支持而已。事实上，这方面早有相关尝试，<a target="_blank" rel="noopener" href="https://github.com/adelsz/pgtyped">PgTyped</a>就是其中之一。</p>
+<p>上面这番关于 SQL 的讨论看起来有点奇怪——我们现在前后端分离式的开发已经不怎么关注 SQL 了。如果我们使用 Spring Data JPA&#x2F;MyBatis Plus 这样的 ORM 框架（严格来说，MP 不算 ORM 框架，但这里就随意点了），本来 SQL 就几乎只是作为后端框架生成的查询语言存在，前端本来就不用关心这些 SQL，为什么上面还要讨论通过 SQL 生成 TS 类型定义？</p>
+<p>事实上，在上面描述的这个流程中，SQL 作为中间语言的关键在于提供精准的类型定义。目前来说，我们大多数的前后端分离开发还需依赖前端开发者手动根据后端提供的接口封装相应的 API 并且编写类型，而如果后端能够直接静态生成 SQL，然后使用代码生成器直接编译成对应的前端 API，就免去了前端手动适配后端 API 的过程。</p>
+<p>如今有很多“前后端一体化”的“快速 CRUD”框架，其中很多采用 Node.js 作为后端，背后也采用了类似的思路。这些框架通常带有一个专用的代码生成器，后端编写了相应的 API 后，能够直接生成可供前端调用的封装好的接口函数。但是，这些框架存在的显著问题是不具备足够的泛用性，这样的代码生成器显然只能在该框架内部使用。而如果未来我们能够广泛地使用 SQL 作为中间语言进行传递，就能获得更好的泛用性，该代码生成器不需要依赖于某个特定的后端框架也能使用，只要那个后端框架做了生成静态 SQL 语句的适配，或者说有哪个人为这个后端框架做了适配也行。</p>
+<h2 id="TS-与-DSL"><a href="#TS-与-DSL" class="headerlink" title="TS 与 DSL"></a>TS 与 DSL</h2><p>在 DSL（领域特定语言）方面，Ruby 一直以来都呈现近乎垄断的地位。当然，也不是说其他编程语言不能做 DSL，Chisel 就是基于 Scala 的嵌入式领域的 DSL，甚至要广义一点说，Python 那边 Pandas 的那个语法也可以说是一种 DSL，像 Spark 和 Tensorflow 这种，背后生成计算图的框架，其实也可以说是把宿主语言当作 DSL 在用。</p>
+<p>但是近年来，Ruby 首先由于 Rails 渐渐不适应当前的主流开发模式而没落，其后由于 Python 的流行，甚至在 DSL 上也慢慢没了饭碗。不过，要我说这些方式大都存在一个问题，那就是缺乏足够的类型提示。</p>
+<p>DSL 要什么类型提示？为了一个几十行顶多几百行的配置文件塞一个类型系统岂不是吃饱了撑的？在过去是这样。但随着静态类型 DSL，像是 kts、Chisel 这些方案的推广，我们意识到在静态类型语言的基础上构建 DSL 是完全有可能的。只是过去静态类型语言的灵活度还不够，导致我们下意识地认为只有独立开发的 DSL 或基于动态类型语言的 DSL 才能胜任我们的需求。但现在发现，我们似乎只是陷入了一个思维定势。</p>
+<p>但是其实现在有更简单的选择：先搓一个 Parser 把你的 DSL 变成 TS，于是 TS 就能为你的 DSL 提供 type checking，然后你用 tsc 将 DSL 变成 JS，再在你的框架里内嵌个 JS 解释器（如果你的框架本来就是 JS 写的就更简单了），读取 JS 代码进行配置就行了。</p>
+<p>好吧，我承认这其实是个非常逆天的方案。在这个过程中，你的 DSL 首先要经过你自己的 Parser 变成 TS，然后经过 TS 的 Parser 变成 JS，然后你的框架里还要内嵌个 JS 解释器来解释生成的 JS。而现在很多方案都在极力避免这种套一堆 Parser 的情况，比如很多 DSL 之所以选择 Ruby 是因为你可以直接用 Ruby 的元编程能力定义一个看起来就像外部 DSL 的内部 DSL，不用写 Parser，直接就能用。同理，Chisel、kts 等也是没经过 Parser 或是只用写个很小的 Parser，几乎就是宿主语言。</p>
+<p>但是，谁说这就不行呢？使用 TS 作为 DSL 中间语言的最大好处是只需要编辑器有插件做简单适配就可以获得完备的类型提示，而不需要你额外塞个类型系统。而且得益于 JS 本身的灵活性和（相对较高的）速度，你的 DSL 也可以获得足够的灵活性和速度。</p>
+<p>比如我们考虑 Pandas，我们经常编写这样的代码：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">df = df[df.foo &gt; <span class="hljs-number">1</span> &amp; df.bar &lt; <span class="hljs-number">3</span>]<br></code></pre></td></tr></table></figure>
 
-<p>这里有一个问题，那就是缺乏类型提示——我们不知道foo和bar这两个列在当前的df上是否存在。当然，我们可以用Jupyter根据变量表获得动态的类型提示，但我们终归不是总能使用Jupyter，并且Jupyter本身也存在一些限制。</p>
-<p>为什么不考虑写一个TS版本的Pandas呢？</p>
-<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs typescript">df = df.<span class="hljs-title function_">get</span>(df.<span class="hljs-property">foo</span>.<span class="hljs-title function_">lt</span>(<span class="hljs-number">1</span>).<span class="hljs-title function_">and</span>(df.<span class="hljs-property">bar</span>.<span class="hljs-title function_">lt</span>(<span class="hljs-number">3</span>)))<br></code></pre></td></tr></table></figure>
+<p>这里有一个问题，那就是缺乏类型提示——我们不知道 foo 和 bar 这两个列在当前的 df 上是否存在。当然，我们可以用 Jupyter 根据变量表获得动态的类型提示，但我们终归不是总能使用 Jupyter，并且 Jupyter 本身也存在一些限制。</p>
+<p>为什么不考虑写一个 TS 版本的 Pandas 呢？</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs typescript">df = df.<span class="hljs-title function_">get</span>(df.<span class="hljs-property">foo</span>.<span class="hljs-title function_">lt</span>(<span class="hljs-number">1</span>).<span class="hljs-title function_">and</span>(df.<span class="hljs-property">bar</span>.<span class="hljs-title function_">lt</span>(<span class="hljs-number">3</span>)));<br></code></pre></td></tr></table></figure>
 
-<p>现在，如果foo或bar不存在，TS就会报错。</p>
-<p>但是这看起来很麻烦，不是吗？我们需要写这么长一串TS代码，才等价于上面那样简洁的Pandas.</p>
-<p>不要着急，假设我们实现了一个运算符重载版本的JS，就叫它TSOO吧（TS Operator Overloading），现在我们的TS代码就可以长成这样：</p>
-<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs typescript">df = df[df.<span class="hljs-property">foo</span> &gt; <span class="hljs-number">1</span> &amp; df.<span class="hljs-property">bar</span> &lt; <span class="hljs-number">3</span>]<br></code></pre></td></tr></table></figure>
+<p>现在，如果 foo 或 bar 不存在，TS 就会报错。</p>
+<p>但是这看起来很麻烦，不是吗？我们需要写这么长一串 TS 代码，才等价于上面那样简洁的 Pandas.</p>
+<p>不要着急，假设我们实现了一个运算符重载版本的 JS，就叫它 TSOO 吧（TS Operator Overloading），现在我们的 TS 代码就可以长成这样：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs typescript">df = df[(df.<span class="hljs-property">foo</span> &gt; <span class="hljs-number">1</span>) &amp; (df.<span class="hljs-property">bar</span> &lt; <span class="hljs-number">3</span>)];<br></code></pre></td></tr></table></figure>
 
-<p>完全一致，不是吗？现在我们的Parser能够识别重载的运算符，将这段代码编译成对应的TS。在此过程中，我们获得了TS的类型安全。</p>
-<p>再来看看R的ggplot2：</p>
+<p>完全一致，不是吗？现在我们的 Parser 能够识别重载的运算符，将这段代码编译成对应的 TS。在此过程中，我们获得了 TS 的类型安全。</p>
+<p>再来看看 R 的 ggplot2：</p>
 <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs r">ggplot<span class="hljs-punctuation">(</span>data <span class="hljs-operator">=</span> mpg<span class="hljs-punctuation">)</span> <span class="hljs-operator">+</span><br>  geom_point<span class="hljs-punctuation">(</span>mapping <span class="hljs-operator">=</span> aes<span class="hljs-punctuation">(</span>x <span class="hljs-operator">=</span> displ<span class="hljs-punctuation">,</span> y <span class="hljs-operator">=</span> hwy<span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span><br></code></pre></td></tr></table></figure>
 
-<p>我们考虑这样构建我们的TS版本：</p>
-<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-title function_">ggplot</span>(&#123; <span class="hljs-attr">data</span>: mpg &#125;)<br>  .<span class="hljs-title function_">geomPoint</span>(<span class="hljs-function">(<span class="hljs-params">o</span>) =&gt;</span> (&#123; <span class="hljs-attr">mapping</span>: o.<span class="hljs-title function_">aes</span>(<span class="hljs-function">(<span class="hljs-params">d</span>) =&gt;</span> (&#123; <span class="hljs-attr">x</span>: d.<span class="hljs-property">displ</span>, <span class="hljs-attr">y</span>: d.<span class="hljs-property">hwy</span> &#125;)) &#125;))<br></code></pre></td></tr></table></figure>
+<p>我们考虑这样构建我们的 TS 版本：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-title function_">ggplot</span>(&#123; <span class="hljs-attr">data</span>: mpg &#125;).<span class="hljs-title function_">geomPoint</span>(<span class="hljs-function">(<span class="hljs-params">o</span>) =&gt;</span> (&#123;<br>  <span class="hljs-attr">mapping</span>: o.<span class="hljs-title function_">aes</span>(<span class="hljs-function">(<span class="hljs-params">d</span>) =&gt;</span> (&#123; <span class="hljs-attr">x</span>: d.<span class="hljs-property">displ</span>, <span class="hljs-attr">y</span>: d.<span class="hljs-property">hwy</span> &#125;)),<br>&#125;));<br></code></pre></td></tr></table></figure>
 
-<p>这里的方法和参数都泛型化了，因此TS能够给出足够强大的类型提示并保证类型安全。</p>
-<p>当然，这样写实在是太繁琐了，我们可以在此之上构建一个DSL.</p>
+<p>这里的方法和参数都泛型化了，因此 TS 能够给出足够强大的类型提示并保证类型安全。</p>
+<p>当然，这样写实在是太繁琐了，我们可以在此之上构建一个 DSL.</p>
 <figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-title function_">ggplot</span>(&#123; <span class="hljs-attr">data</span>: mpg &#125;)<br>  .<span class="hljs-title function_">geomPoint</span>(#&#123; <span class="hljs-attr">mapping</span>: #<span class="hljs-title function_">aes</span>(#&#123; <span class="hljs-attr">x</span>: #displ, <span class="hljs-attr">y</span>: #hwy &#125;) &#125;)<br></code></pre></td></tr></table></figure>
 
-<p>这里的工作其实也很简单，就是把<code>#&#123; foo: #bar &#125;</code>变成<code>(_) =&gt; (&#123; foo: _.bar &#125;)</code>而已，可以看到现在可读性高了不少，并且我们获得了TS提供的类型安全与智能提示。</p>
+<p>这里的工作其实也很简单，就是把<code>#&#123; foo: #bar &#125;</code>变成<code>(_) =&gt; (&#123; foo: _.bar &#125;)</code>而已，可以看到现在可读性高了不少，并且我们获得了 TS 提供的类型安全与智能提示。</p>
 <p>当然，你可以觉得上面这么写不太好看，甚至可以改成这样，随便你怎么做！</p>
 <figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-title function_">ggplot</span>(data = mpg)<br>  .<span class="hljs-title function_">geomPoint$</span>(mapping = :<span class="hljs-title function_">aes$</span>(x = :displ, y = :hwy))<br></code></pre></td></tr></table></figure>
 
-<p>在上面的代码中，我们假设如果一个函数以<code>$</code>结尾，比如<code>fn$(...)</code>，就把它变成<code>fn((_) =&gt; ...)</code>，然后在这个特殊的函数中，如果出现以<code>:</code>开头的名字，比如<code>:foo</code>，就把它变成<code>_.foo</code>。然后我们还将原来传入一个JS对象的语法处理成了关键字参数的形式，这也很简单。</p>
-<p>得益于前端工具链的完善，只需要我们给Babel和ts-loader写一些很简单的配置，一切就完成了！我们获得了简洁、类型安全且包含大量智能提示的新Pandas和ggplot。当然，还需要编辑器&#x2F;IDE来点插件适配，这是没有办法避免的。</p>
-<h2 id="未来"><a href="#未来" class="headerlink" title="未来"></a>未来</h2><p>目前来说，TS是我们最容易能够直接利用的类型系统。而JS又是足够灵活且流行的编程语言。我相信随着前端的发展，JS会不可避免地逐渐侵入一切可能的领域，而TS作为JS的类型系统，只需要充足的代码生成器和转译器支持（考虑到目前前端生态链的极端发达，这相当轻松），便足以成为大多数框架甚至DSL事实上的类型系统。</p>
+<p>在上面的代码中，我们假设如果一个函数以<code>$</code>结尾，比如<code>fn$(...)</code>，就把它变成<code>fn((_) =&gt; ...)</code>，然后在这个特殊的函数中，如果出现以<code>:</code>开头的名字，比如<code>:foo</code>，就把它变成<code>_.foo</code>。然后我们还将原来传入一个 JS 对象的语法处理成了关键字参数的形式，这也很简单。</p>
+<p>得益于前端工具链的完善，只需要我们给 Babel 和 ts-loader 写一些很简单的配置，一切就完成了！我们获得了简洁、类型安全且包含大量智能提示的新 Pandas 和 ggplot。当然，还需要编辑器&#x2F;IDE 来点插件适配，这是没有办法避免的。</p>
+<h2 id="未来"><a href="#未来" class="headerlink" title="未来"></a>未来</h2><p>目前来说，TS 是我们最容易能够直接利用的类型系统。而 JS 又是足够灵活且流行的编程语言。我相信随着前端的发展，JS 会不可避免地逐渐侵入一切可能的领域，而 TS 作为 JS 的类型系统，只需要充足的代码生成器和转译器支持（考虑到目前前端生态链的极端发达，这相当轻松），便足以成为大多数框架甚至 DSL 事实上的类型系统。</p>
 <p>我想这一天不会太远。</p>
 
                 
@@ -356,7 +356,7 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>TypeScript的未来</div>
+      <div>TypeScript 的未来</div>
       <div>https://snowfly-t.github.io/2023/03/12/TypeScript的未来/</div>
     </div>
     <div class="license-meta">
@@ -400,6 +400,12 @@
                 <div class="post-prevnext my-3">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/2023/03/13/%E4%BB%8EMaterial%20Design%E5%88%B0%E5%B7%A5%E7%A8%8B%E5%B8%88%E6%80%9D%E7%BB%B4/" title="从 Material Design 到工程师思维">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">从 Material Design 到工程师思维</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">

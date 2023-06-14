@@ -16,15 +16,15 @@
   <meta name="author" content="Snowflyt">
   <meta name="keywords" content="">
   
-    <meta name="description" content="nginx部署SPA网页的现代方法关于nginx部署SPA（单页应用）查了很多资料，但发现都过时严重，而且方法不够简洁明了。实际上现在nginx部署SPA的步骤很简单，没有很多教程写得那么复杂。 以Ubuntu为例（因为看到了太多CentOS的教程，这里就拿Ubuntu演示下，俩系统除了文件夹名有点区别外其他都一样） 首先安装nginx 123$ sudo apt update$ sudo apt">
+    <meta name="description" content="从 Material Design 到工程师思维我一直以来是觉得谷歌的 Material Design 不好看的。 我不是设计师，对这方面懂得很少。但我按照我简单的直觉与审美，确实看 Material Design 不顺眼。包括社区中受 Material Design 启发搞出来的一堆组件库，MUI 之类，我也不觉得好看。实话实说，我觉得还不如 AntD 或 Element Plus 这些国产组件">
 <meta property="og:type" content="article">
-<meta property="og:title" content="nginx部署SPA网页的现代方法">
-<meta property="og:url" content="https://snowfly-t.github.io/2022/12/15/nginx%E9%83%A8%E7%BD%B2SPA%E7%BD%91%E9%A1%B5%E7%9A%84%E7%8E%B0%E4%BB%A3%E6%96%B9%E6%B3%95/index.html">
+<meta property="og:title" content="从 Material Design 到工程师思维">
+<meta property="og:url" content="https://snowfly-t.github.io/2023/03/13/%E4%BB%8EMaterial%20Design%E5%88%B0%E5%B7%A5%E7%A8%8B%E5%B8%88%E6%80%9D%E7%BB%B4/index.html">
 <meta property="og:site_name" content="Snowflyt的博客">
-<meta property="og:description" content="nginx部署SPA网页的现代方法关于nginx部署SPA（单页应用）查了很多资料，但发现都过时严重，而且方法不够简洁明了。实际上现在nginx部署SPA的步骤很简单，没有很多教程写得那么复杂。 以Ubuntu为例（因为看到了太多CentOS的教程，这里就拿Ubuntu演示下，俩系统除了文件夹名有点区别外其他都一样） 首先安装nginx 123$ sudo apt update$ sudo apt">
+<meta property="og:description" content="从 Material Design 到工程师思维我一直以来是觉得谷歌的 Material Design 不好看的。 我不是设计师，对这方面懂得很少。但我按照我简单的直觉与审美，确实看 Material Design 不顺眼。包括社区中受 Material Design 启发搞出来的一堆组件库，MUI 之类，我也不觉得好看。实话实说，我觉得还不如 AntD 或 Element Plus 这些国产组件">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-12-15T15:45:37.000Z">
-<meta property="article:modified_time" content="2022-12-15T16:06:19.000Z">
+<meta property="article:published_time" content="2023-03-12T16:49:22.000Z">
+<meta property="article:modified_time" content="2023-06-14T02:36:09.996Z">
 <meta property="article:author" content="Snowflyt">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -32,7 +32,7 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>nginx部署SPA网页的现代方法 - Snowflyt的博客</title>
+  <title>从 Material Design 到工程师思维 - Snowflyt的博客</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -197,7 +197,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="nginx部署SPA网页的现代方法"></span>
+            <span id="subtitle" data-typed-text="从 Material Design 到工程师思维"></span>
           
         </div>
 
@@ -208,8 +208,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-12-15 23:45" pubdate>
-          2022年12月15日 晚上
+        <time datetime="2023-03-13 00:49" pubdate>
+          2023年3月13日 凌晨
         </time>
       </span>
     
@@ -220,7 +220,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.5k 字
+          1.4k 字
         
       </span>
     
@@ -231,7 +231,7 @@
         
         
         
-          13 分钟
+          12 分钟
         
       </span>
     
@@ -277,37 +277,30 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">nginx部署SPA网页的现代方法</h1>
+            <h1 style="display: none">从 Material Design 到工程师思维</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="nginx部署SPA网页的现代方法"><a href="#nginx部署SPA网页的现代方法" class="headerlink" title="nginx部署SPA网页的现代方法"></a>nginx部署SPA网页的现代方法</h1><p>关于nginx部署SPA（单页应用）查了很多资料，但发现都过时严重，而且方法不够简洁明了。实际上现在nginx部署SPA的步骤很简单，没有很多教程写得那么复杂。</p>
-<p>以Ubuntu为例（因为看到了太多CentOS的教程，这里就拿Ubuntu演示下，俩系统除了文件夹名有点区别外其他都一样）</p>
-<p>首先安装nginx</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ sudo apt update<br>$ sudo apt upgrade<br>$ sudo apt install nginx<br></code></pre></td></tr></table></figure>
-
-<p>然后进入nginx的配置目录</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ <span class="hljs-built_in">cd</span> /etc/nginx<br></code></pre></td></tr></table></figure>
-
-<p>创建html文件夹，过会儿我们的静态文件就放在这里。当然你也可以随便起个别的名字，或者之后指定到别的文件夹上。选择将静态文件放在nginx配置文件目录里主要是为了避免之后可能出现的nginx权限不够的问题。如果你想把静态文件放在其他目录中，比如<code>/www</code>中，nginx一般来说默认是没有访问该文件夹的权限的，此时需要手动给这个文件夹赋一下权限，比如<code>chmod -R 777 /www</code>。当然，我们这里直接在nginx目录下放静态文件，不用管这事儿。</p>
-<p>然后进入<code>/etc/nginx/conf.d</code>文件夹。</p>
-<p>创建<code>default.conf</code></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ vi default.conf<br></code></pre></td></tr></table></figure>
-
-<p>然后粘贴以下内容</p>
-<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs awk">server &#123;<br>        <span class="hljs-comment"># 监听端口，一般就是80，这也是网页访问时的默认端口</span><br>        listen <span class="hljs-number">80</span>;<br>        <span class="hljs-comment"># server_name是你的服务器地址，ip或网址都行</span><br>        <span class="hljs-comment"># 注意不要写localhost，因为这个地址是外网访问时的地址</span><br>        <span class="hljs-comment"># 除非你就打算在局域网访问，那么写localhost确实没问题</span><br>        server_name www.example.com;<br><br>        location / &#123;<br>                <span class="hljs-comment"># alias是静态文件所在的文件夹</span><br>                <span class="hljs-comment"># 由于打算将静态文件放在/etc/nginx/html目录下，</span><br>                <span class="hljs-comment"># 所以这里也这么写</span><br>                <span class="hljs-comment"># 有很多教程这里使用root + try_files</span><br>                <span class="hljs-comment"># 这其实是不合适的，root本身就不是给单页应用使用的</span><br>                <span class="hljs-comment"># 使用alias更合适</span><br>                alias <span class="hljs-regexp">/etc/</span>nginx<span class="hljs-regexp">/html/</span>;<br>                index index.html index.htm;<br>        &#125;<br><br>        <span class="hljs-comment"># 如果你的应用采用了将请求转发的方式（很多框架和模板都会这么干）</span><br>        <span class="hljs-comment"># 那么需要在nginx上设置一下代理</span><br>        <span class="hljs-comment"># 比如这里假设该网页的后端就部署在这个服务器上，端口是8081</span><br>        <span class="hljs-comment"># 然后SPA自身配置的是把请求都转发到/api/...上</span><br>        <span class="hljs-comment"># 根据实际情况，这里的location可能会是/prod-api/等其他形式</span><br>        <span class="hljs-comment"># 如果实在搞不清楚这里该代理啥，就先把网页部署上去，按F12看看请求报错信息</span><br>        <span class="hljs-comment"># 就知道请求的是哪个地址了</span><br>        location <span class="hljs-regexp">/api/</span> &#123;<br>                proxy_pass http:<span class="hljs-regexp">//</span>localhost:<span class="hljs-number">8081</span>/;<br>        &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<p>然后保存</p>
-<p>别忘了把静态文件传到刚刚创建的html文件夹下，这里就把这步骤省略了</p>
-<p>然后检查一下配置文件有没有语法错误</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ nginx -t<br></code></pre></td></tr></table></figure>
-
-<p>然后输入以下命令重载配置</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ nginx -s reload<br></code></pre></td></tr></table></figure>
-
-<p>然后就结束了</p>
-<p>然后说明一下为啥改的是<code>conf.d/default.conf</code>而不是<code>nginx.conf</code>。很多教程都是改的<code>nginx.conf</code>，这其实一点也没错，但<code>nginx.conf</code>内容比较多，改的时候容易眼花改错。而<code>nginx.conf</code>默认是把<code>conf.d/</code>目录下的配置文件都加载进去的，所以直接在这个目录下创建配置文件就好了，改起来更清楚和方便。顺便只要配置文件是<code>.conf</code>结尾的就会被读进去，叫不叫<code>default</code>其实无所谓。</p>
+                <h1 id="从-Material-Design-到工程师思维"><a href="#从-Material-Design-到工程师思维" class="headerlink" title="从 Material Design 到工程师思维"></a>从 Material Design 到工程师思维</h1><p>我一直以来是觉得谷歌的 Material Design 不好看的。</p>
+<p>我不是设计师，对这方面懂得很少。但我按照我简单的直觉与审美，确实看 Material Design 不顺眼。包括社区中受 Material Design 启发搞出来的一堆组件库，MUI 之类，我也不觉得好看。实话实说，我觉得还不如 AntD 或 Element Plus 这些国产组件库好看。</p>
+<p>那一堆用 Material Design 的国外软件，尤其是谷歌家的东西，YouTube 和 Google 的一系列产品我觉得都很丑。</p>
+<p>在这方面我觉得国产软件的审美真的比这些国外软件在线一点。除了广告多一点之外，真的比欧美软件好用。就是 TikTok 那个我觉得有点太杀马特的设计都比这一批欧美软件好上不少。</p>
+<p>作为一套设计语言，Material 真的只能说差不多凑合。它最大的贡献是为谷歌的一系列产品及衍生产品提供了统一的设计语言，无功无过。在它刚开始推出的时候，Material 确实是有点惊艳的，但现在看来，我确实觉得没什么亮点。</p>
+<p>不会真的有人觉得 Win8 那样直接糊大色块好看吧。</p>
+<p>后来谷歌又升级了 Material Design，搞了个 Material You。说实话那一整个半透不透的质感搞得我觉得屏幕好像掉了色。我一点也不觉得这有什么简约，我只觉得简陋。</p>
+<p>而且 MD 这东西是那么的特立独行，别的设计很难适配进去，你要是想用 MD，你就要整个 APP 都采用 MD，否则会因为视觉不统一看着更难看。</p>
+<p>当然，这个新 UI 确实比老的好看，但只能好看一点点。</p>
+<p>相比之下，无论是苹果的 iOS 设计还是微软的 Fluent Design，视觉上看着都要比谷歌的 Material Design 好上不少。</p>
+<p>说真的，谷歌是目前国外大厂里我最讨厌的一个，工程师思维真的太重了，实用主义盛行。谷歌的工程师工程能力是公认的强，但他们的美学素养和理想是真的不咋地。</p>
+<p>哦对，亚麻的工程师也不怎么样，比谷歌的工程师思维还重。看看现在亚马逊那个丑到逆天的 UI 就知道了。</p>
+<p>同理，国内公司阿里字节这些走得也都是这种工程师公司的路子。</p>
+<p>而微软和苹果就很有品味，包括看起来就要倒闭的 Meta 也是。对 PL 领域有过接触的人应该对这块感触特别深。</p>
+<p>其实像马斯克收购推特后，为什么推特出现了那么大的震动，有一个原因也是在于理念的突然切换。推特之前是典型的在按美学思维运作，它们背后的技术栈聚焦的是优雅且直觉，而非工程师思维的 quick and dirty。而马斯克显然是个不能再典型的工程师，一收购推特就对公司里那些为了优雅而不做 dirty work 的代码一通臭骂，这里性能差那里性能也差。</p>
+<p>这种思维和国内阿里的思维非常像，也是为了性能而不惜一切代价，不管背后的 work 有多 dirty，快就完事了，这也是国内倾向于使用 MyBatis 而欧美倾向于使用 ORM 的主要原因之一。</p>
+<p>实话说，我是一点也不喜欢这些工程师思维的。每当我为了性能写了一些 quick and fast 的代码，我都感觉自己受到了 dijkstra 来自上个世纪的灵魂拷问：Quick &amp; dirty. Dijkstra would not like it.</p>
+<p>我觉得写代码应该是一件美好且放松的事情。就像音乐家作曲，艺术家绘画，当我构建一个软件时，我认为自己也在某种意义上参与艺术。</p>
+<p>因此我讨厌工程师，并且绝不想成为一个他人口中的工程师。</p>
 
                 
               </div>
@@ -325,8 +318,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>nginx部署SPA网页的现代方法</div>
-      <div>https://snowfly-t.github.io/2022/12/15/nginx部署SPA网页的现代方法/</div>
+      <div>从 Material Design 到工程师思维</div>
+      <div>https://snowfly-t.github.io/2023/03/13/从Material Design到工程师思维/</div>
     </div>
     <div class="license-meta">
       
@@ -338,7 +331,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2022年12月15日</div>
+          <div>2023年3月13日</div>
         </div>
       
       
@@ -370,9 +363,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/12/15/Nginx%E9%83%A8%E7%BD%B2SPA%E7%9A%84%E7%8E%B0%E4%BB%A3%E6%96%B9%E6%B3%95/" title="Nginx部署SPA的现代方法">
+                      <a href="/2023/06/10/%E5%85%B3%E4%BA%8EVue%E9%80%89%E9%A1%B9%E5%BC%8F%E4%B8%8E%E7%BB%84%E5%90%88%E5%BC%8FAPI%E7%9A%84%E4%B8%80%E4%BA%9B%E6%80%9D%E8%80%83/" title="关于 Vue 选项式与组合式 API 的一些思考">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Nginx部署SPA的现代方法</span>
+                        <span class="hidden-mobile">关于 Vue 选项式与组合式 API 的一些思考</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -380,8 +373,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/12/01/Vultr%E8%87%AA%E5%BB%BA%E6%A2%AF%E5%AD%90%E6%B5%81%E7%A8%8B%EF%BC%88%E4%BD%BF%E7%94%A8V2Ray%EF%BC%89/" title="Vultr自建梯子流程（使用V2Ray）">
-                        <span class="hidden-mobile">Vultr自建梯子流程（使用V2Ray）</span>
+                      <a href="/2023/03/12/TypeScript%E7%9A%84%E6%9C%AA%E6%9D%A5/" title="TypeScript 的未来">
+                        <span class="hidden-mobile">TypeScript 的未来</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

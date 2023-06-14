@@ -16,12 +16,12 @@
   <meta name="author" content="Snowflyt">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Vultr自建梯子流程（使用V2Ray）最近使用了很久的梯子崩了，连续崩了好几天，也不知道是不是跑路了，只剩下手机上有个备用的免费梯子能用。由于经历了多次类似的事情，生怕再发生这样的事情，想来想去还是自己的梯子最踏实，于是花了点时间拿VPS搭了一个，也不知道能用多久。在搭梯子期间踩了不少坑，就记录一下搭梯子的全流程，权当做个备忘。 首先去Vultr上买个VPS，充10美金就行，Paypal支付宝等">
+    <meta name="description" content="Vultr 自建梯子流程（使用 V2Ray）最近使用了很久的梯子崩了，连续崩了好几天，也不知道是不是跑路了，只剩下手机上有个备用的免费梯子能用。由于经历了多次类似的事情，生怕再发生这样的事情，想来想去还是自己的梯子最踏实，于是花了点时间拿 VPS 搭了一个，也不知道能用多久。在搭梯子期间踩了不少坑，就记录一下搭梯子的全流程，权当做个备忘。 首先去Vultr上买个 VPS，充 10 美金就行，Pay">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Vultr自建梯子流程（使用V2Ray）">
+<meta property="og:title" content="Vultr 自建梯子流程（使用 V2Ray）">
 <meta property="og:url" content="https://snowfly-t.github.io/2022/12/01/Vultr%E8%87%AA%E5%BB%BA%E6%A2%AF%E5%AD%90%E6%B5%81%E7%A8%8B%EF%BC%88%E4%BD%BF%E7%94%A8V2Ray%EF%BC%89/index.html">
 <meta property="og:site_name" content="Snowflyt的博客">
-<meta property="og:description" content="Vultr自建梯子流程（使用V2Ray）最近使用了很久的梯子崩了，连续崩了好几天，也不知道是不是跑路了，只剩下手机上有个备用的免费梯子能用。由于经历了多次类似的事情，生怕再发生这样的事情，想来想去还是自己的梯子最踏实，于是花了点时间拿VPS搭了一个，也不知道能用多久。在搭梯子期间踩了不少坑，就记录一下搭梯子的全流程，权当做个备忘。 首先去Vultr上买个VPS，充10美金就行，Paypal支付宝等">
+<meta property="og:description" content="Vultr 自建梯子流程（使用 V2Ray）最近使用了很久的梯子崩了，连续崩了好几天，也不知道是不是跑路了，只剩下手机上有个备用的免费梯子能用。由于经历了多次类似的事情，生怕再发生这样的事情，想来想去还是自己的梯子最踏实，于是花了点时间拿 VPS 搭了一个，也不知道能用多久。在搭梯子期间踩了不少坑，就记录一下搭梯子的全流程，权当做个备忘。 首先去Vultr上买个 VPS，充 10 美金就行，Pay">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://snowfly-t.github.io/img/Vultr%E8%87%AA%E5%BB%BA%E6%A2%AF%E5%AD%90%E6%B5%81%E7%A8%8B%EF%BC%88%E4%BD%BF%E7%94%A8V2Ray%EF%BC%89/01.png">
 <meta property="og:image" content="https://snowfly-t.github.io/img/Vultr%E8%87%AA%E5%BB%BA%E6%A2%AF%E5%AD%90%E6%B5%81%E7%A8%8B%EF%BC%88%E4%BD%BF%E7%94%A8V2Ray%EF%BC%89/02.png">
@@ -47,7 +47,7 @@
 <meta property="og:image" content="https://snowfly-t.github.io/img/Vultr%E8%87%AA%E5%BB%BA%E6%A2%AF%E5%AD%90%E6%B5%81%E7%A8%8B%EF%BC%88%E4%BD%BF%E7%94%A8V2Ray%EF%BC%89/22.png">
 <meta property="og:image" content="https://snowfly-t.github.io/img/Vultr%E8%87%AA%E5%BB%BA%E6%A2%AF%E5%AD%90%E6%B5%81%E7%A8%8B%EF%BC%88%E4%BD%BF%E7%94%A8V2Ray%EF%BC%89/23.png">
 <meta property="article:published_time" content="2022-12-01T12:30:20.000Z">
-<meta property="article:modified_time" content="2022-12-02T16:15:19.000Z">
+<meta property="article:modified_time" content="2023-06-14T02:41:19.725Z">
 <meta property="article:author" content="Snowflyt">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://snowfly-t.github.io/img/Vultr%E8%87%AA%E5%BB%BA%E6%A2%AF%E5%AD%90%E6%B5%81%E7%A8%8B%EF%BC%88%E4%BD%BF%E7%94%A8V2Ray%EF%BC%89/01.png">
@@ -56,7 +56,7 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>Vultr自建梯子流程（使用V2Ray） - Snowflyt的博客</title>
+  <title>Vultr 自建梯子流程（使用 V2Ray） - Snowflyt的博客</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -221,7 +221,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Vultr自建梯子流程（使用V2Ray）"></span>
+            <span id="subtitle" data-typed-text="Vultr 自建梯子流程（使用 V2Ray）"></span>
           
         </div>
 
@@ -301,13 +301,13 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Vultr自建梯子流程（使用V2Ray）</h1>
+            <h1 style="display: none">Vultr 自建梯子流程（使用 V2Ray）</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="Vultr自建梯子流程（使用V2Ray）"><a href="#Vultr自建梯子流程（使用V2Ray）" class="headerlink" title="Vultr自建梯子流程（使用V2Ray）"></a>Vultr自建梯子流程（使用V2Ray）</h1><p>最近使用了很久的梯子崩了，连续崩了好几天，也不知道是不是跑路了，只剩下手机上有个备用的免费梯子能用。由于经历了多次类似的事情，生怕再发生这样的事情，想来想去还是自己的梯子最踏实，于是花了点时间拿VPS搭了一个，也不知道能用多久。在搭梯子期间踩了不少坑，就记录一下搭梯子的全流程，权当做个备忘。</p>
-<p>首先去<a target="_blank" rel="noopener" href="https://www.vultr.com/">Vultr</a>上买个VPS，充10美金就行，Paypal支付宝等都支持，关于注册Vultr和如何充钱就不过多赘述了。</p>
+                <h1 id="Vultr-自建梯子流程（使用-V2Ray）"><a href="#Vultr-自建梯子流程（使用-V2Ray）" class="headerlink" title="Vultr 自建梯子流程（使用 V2Ray）"></a>Vultr 自建梯子流程（使用 V2Ray）</h1><p>最近使用了很久的梯子崩了，连续崩了好几天，也不知道是不是跑路了，只剩下手机上有个备用的免费梯子能用。由于经历了多次类似的事情，生怕再发生这样的事情，想来想去还是自己的梯子最踏实，于是花了点时间拿 VPS 搭了一个，也不知道能用多久。在搭梯子期间踩了不少坑，就记录一下搭梯子的全流程，权当做个备忘。</p>
+<p>首先去<a target="_blank" rel="noopener" href="https://www.vultr.com/">Vultr</a>上买个 VPS，充 10 美金就行，Paypal 支付宝等都支持，关于注册 Vultr 和如何充钱就不过多赘述了。</p>
 <p>然后进入<a target="_blank" rel="noopener" href="https://my.vultr.com/%EF%BC%8C%E5%A6%82%E5%9B%BE">https://my.vultr.com/，如图</a></p>
 <p><img src="/img/Vultr%E8%87%AA%E5%BB%BA%E6%A2%AF%E5%AD%90%E6%B5%81%E7%A8%8B%EF%BC%88%E4%BD%BF%E7%94%A8V2Ray%EF%BC%89/01.png" srcset="/img/loading.gif" lazyload></p>
 <p>点击<code>Deploy Server</code>，部署服务器。</p>
@@ -317,71 +317,71 @@
 <p><img src="/img/Vultr%E8%87%AA%E5%BB%BA%E6%A2%AF%E5%AD%90%E6%B5%81%E7%A8%8B%EF%BC%88%E4%BD%BF%E7%94%A8V2Ray%EF%BC%89/04.png" srcset="/img/loading.gif" lazyload></p>
 <p><img src="/img/Vultr%E8%87%AA%E5%BB%BA%E6%A2%AF%E5%AD%90%E6%B5%81%E7%A8%8B%EF%BC%88%E4%BD%BF%E7%94%A8V2Ray%EF%BC%89/05.png" srcset="/img/loading.gif" lazyload></p>
 <p><img src="/img/Vultr%E8%87%AA%E5%BB%BA%E6%A2%AF%E5%AD%90%E6%B5%81%E7%A8%8B%EF%BC%88%E4%BD%BF%E7%94%A8V2Ray%EF%BC%89/06.png" srcset="/img/loading.gif" lazyload></p>
-<p>如上所示，这里选择最低配版本的Cloud Compute型、Intel Regular Performance CPU &amp; Storage、25G SSD，然后关掉了自动备份（Auto Backups）。除此之外，系统选择了CentOS 7，服务器地址这里选择了印度孟买。</p>
-<p>个人测试下来东京、印度的几个城市、新加坡这几个地方的服务器都是可以ping通的，其中东京服务器的速度最快。这里不选东京的主要原因是东京的服务器虽然ping得快但似乎不太稳定，所以这次就不用东京的服务器了。自用的话可以多创建几个服务器机房在不同位置的VPS试试看，Vultr上的VPS随时可以销毁掉然后重新建个新的，并且由于是按时计费，这么做不会带来额外的成本。</p>
+<p>如上所示，这里选择最低配版本的 Cloud Compute 型、Intel Regular Performance CPU &amp; Storage、25G SSD，然后关掉了自动备份（Auto Backups）。除此之外，系统选择了 CentOS 7，服务器地址这里选择了印度孟买。</p>
+<p>个人测试下来东京、印度的几个城市、新加坡这几个地方的服务器都是可以 ping 通的，其中东京服务器的速度最快。这里不选东京的主要原因是东京的服务器虽然 ping 得快但似乎不太稳定，所以这次就不用东京的服务器了。自用的话可以多创建几个服务器机房在不同位置的 VPS 试试看，Vultr 上的 VPS 随时可以销毁掉然后重新建个新的，并且由于是按时计费，这么做不会带来额外的成本。</p>
 <p><img src="/img/Vultr%E8%87%AA%E5%BB%BA%E6%A2%AF%E5%AD%90%E6%B5%81%E7%A8%8B%EF%BC%88%E4%BD%BF%E7%94%A8V2Ray%EF%BC%89/07.png" srcset="/img/loading.gif" lazyload></p>
-<p>最后看到这样一台最低配的VPS的月租是5美金，每小时$0.007，点击Deploy Now立即部署。</p>
-<p>然后在Products页能看到VPS正在分配</p>
+<p>最后看到这样一台最低配的 VPS 的月租是 5 美金，每小时$0.007，点击 Deploy Now 立即部署。</p>
+<p>然后在 Products 页能看到 VPS 正在分配</p>
 <p><img src="/img/Vultr%E8%87%AA%E5%BB%BA%E6%A2%AF%E5%AD%90%E6%B5%81%E7%A8%8B%EF%BC%88%E4%BD%BF%E7%94%A8V2Ray%EF%BC%89/08.png" srcset="/img/loading.gif" lazyload></p>
-<p>初始化完成后看到Status变成了Running</p>
+<p>初始化完成后看到 Status 变成了 Running</p>
 <p><img src="/img/Vultr%E8%87%AA%E5%BB%BA%E6%A2%AF%E5%AD%90%E6%B5%81%E7%A8%8B%EF%BC%88%E4%BD%BF%E7%94%A8V2Ray%EF%BC%89/09.png" srcset="/img/loading.gif" lazyload></p>
 <p>点进去就可以看到服务器信息了</p>
 <p><img src="/img/Vultr%E8%87%AA%E5%BB%BA%E6%A2%AF%E5%AD%90%E6%B5%81%E7%A8%8B%EF%BC%88%E4%BD%BF%E7%94%A8V2Ray%EF%BC%89/10.png" srcset="/img/loading.gif" lazyload></p>
-<p>不过这时候服务器大概率还在初始化，因此大概还需要等十几分钟才能用ssh连上去，所以先等一会儿再继续。如果嫌等待时间太长也可以在之前选一个更好的CPU &amp; Storage，每个月多加1美金（也就是一共6美金&#x2F;月），服务器会流畅点。</p>
-<p>然后启动自己电脑上的终端，使用ssh登录服务器，输入下面的命令（<code>&lt;ip&gt;</code>请替换成自己的服务器IP）</p>
+<p>不过这时候服务器大概率还在初始化，因此大概还需要等十几分钟才能用 ssh 连上去，所以先等一会儿再继续。如果嫌等待时间太长也可以在之前选一个更好的 CPU &amp; Storage，每个月多加 1 美金（也就是一共 6 美金&#x2F;月），服务器会流畅点。</p>
+<p>然后启动自己电脑上的终端，使用 ssh 登录服务器，输入下面的命令（<code>&lt;ip&gt;</code>请替换成自己的服务器 IP）</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">ssh root@&lt;ip&gt;<br></code></pre></td></tr></table></figure>
 
-<p>我这里使用Windows PowerShell，终端使用的是Win11自带的Windows Terminal。如果用Win10发现系统不自带Windows Terminal也可以直接在Windows Store里下一个（就叫做“终端”）</p>
-<p>然后按照提示接受fingerprint，并输入Vultr上的初始密码（在Product页可以找到）</p>
+<p>我这里使用 Windows PowerShell，终端使用的是 Win11 自带的 Windows Terminal。如果用 Win10 发现系统不自带 Windows Terminal 也可以直接在 Windows Store 里下一个（就叫做“终端”）</p>
+<p>然后按照提示接受 fingerprint，并输入 Vultr 上的初始密码（在 Product 页可以找到）</p>
 <p><img src="/img/Vultr%E8%87%AA%E5%BB%BA%E6%A2%AF%E5%AD%90%E6%B5%81%E7%A8%8B%EF%BC%88%E4%BD%BF%E7%94%A8V2Ray%EF%BC%89/11.png" srcset="/img/loading.gif" lazyload></p>
 <blockquote>
-<p>如果你在这里接受fingerprint时失败，可能是由于你在反复销毁创建VPS的过程中分配到了同一个IP，由于你的电脑上已经存在了旧VPS的fingerprint，因此无法接受同一个IP的新VPS的fingerprint</p>
-<p>此时只需简单输入下面的命令清除旧fingerprint即可</p>
+<p>如果你在这里接受 fingerprint 时失败，可能是由于你在反复销毁创建 VPS 的过程中分配到了同一个 IP，由于你的电脑上已经存在了旧 VPS 的 fingerprint，因此无法接受同一个 IP 的新 VPS 的 fingerprint</p>
+<p>此时只需简单输入下面的命令清除旧 fingerprint 即可</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ssh-keygen -R &lt;ip&gt;<br></code></pre></td></tr></table></figure>
 </blockquote>
-<p>为了方便起见，先使用passwd命令改一下密码，然后reboot重启服务器以生效，毕竟每次去输初始密码很麻烦</p>
-<p>再使用ssh连上服务器，这次用修改后的密码</p>
+<p>为了方便起见，先使用 passwd 命令改一下密码，然后 reboot 重启服务器以生效，毕竟每次去输初始密码很麻烦</p>
+<p>再使用 ssh 连上服务器，这次用修改后的密码</p>
 <p><img src="/img/Vultr%E8%87%AA%E5%BB%BA%E6%A2%AF%E5%AD%90%E6%B5%81%E7%A8%8B%EF%BC%88%E4%BD%BF%E7%94%A8V2Ray%EF%BC%89/12.png" srcset="/img/loading.gif" lazyload></p>
-<p>然后输入以下命令进入V2Ray安装脚本</p>
+<p>然后输入以下命令进入 V2Ray 安装脚本</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">bash &lt;(curl -s -L https://git.io/v2ray.sh)<br></code></pre></td></tr></table></figure>
 
 <p><img src="/img/Vultr%E8%87%AA%E5%BB%BA%E6%A2%AF%E5%AD%90%E6%B5%81%E7%A8%8B%EF%BC%88%E4%BD%BF%E7%94%A8V2Ray%EF%BC%89/13.png" srcset="/img/loading.gif" lazyload></p>
-<p>输入1安装，然后不断回车使用默认设置即可</p>
+<p>输入 1 安装，然后不断回车使用默认设置即可</p>
 <p><img src="/img/Vultr%E8%87%AA%E5%BB%BA%E6%A2%AF%E5%AD%90%E6%B5%81%E7%A8%8B%EF%BC%88%E4%BD%BF%E7%94%A8V2Ray%EF%BC%89/14.png" srcset="/img/loading.gif" lazyload></p>
 <p>继续按回车确认，然后等待几十秒安装完毕</p>
 <p>安装完成后的界面大致如下</p>
 <p><img src="/img/Vultr%E8%87%AA%E5%BB%BA%E6%A2%AF%E5%AD%90%E6%B5%81%E7%A8%8B%EF%BC%88%E4%BD%BF%E7%94%A8V2Ray%EF%BC%89/15.png" srcset="/img/loading.gif" lazyload></p>
-<p>安装完成后别忘了在防火墙上打开对应的端口。输入以下指令，将<code>&lt;port&gt;</code>替换为上面显示的端口号，如这里就是54766（<strong>这一步很重要</strong>）</p>
+<p>安装完成后别忘了在防火墙上打开对应的端口。输入以下指令，将<code>&lt;port&gt;</code>替换为上面显示的端口号，如这里就是 54766（<strong>这一步很重要</strong>）</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">iptables -I INPUT -p tcp --dport &lt;port&gt; -j ACCEPT<br></code></pre></td></tr></table></figure>
 
 <p>然后输入下面的命令</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">v2ray url<br></code></pre></td></tr></table></figure>
 
 <p><img src="/img/Vultr%E8%87%AA%E5%BB%BA%E6%A2%AF%E5%AD%90%E6%B5%81%E7%A8%8B%EF%BC%88%E4%BD%BF%E7%94%A8V2Ray%EF%BC%89/16.png" srcset="/img/loading.gif" lazyload></p>
-<p>复制终端显示的vmess url</p>
-<p>然后在自己的电脑上下载v2rayN（即客户端）：<a target="_blank" rel="noopener" href="https://github.com/2dust/v2rayN/releases/tag/5.38">https://github.com/2dust/v2rayN/releases/tag/5.38</a></p>
+<p>复制终端显示的 vmess url</p>
+<p>然后在自己的电脑上下载 v2rayN（即客户端）：<a target="_blank" rel="noopener" href="https://github.com/2dust/v2rayN/releases/tag/5.38">https://github.com/2dust/v2rayN/releases/tag/5.38</a></p>
 <blockquote>
-<p>如果你在电脑上安装了Scoop，也可以直接在命令行输入以下命令直接安装v2rayN。如果你未安装Scoop，忽略这条提示</p>
+<p>如果你在电脑上安装了 Scoop，也可以直接在命令行输入以下命令直接安装 v2rayN。如果你未安装 Scoop，忽略这条提示</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">scoop install v2rayn<br></code></pre></td></tr></table></figure>
 </blockquote>
 <p><img src="/img/Vultr%E8%87%AA%E5%BB%BA%E6%A2%AF%E5%AD%90%E6%B5%81%E7%A8%8B%EF%BC%88%E4%BD%BF%E7%94%A8V2Ray%EF%BC%89/17.png" srcset="/img/loading.gif" lazyload></p>
-<p>选择下载v2rayN-Core.zip，解压缩后打开，界面大致如下</p>
+<p>选择下载 v2rayN-Core.zip，解压缩后打开，界面大致如下</p>
 <p><img src="/img/Vultr%E8%87%AA%E5%BB%BA%E6%A2%AF%E5%AD%90%E6%B5%81%E7%A8%8B%EF%BC%88%E4%BD%BF%E7%94%A8V2Ray%EF%BC%89/18.png" srcset="/img/loading.gif" lazyload></p>
-<p>选择服务器-&gt;从剪贴板导入批量URL</p>
+<p>选择服务器-&gt;从剪贴板导入批量 URL</p>
 <p><img src="/img/Vultr%E8%87%AA%E5%BB%BA%E6%A2%AF%E5%AD%90%E6%B5%81%E7%A8%8B%EF%BC%88%E4%BD%BF%E7%94%A8V2Ray%EF%BC%89/19.png" srcset="/img/loading.gif" lazyload></p>
 <p>可以看到导入成功</p>
 <p><img src="/img/Vultr%E8%87%AA%E5%BB%BA%E6%A2%AF%E5%AD%90%E6%B5%81%E7%A8%8B%EF%BC%88%E4%BD%BF%E7%94%A8V2Ray%EF%BC%89/20.png" srcset="/img/loading.gif" lazyload></p>
-<p>然后右键托盘上的v2rayN图标，选择系统代理-&gt;自动配置系统代理。路由设置为绕过大陆（一般默认就是这个选项）</p>
+<p>然后右键托盘上的 v2rayN 图标，选择系统代理-&gt;自动配置系统代理。路由设置为绕过大陆（一般默认就是这个选项）</p>
 <p><img src="/img/Vultr%E8%87%AA%E5%BB%BA%E6%A2%AF%E5%AD%90%E6%B5%81%E7%A8%8B%EF%BC%88%E4%BD%BF%E7%94%A8V2Ray%EF%BC%89/21.png" srcset="/img/loading.gif" lazyload></p>
-<p>此时应当就能正常访问外网了，这里使用Google测试</p>
+<p>此时应当就能正常访问外网了，这里使用 Google 测试</p>
 <p><img src="/img/Vultr%E8%87%AA%E5%BB%BA%E6%A2%AF%E5%AD%90%E6%B5%81%E7%A8%8B%EF%BC%88%E4%BD%BF%E7%94%A8V2Ray%EF%BC%89/22.png" srcset="/img/loading.gif" lazyload></p>
-<p>可以看到访问正常，Google上地区显示印度，正好就是我们VPS所在服务器机房的位置，说明梯子搭建成功</p>
+<p>可以看到访问正常，Google 上地区显示印度，正好就是我们 VPS 所在服务器机房的位置，说明梯子搭建成功</p>
 <blockquote>
-<p>顺带一提，v2rayN有个很有趣的功能。如果你在Windows系统上安装了一些UWP应用，会发现这些应用即使开了梯子也没法连接外网，这是因为UWP应用在沙盒中运行，无法直接使用代理</p>
-<p>而v2rayN自带一个小工具可以解决这个问题。在设置-&gt;参数设置-&gt;v2rayN设置中，点击“解除Win10 UWP应用回环代理限制”，全选然后点击“Save Changes”，即可让UWP应用正常使用代理</p>
+<p>顺带一提，v2rayN 有个很有趣的功能。如果你在 Windows 系统上安装了一些 UWP 应用，会发现这些应用即使开了梯子也没法连接外网，这是因为 UWP 应用在沙盒中运行，无法直接使用代理</p>
+<p>而 v2rayN 自带一个小工具可以解决这个问题。在设置-&gt;参数设置-&gt;v2rayN 设置中，点击“解除 Win10 UWP 应用回环代理限制”，全选然后点击“Save Changes”，即可让 UWP 应用正常使用代理</p>
 <p><img src="/img/Vultr%E8%87%AA%E5%BB%BA%E6%A2%AF%E5%AD%90%E6%B5%81%E7%A8%8B%EF%BC%88%E4%BD%BF%E7%94%A8V2Ray%EF%BC%89/23.png" srcset="/img/loading.gif" lazyload></p>
 </blockquote>
-<p>在手机上访问梯子同理，只是需要安装v2rayNG，和v2rayN的使用大同小异，这里就不赘述了</p>
+<p>在手机上访问梯子同理，只是需要安装 v2rayNG，和 v2rayN 的使用大同小异，这里就不赘述了</p>
 
                 
               </div>
@@ -399,7 +399,7 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Vultr自建梯子流程（使用V2Ray）</div>
+      <div>Vultr 自建梯子流程（使用 V2Ray）</div>
       <div>https://snowfly-t.github.io/2022/12/01/Vultr自建梯子流程（使用V2Ray）/</div>
     </div>
     <div class="license-meta">
@@ -444,9 +444,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/12/15/nginx%E9%83%A8%E7%BD%B2SPA%E7%BD%91%E9%A1%B5%E7%9A%84%E7%8E%B0%E4%BB%A3%E6%96%B9%E6%B3%95/" title="nginx部署SPA网页的现代方法">
+                      <a href="/2022/12/15/Nginx%E9%83%A8%E7%BD%B2SPA%E7%9A%84%E7%8E%B0%E4%BB%A3%E6%96%B9%E6%B3%95/" title="Nginx 部署 SPA 的现代方法">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">nginx部署SPA网页的现代方法</span>
+                        <span class="hidden-mobile">Nginx 部署 SPA 的现代方法</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -454,8 +454,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/07/29/%E5%85%B3%E4%BA%8EWeb-3-0%E2%80%94%E2%80%94%E7%82%92%E4%BD%9C%E3%80%81%E6%80%9D%E8%80%83%E4%B8%8E%E6%89%B9%E5%88%A4/" title="关于Web 3.0——炒作、思考与批判">
-                        <span class="hidden-mobile">关于Web 3.0——炒作、思考与批判</span>
+                      <a href="/2022/07/29/%E5%85%B3%E4%BA%8EWeb-3-0%E2%80%94%E2%80%94%E7%82%92%E4%BD%9C%E3%80%81%E6%80%9D%E8%80%83%E4%B8%8E%E6%89%B9%E5%88%A4/" title="关于 Web 3.0 ——炒作、思考与批判">
+                        <span class="hidden-mobile">关于 Web 3.0 ——炒作、思考与批判</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
