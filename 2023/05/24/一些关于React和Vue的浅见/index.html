@@ -16,15 +16,15 @@
   <meta name="author" content="Snowflyt">
   <meta name="keywords" content="">
   
-    <meta name="description" content="关于 Vue 选项式与组合式 API 的一些思考 某种意义上，Vue 3 组合式 API 反而引入了比 Vue 2 更重的心智负担。  切换到 Vue 3 已经很久了，组合式 API、setup，都用着很舒服。因为某些原因，最近又写了 Vue 2 的一些代码了，反而感觉写起来有另一种奇怪的舒适感。要形容的话，就是感觉比 Vue 3 好像还更省心一点。 仔细想想，倒也的确如此。平时用 Vue 3 C">
+    <meta name="description" content="一些关于 React 和 Vue 的浅见有感而发，写点关于 React 和 Vue 的见解。 React 有几个核心特点，单向数据流、不变性、可预测性、灵活性，以及最重要的——它足够简单。 是简单，不是易用，也不是绝对的简洁，并且也不意味着心智模型的简单。React 自 hooks 的引入之后让我感觉它最大的特点是简单，它的实现非常简单，不做太多优化，hooks 的实现也是只要有人点拨一下，你就知">
 <meta property="og:type" content="article">
-<meta property="og:title" content="关于 Vue 选项式与组合式 API 的一些思考">
-<meta property="og:url" content="https://snowfly-t.github.io/2023/06/10/%E5%85%B3%E4%BA%8EVue%E9%80%89%E9%A1%B9%E5%BC%8F%E4%B8%8E%E7%BB%84%E5%90%88%E5%BC%8FAPI%E7%9A%84%E4%B8%80%E4%BA%9B%E6%80%9D%E8%80%83/index.html">
+<meta property="og:title" content="一些关于 React 和 Vue 的浅见">
+<meta property="og:url" content="https://snowfly-t.github.io/2023/05/24/%E4%B8%80%E4%BA%9B%E5%85%B3%E4%BA%8EReact%E5%92%8CVue%E7%9A%84%E6%B5%85%E8%A7%81/index.html">
 <meta property="og:site_name" content="Snowflyt的博客">
-<meta property="og:description" content="关于 Vue 选项式与组合式 API 的一些思考 某种意义上，Vue 3 组合式 API 反而引入了比 Vue 2 更重的心智负担。  切换到 Vue 3 已经很久了，组合式 API、setup，都用着很舒服。因为某些原因，最近又写了 Vue 2 的一些代码了，反而感觉写起来有另一种奇怪的舒适感。要形容的话，就是感觉比 Vue 3 好像还更省心一点。 仔细想想，倒也的确如此。平时用 Vue 3 C">
+<meta property="og:description" content="一些关于 React 和 Vue 的浅见有感而发，写点关于 React 和 Vue 的见解。 React 有几个核心特点，单向数据流、不变性、可预测性、灵活性，以及最重要的——它足够简单。 是简单，不是易用，也不是绝对的简洁，并且也不意味着心智模型的简单。React 自 hooks 的引入之后让我感觉它最大的特点是简单，它的实现非常简单，不做太多优化，hooks 的实现也是只要有人点拨一下，你就知">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-06-10T09:00:00.000Z">
-<meta property="article:modified_time" content="2023-06-14T02:51:14.337Z">
+<meta property="article:published_time" content="2023-05-24T09:00:00.000Z">
+<meta property="article:modified_time" content="2023-06-14T03:00:52.308Z">
 <meta property="article:author" content="Snowflyt">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -32,7 +32,7 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>关于 Vue 选项式与组合式 API 的一些思考 - Snowflyt的博客</title>
+  <title>一些关于 React 和 Vue 的浅见 - Snowflyt的博客</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -197,7 +197,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="关于 Vue 选项式与组合式 API 的一些思考"></span>
+            <span id="subtitle" data-typed-text="一些关于 React 和 Vue 的浅见"></span>
           
         </div>
 
@@ -208,8 +208,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-06-10 17:00" pubdate>
-          2023年6月10日 下午
+        <time datetime="2023-05-24 17:00" pubdate>
+          2023年5月24日 下午
         </time>
       </span>
     
@@ -220,7 +220,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.7k 字
+          3k 字
         
       </span>
     
@@ -231,7 +231,7 @@
         
         
         
-          14 分钟
+          25 分钟
         
       </span>
     
@@ -277,26 +277,27 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">关于 Vue 选项式与组合式 API 的一些思考</h1>
+            <h1 style="display: none">一些关于 React 和 Vue 的浅见</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="关于-Vue-选项式与组合式-API-的一些思考"><a href="#关于-Vue-选项式与组合式-API-的一些思考" class="headerlink" title="关于 Vue 选项式与组合式 API 的一些思考"></a>关于 Vue 选项式与组合式 API 的一些思考</h1><blockquote>
-<p>某种意义上，Vue 3 组合式 API 反而引入了比 Vue 2 更重的心智负担。</p>
-</blockquote>
-<p>切换到 Vue 3 已经很久了，组合式 API、setup，都用着很舒服。因为某些原因，最近又写了 Vue 2 的一些代码了，反而感觉写起来有另一种奇怪的舒适感。要形容的话，就是感觉比 Vue 3 好像还更省心一点。</p>
-<p>仔细想想，倒也的确如此。平时用 Vue 3 Composition API 时还真没 Vue 2 时全绑 this 来得省心，某种意义上。</p>
-<p>Vue 3 引入组合式 API 的苦衷可以理解。一方面，this 确实是个问题严重的东西，很容易在回调中丢掉，而很多时候 TS 甚至报不出来错，写代码时不得不时刻留意 this 的作用域问题确实很令人难过。</p>
-<p>另一方面，选项式 API 本身对 TS 不友好，而组合式 API 那种简洁的“Type-Only”方式就更难实现，因为在选项式 API 里面你没有一个合适的位置来放类型……你只能 <code>type: Function as PropType&lt;...&gt;</code> 这样，这种断言真的挺不优雅的，而且这种方式 Vue 没办法在运行时做更深的检验，在这个例子里，Vue 只能检验这个 prop 是不是函数，返回类型甚至参数数量它都没办法检验。</p>
-<p>但是仔细想想，似乎为了解决选项式 API 的问题并不一定要引入组合式 API. 我怀疑这里边或许有一些 React Hooks 爱好者在里边起作用……组合式 API 带来了新的思维负担，其中一个就是 <code>ref.value</code>，而且还丢失了把属性挂在 this 上的思维负担优势……至少我这么认为。而且，<code>this.$refs，this.$store</code>，<code>this.$router</code> 这些真的很快乐啊。虽然现在 Vue 3 也能直接在 template 里这么写，但显然不能在 script 里这么写了，还是差点意思。</p>
-<p>其实也有一个避免 this 但吸取选项式 API 优势的好办法嘛：</p>
-<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">component</span>(<span class="hljs-function">(<span class="hljs-params">self</span>) =&gt;</span> (&#123;<br>  <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;post&#x27;</span>,<br>  <span class="hljs-attr">data</span>: <span class="hljs-function">() =&gt;</span> (&#123; <span class="hljs-attr">show</span>: <span class="hljs-literal">true</span>, &#125;),<br>  <span class="hljs-attr">props</span>: <span class="hljs-title function_">withDefaults</span>(<br>    <span class="hljs-title function_">type</span>(&#123;<br>      <span class="hljs-attr">time</span>: <span class="hljs-string">&#x27;string&#x27;</span>,<br>      <span class="hljs-string">&#x27;author?&#x27;</span>: <span class="hljs-string">&#x27;string&#x27;</span>,<br>    &#125;),<br>    &#123;<br>      <span class="hljs-attr">author</span>: <span class="hljs-function">() =&gt;</span> <span class="hljs-string">&#x27;Unknown&#x27;</span>,<br>    &#125;<br>  ),<br>  <span class="hljs-attr">mounted</span>: <span class="hljs-function">() =&gt;</span> &#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(self.<span class="hljs-property">time</span>, self.<span class="hljs-property">author</span>);<br>  &#125;,<br>  <span class="hljs-attr">methods</span>: &#123;<br>    <span class="hljs-attr">hidePost</span>: <span class="hljs-function">() =&gt;</span> &#123;<br>      self.<span class="hljs-property">show</span> = <span class="hljs-literal">false</span>;<br>    &#125;,<br>    <span class="hljs-attr">showPost</span>: <span class="hljs-function">() =&gt;</span> &#123;<br>      self.<span class="hljs-property">show</span> = <span class="hljs-literal">true</span>;<br>    &#125;,<br>  &#125;,<br>&#125;);<br></code></pre></td></tr></table></figure>
-<p> 在这里，self 是个代理对象，替代了 this 的功能，这样就避免了 this 动态作用域的问题。</p>
-<p> 而且，类型校验的问题也解决了，在这里使用了 Arktype 来做校验，这使得框架能够获得精准的类型，以此进行检验。</p>
-<p> Vue 2 的年代里，人们还普遍信任于 this 与面向对象，ES6 中 class 的引入也使各大框架纷纷考虑将其利用起来。当时，似乎很少有人想到可以使用一些简单的方法避免 this React 且也想不到有什么必要这么做。后来，React “倒行逆施”地引入了 FC，重新引起了各框架的思考，这才使框架们呈现了现在的状况。现在，大家一致认为通过闭包捕获的变量更加安全与可信。</p>
-<p> 并且，当时人们对 TS 的利用也没有现在这么疯狂。当时的人们认为 JS 还是一门非常动态的语言，TS 顶多用来补足一些常见的类型。而现在，事情已经完全倒转了。</p>
-<p> 或许我有可能真的实现这样一个新的框架？它相比 Vue 更类型安全，并且吸取了选项式 API 的优点，同时使用 JSX 以获得更好的兼容性。或许如此。但是这显然需要投入太多时间，我对此还不那么有信心。</p>
+                <h1 id="一些关于-React-和-Vue-的浅见"><a href="#一些关于-React-和-Vue-的浅见" class="headerlink" title="一些关于 React 和 Vue 的浅见"></a>一些关于 React 和 Vue 的浅见</h1><p>有感而发，写点关于 React 和 Vue 的见解。</p>
+<p>React 有几个核心特点，单向数据流、不变性、可预测性、灵活性，以及最重要的——它足够简单。</p>
+<p>是简单，不是易用，也不是绝对的简洁，并且也不意味着心智模型的简单。React 自 hooks 的引入之后让我感觉它最大的特点是简单，它的实现非常简单，不做太多优化，hooks 的实现也是只要有人点拨一下，你就知道这东西本质上就是外边有个数组，函数组件就是把函数整个跑一遍，这一切都不能更简单。要我说，实现 React 最核心的部分（不考虑优化）只需要不到 1000 行代码，一个更简单的核心版本甚至可能只要 300 行代码左右（当然，需要让你的代码变得很晦涩）——这甚至可能低于我们平常写一个 React 组件需要的代码行数……这听起来很疯狂，但 React 真的就是这么简单而已。</p>
+<p>简单带来了可预测，带来了 React 极致的灵活，这使得在 React 生态中开发各种库非常简单，并且能够很轻易地集成到其他东西中，比如 RxJS 与 React 的相性就非常好。这都是简单带来的力量。</p>
+<p>相应的，简单带来了更重的心智负担，毫无疑问。甚至直到今天，函数式组件是否比类组件的心智负担更小，都仍无一个能被大多数人认可的结论。但是毫无疑问，函数式组件更简单了，并且它的不变性更强——this 本身就是个不稳定的可变因素，<code>this.state</code> 和 <code>this.props</code> 是总在渲染周期之间不断变化，这往往造成异步方法的不稳定性，也因此人们往往保护性地首先解构 <code>this.state</code> 或 <code>this.props</code>，这也是 hooks 推出的一大缘由。</p>
+<p>React 这种将一切作为函数的近乎魔怔的不变性狂热究竟好不好我们仍不得而知，但显然它很受欢迎。有人说这是因为大公司往往倾向于采用 React 以尽可能掌控渲染细节，而不那么在乎心智负担与开发效率，我则更倾向于是 React 的简单性造就了 React 生态的繁荣，也以此造就了 React 的繁荣与推广。</p>
+<p>并且，JSX 的语法真的很容易给第一次看见它的人以某种震撼，而这是 Vue、Svelte 以及 Angular 的模板语法都做不到的——我们直接将 HTML 作为函数的返回值，这是多么疯狂又多么成功的创意。在人们的想象力仅局限在模板上的匮乏年代，这实在是太大胆也太令人振奋了。</p>
+<p>当然，JSX 在日后引发了很多关于可维护性的讨论。JSX 在许多不那么注重可维护性的程序员手里经常呈现灾难性的后果——一堆三元运算符嵌套的谁都不认识，嵌套层级多到看的人想立刻紫砂，一堆回调直接写在 JSX 里看起来就像是一坨屎，以上种种都是我非常喜欢犯的错误。</p>
+<p>不过这其实不完全是 React 自己的问题——由于 TS 的类型推导是单向的，将回调直接写在 JSX 里能获得最大程度的类型推断，可以少写很多类型而不用去类型定义文件里找来找去然后在外边定义个函数（我不得不说如果程序员懒于找到正确且精准的类型而是习惯于在外边定义个函数并安个 any，再把它放进 JSX 里，那比写里头还坏的多），我们当然会更喜欢直接在 JSX 里写回调函数。但是在具有双向推导的编程语言中这就很简单，ReScript 是个好例子，它作为编译到 JavaScript 上的一门 ML 方言，具有这样的能力，并且能够很好地与 React 集成，不过我没用过，只是口嗨。</p>
+<p>至于 Vue，它的思路与 React 截然不同。尤雨溪当年的想法只是“我要做个自己用着舒服的框架”，所以 Vue 的逻辑很简单，就是“用着舒服”。基于“用着舒服”，我们引出了一些其他的特点，比如符合直觉（Intuitive）、编译期优化（程序员不用怎么操心性能问题）、模块化程度较高（大家的代码以大致相同的结构写，很清楚，并且大家只需要往框架里填内容）、零配置使用（是的，Vue 的所有 template 都是合法的 HTML，可以直接通过 CDN 引入然后直接开始写 HTML，什么都不用配，只是大家通常不这么做）、简单易学、响应式（这个和符合直觉对应）等。</p>
+<p>Vue 2 尤其反映了这些特性，写在 data 里的属性就是默认响应式的，比如一个计数器上的值就是简单绑定到了 <code>this.count</code>，让它增加就是 <code>this.count++</code>，这的确是太符合直觉了，比起 React 使用 <code>useState</code> 达到的可变，这在心智模型上的确简单了许多。</p>
+<p>同时，Vue 也倾向于在幕后做很多工作。Vue 的响应式很快，在默认情况下比 React 快得多，即使它使用了许多 Proxy，而这似乎会显著降低响应速度，但 Vue 团队总是默默地将优化问题自己担着，让用户最大程度地享受优化。我真的非常钦佩这个团队，相比于 React 团队将大量时间用于思考设计，Vue 团队思考设计的时间少了很多，他们更加务实，并且会选择直接动手开始以惊人的毅力攻克一个个难关，Volar 就是他们的一大成果，Vue 各种好用的 devtools 也是。这也与他们对社区的态度密切相关，从 vue-router 到 vuex 到 vite 到 vitest，Vue 团队总是帮你包办一切。</p>
+<p>所以 Vue 追求另一个东西：易用性与直觉性。这意味着 Vue 背后的实现必然比 React 复杂得多，但是其心智模型理所当然要简单不少（当然，你也可以认为用 React 时你掌控的更多，心智负担更低，见仁见智）。并且 Vue 某种意义上也很简洁，事实上我认为比 React 更加简洁。而且 Vue 的思路带来更加模块化更可维护的代码，说人话就是，它让弱智程序员没法写出太弱智的代码。当然，如果弱智程序员偏要在 Vue 里用 JSX 还不知道自己代码写得很烂，那你也没辙。</p>
+<p>而 Vue 3 某种意义上走向了一条稍微不同的路子，这一切都是因为 TS 的流行与 Vue 2 在集成 TS 上的困难。Vue 为了实现它的直觉性太依赖于 JS 的动态特性，而这其中许多与 TS 的相性很差。例如 Vue 2 一直在为 props 标注类型上很困难，自从 Vue 3 特别是 <code>defineProps</code> 和 <code>withDefaults</code> 出现后，这一切变得就非常简单了。说真的，大家应该真想不到在 TS 3.0 时期 Vue 2 要实现 <code>this.data</code> 的类型提示究竟是多困难，那就是在纯堆人力。</p>
+<p>显而易见，Vue 2 由于与 TS 相性太差导致不再能持续维护，Vue 3 不得已被开发出来。包括 Vue 3 中的 setup、hooks 的引入等，某种意义上都是对 TS，甚至是对 VSCode 这样一个编辑器的妥协。<br>后来 Vue 3 的 setup 语法出现之后，Vue 的面貌焕然一新，Vue 3 加上 setup 的代码看起来甚至有点像 React，并且嵌套层数更少。不过，这种灵活性也带来了比较严重的可维护性的下降，也就是其对程序员的要求更高了。Vue 2 的一大特点就是其返回对象的语法很模块化也很好维护（模块化似乎不是一个合适的词，但我想不到一个更好的词了），可以让弱智程序员的下限提高，而 Vue 3，它提高了灵活性并提高了聪明程序员的上限，同时也显著降低了弱智程序员的下限，<code>ref</code> 和 <code>reactive</code> 写得到处都是成了常态，这样的代码某种意义上不如 Vue 2 好读。</p>
+<p>当然，我仍然认为 Vue 3 的进步是我所喜欢的，我当然更喜欢灵活性，而不是让一个框架限制我的自由。但许多公司恐怕不这么想，他们拼了命地想提高弱智程序员的下限，因为弱智程序员们往往便宜好招。<br>而后来的一些框架，像是 Svelte，说实话这个在某种意义上让我觉得是一种倒退，它似乎有点 JSP 的影子在里边。<code>$: </code> 语法奇丑无比，那个 &#96;</p>
 
                 
               </div>
@@ -314,8 +315,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>关于 Vue 选项式与组合式 API 的一些思考</div>
-      <div>https://snowfly-t.github.io/2023/06/10/关于Vue选项式与组合式API的一些思考/</div>
+      <div>一些关于 React 和 Vue 的浅见</div>
+      <div>https://snowfly-t.github.io/2023/05/24/一些关于React和Vue的浅见/</div>
     </div>
     <div class="license-meta">
       
@@ -327,7 +328,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年6月10日</div>
+          <div>2023年5月24日</div>
         </div>
       
       
@@ -359,12 +360,18 @@
                   <article class="post-prev col-6">
                     
                     
+                      <a href="/2023/06/10/%E5%85%B3%E4%BA%8EVue%E9%80%89%E9%A1%B9%E5%BC%8F%E4%B8%8E%E7%BB%84%E5%90%88%E5%BC%8FAPI%E7%9A%84%E4%B8%80%E4%BA%9B%E6%80%9D%E8%80%83/" title="关于 Vue 选项式与组合式 API 的一些思考">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">关于 Vue 选项式与组合式 API 的一些思考</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/05/24/%E4%B8%80%E4%BA%9B%E5%85%B3%E4%BA%8EReact%E5%92%8CVue%E7%9A%84%E6%B5%85%E8%A7%81/" title="一些关于 React 和 Vue 的浅见">
-                        <span class="hidden-mobile">一些关于 React 和 Vue 的浅见</span>
+                      <a href="/2023/04/22/%E8%AE%A1%E7%AE%97%E6%9C%BA%E9%A2%86%E5%9F%9F%E7%9A%84%E4%B8%A4%E6%9D%A1%E9%81%93%E8%B7%AF%E2%80%94%E2%80%94%E6%8A%BD%E8%B1%A1%E4%B8%8E%E5%BA%95%E5%B1%82/" title="计算机领域的两条道路——抽象与底层">
+                        <span class="hidden-mobile">计算机领域的两条道路——抽象与底层</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
