@@ -1,0 +1,698 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Snowflyt">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="一些关于“我的世界”的回忆开篇 - 一些偏见与碎碎念我通常是不愿意以这个游戏的简体中文名称呼它的，当然也不喜欢以台版的中文名来称呼它。我更习惯于称它为“Minecraft”，大多数时候简称为 MC. 现在想来，这种颇有些潜意识的不情愿多半来自于早期 MC 社区中往往对模组知之甚少的所谓“小学生”爱称其为“我的世界”，他们谈及这个游戏，常常会提起“我的世界拔刀剑”、“我的世界和风 Mod”等词汇。而">
+<meta property="og:type" content="article">
+<meta property="og:title" content="编程的本质是状态机">
+<meta property="og:url" content="https://snowfly-t.github.io/2023/07/27/%E4%B8%80%E4%BA%9B%E5%85%B3%E4%BA%8E%E2%80%9C%E6%88%91%E7%9A%84%E4%B8%96%E7%95%8C%E2%80%9D%E7%9A%84%E5%9B%9E%E5%BF%86/index.html">
+<meta property="og:site_name" content="Snowflyt的博客">
+<meta property="og:description" content="一些关于“我的世界”的回忆开篇 - 一些偏见与碎碎念我通常是不愿意以这个游戏的简体中文名称呼它的，当然也不喜欢以台版的中文名来称呼它。我更习惯于称它为“Minecraft”，大多数时候简称为 MC. 现在想来，这种颇有些潜意识的不情愿多半来自于早期 MC 社区中往往对模组知之甚少的所谓“小学生”爱称其为“我的世界”，他们谈及这个游戏，常常会提起“我的世界拔刀剑”、“我的世界和风 Mod”等词汇。而">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-07-27T13:06:14.000Z">
+<meta property="article:modified_time" content="2023-07-30T13:06:53.360Z">
+<meta property="article:author" content="Snowflyt">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>编程的本质是状态机 - Snowflyt的博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"snowfly-t.github.io","root":"/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Snowflyt的博客</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="编程的本质是状态机"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-07-27 21:06" pubdate>
+          2023年7月27日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          13k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          109 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">编程的本质是状态机</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="一些关于“我的世界”的回忆"><a href="#一些关于“我的世界”的回忆" class="headerlink" title="一些关于“我的世界”的回忆"></a>一些关于“我的世界”的回忆</h1><h2 id="开篇-一些偏见与碎碎念"><a href="#开篇-一些偏见与碎碎念" class="headerlink" title="开篇 - 一些偏见与碎碎念"></a>开篇 - 一些偏见与碎碎念</h2><p>我通常是不愿意以这个游戏的简体中文名称呼它的，当然也不喜欢以台版的中文名来称呼它。我更习惯于称它为“Minecraft”，大多数时候简称为 MC.</p>
+<p>现在想来，这种颇有些潜意识的不情愿多半来自于早期 MC 社区中往往对模组知之甚少的所谓“小学生”爱称其为“我的世界”，他们谈及这个游戏，常常会提起“我的世界拔刀剑”、“我的世界和风 Mod”等词汇。而前者被一些自诩高贵的核心模组社区玩家认为是低能小学生的最爱，而它在 Curseforge 上的流行度排名也很低，我记得一次看到大约在一百多名，我差点以为这东西没在 Curseforge 上发布而是只发在了日站（日本 MC 玩家的一个模组论坛，不知道现在还活不活着，记忆中似乎是死了），好像真的只有国内流行；而后者，甚至压根不存在，这东西其实叫“竹 Mod”，Bamboo，也是日站的模组，了解过一些模组社区的人就不会叫它“和风 Mod”。有趣的是，日站的模组当年总是很流行，或许是因为它们足够炫酷，玩法又很简单，不怎么要动脑。</p>
+<p>所以为了与“小学生”们区分开，核心模组社区的人不怎么爱说“我的世界”，大多称“Minecraft”或简称  MC. 顺便，当时模组社区的人也几乎不说“模组”，而是直接叫“Mod”，现在大抵也是如此。我习惯写成“模组”可能是因为我也好久不关心了，就随大流叫“模组”吧。</p>
+<h2 id="模组"><a href="#模组" class="headerlink" title="模组"></a>模组</h2><p>看到这里，许多可能没有接触过 MC 的读者估摸着还不知道“模组”是什么。简单来说，模组就是对 MC 原版内容进行修改的外部工具。通过模组，你可以在 MC 里实现很有趣和有挑战的冒险 RPG，实现魔法，实现自动化流水线的搭建，甚至直接修改渲染机制让 MC 看起来不像 MC. 这不是作弊（或者不只是），而是对游戏内容的极大扩展。如果有人有接触过 Steam 创意工坊，没错，这就是一个意思。</p>
+<p>但 MC 和上古卷轴 5 之类同样可以打模组游戏不同，这不同之处就在于 MC 的代码写得太烂了，尤其是最初的 Java 版——但是，这带来了意想不到的好处，Java 入门门槛很低，又容易反编译（至少比 C++ 容易的多），这导致大家很早就搞出了 MC 的源码。而 Java 的简单性使得加入这一工作的门槛很低，于是大家纷纷加入进来扩展 MC 的内容，于是模组诞生了。当时还没这个中文名，它的英文名叫做 Modification，就是“修改”的英文，简称 Mod.</p>
+<p>而且由于 MC 的渲染引擎就是自己搓的，没用现在一堆基于 OpenGL 二次封装的成熟 C++ 引擎（当然，MC 用的也是 OpenGL），这导致 MC 的渲染性能很差，但代码其实也很简单，于是大家纷纷动了脑筋要改一改渲染，更有模组将整套渲染引擎都换掉了。老滚 5 甚至 GTA5 可做不到，它们的模组基本上局限在内容层面上的改动，比如老滚的神秘魔法特效就很难给换掉。</p>
+<p>这样一来，其实 MC 完全就可以成为一个完全不同的游戏的载体，通过模组。MC 可以有圆形和真实建模吗？其实当然可以，就是大家大多为了符合 MC 的风格做成方的。MC 一定要有物品栏和血条吗？也都不一定的。MC 一定是 3D 的吗？这个倒也可以不是，但应该不好玩。</p>
+<p>后来，模组社区发现大家各改各的源码，模组之间很容易冲突，早期的工业、建筑、铁路模组作者间有默契，会做主动兼容。后来，让大家把模组包复制粘贴替换游戏源文件就经常出问题了，毕竟模组多了。之后，就出现了各种 Loader，用于统一加载模组，也提供了对 MC 原版 API 的封装，最早只有 Forge，近来有了 Fabric. 也有一些模组本身不提供游戏内容，为其他模组提供 API，这被称为 Core Mod，有一些模组作者发布了许多模组，其共享的工具函数就会作为单独的 Core Mod 发布。之后甚至出现了提供 Kotlin API 的 Core Mod，允许使用 Kotlin 而非 Java 编写模组，当然也有 Scala、Groovy 甚至 Clojure 的，但用的人很少。</p>
+<h2 id="自动化、魔法与其他"><a href="#自动化、魔法与其他" class="headerlink" title="自动化、魔法与其他"></a>自动化、魔法与其他</h2><p>似乎讲了太多开发层面的东西了，讲点模组社区玩家的东西吧。</p>
+<p>随着模组社区的发展，自然也出现了各种各样的模组。实际上，与很多人印象中的相反，最初的一批模组都是倾向于自动化的，而冒险模组要到后来才大批出现。</p>
+<p>自动化类模组的目的通常是建造工厂以生产某样东西，并且要使这个过程自动化，即建造流水线。早期的工业（Industrial Craft，后简称 IC）模组提供了一系列“机器”方块，它们具有 GUI 界面，可以将某些东西加工成另一个东西，比如经典的“磨粉机”，可以将一个矿物方块磨成两个矿粉，而每个矿粉都可以在熔炉里烧制成矿锭，与直接烧制矿物得到一个矿锭相比，实现了两倍增产。当然，这不是没有代价的，机器的制造本身需要一定材料，还需要通电，需要制造发电机并连接线缆通电才能工作，还有电压限制，不同机器的电压不同，变压器接的不留神可能爆炸，耗电量也各不相同，有些机器的制造还需要其他机器的产物作为前置……这个“前置”很重要，这就形成了“科技树”，在后期有一些自动化类的科技模组会有意分成很多层科技树，要从最初的石器时代到太空时代需要造大量各阶段的机器和搭建各种工厂，如知名的“格雷科技（Greg Tech，下简称 GT）”的一个魔改包（因为有人嫌格雷科技树太短，人工改了合成表搞得更难）GTNH，你第一次玩可能需要三个月才能爬完主线科技树。对我来说这种超长科技树其实挺有意思，但有些人觉得这是重复的无意义套娃，认为只有疲惫。</p>
+<p>早期除了 IC，还有它的三个好兄弟“建筑（Buildcraft, BC）”、“铁路（Railcraft, RC）”和“林业（Forestry, FR）”. IC 机器使用的能量单位是 EU（Energy Unit），也就是机器消耗的电量，这算是独一份的。后面三兄弟用的都是 MJ（Minecraft Joules），MJ 最早是 BC 的能量单位，后来这仨都用 MJ 了，后来模组社区称它们为 MJ 三元老，印象里最早是 SF（一个早期的中文模组视频教程作者，在中文核心模组圈影响力非常大，主要做科技类也就是自动化类模组视频教程，视频非常长和详细，不过现在也早就不做了，早期还有另一位作者 Marco，现在也因为生活工作忙碌而很少参与社区了）提出的这个说法。后来大家以为还会有很多模组用 EU 和 MJ，没想到后来大部分科技类模组用了 RF（Redstone Flux），一个后来居上的模组 TE（Thermal Expansion，热力膨胀）使用的能量单位，做的不是特别优秀，当然后来也不错，但早期很一般，但作者很会拉拢社区和他一起构建他的 TE 模组世界，作者的这个行为早期还引发了反感，出现过一阵子“反 RF 党人”，有趣的是后来 BC 居然都改用 RF 了，因为用的人太多了。</p>
+<p>不知不觉扯到了能量单位这一细枝末节上，反正我也随便写写，就继续扯下去吧。后来的能量单位还有很多很多，数都不数不清，每个模组都可以发明一个自己的能量单位。例如 TC（Thaumcraft，神秘时代）就有 Vis 作为灵气单位，应该还有一些能量单位，但我忘了；Embers（余烬）也有自己的能量单位，各种魔法模组也有……后来 Forge 官方出了个 FE（Forge Energy）单位，尝试通用化，有一些模组使用，例如有一些“迷你”模组只提供一些发电机，它们就可能选择 FE 作为能量单位，但后来好像没看到太多大模组采用。我记得有一段时间一个叫 Tesla 的能量单位做得挺好，听说 API 提供得不错，模组作者开发起来很方便，但终归还是没几个大模组采用，最后销声匿迹了。也有一些很有趣的模组，比如 RC（Rotary Craft，旋转工艺）采用扭矩和应力作为能量单位，也有 PC（Pneumatic Craft，气动科技，说实话这个缩写用的不多，很多时候大家就叫它“气动”）用压缩空气作为能量单位……</p>
+<p>能量单位很多，自然也有能量转换的模组，有些模组专门提供了能源桥用来转换，也有很多模组本身提供了对自身使用能量单位之外的转换支持。后来我记得 TC 甚至出了一个灵气发电机可以把灵气的 Vis 转换成 RF，大家纷纷觉得这很诡异，一个魔法的东西还能发电太怪了。当然，也有魔法模组发电大家觉得很正常，比如说 BoC（Botania，植物魔法），因为大家公认这就是个套着魔法皮的自动化模组，里面的魔法植物全是用来做自动化的，用魔力作为能量单位，但本质上和电力没啥区别，因此戏称其为植物科技……嗯，不过 BoC 里魔力发电也不是主流就是了，大家还是更倾向于用产魔力的“产能花”（就是发电机）产生魔力给这模组的其他“功能花”自己用……</p>
+<p>好吧，说到哪儿了？自动化。自动化或者说科技类模组，到底有什么目的呢？其实仔细想想，除了造出更牛逼的机器，不停爬高科技树外，在此之外的目的似乎很少……科技类模组在爬科技树之外能给你提供的东西，大抵是更厉害的武器装备，一些自动化设备，比如自动杀怪机器、作物催熟机这种。但相比起模组本身在科技树中的内容，这些真正实用的东西所占比例往往没那么高——一个采矿机，它其实并不能提供直接的收益，你采矿出来本身还是满足制造其他机器或工具的需要，一个离心机、灌注机、紫外线灯等，更是其目的只是用来制造其他材料。有时候，科技类模组玩久了会产生一种虚无感——我到底在干什么呢？我只是在爬科技树吗？打个末影龙不过需要一套三天折腾好的钻套加把弓带上几个床，我幸幸苦苦爬科技树有什么意义呢？会产生这种突然的迷茫感。当然，很多人就会因此将科技类模组搭配一些使游戏难度增大的模组，比如精英怪、饥饿改革等模组或增加新的更具有挑战性的维度的模组，来让幸幸苦苦得到的超级装备有用武之地。不过，本质上这种虚无感并没有被消除——这其实是无解的，说实话，我们活着又有什么目的呢？不是和这游戏里本质相同吗。</p>
+<p>有趣的是，早期的 MC 自动化模组给了后面的很多自动化游戏很大启发，例如异星工场就明确起源于早期 MC 的一批科技类模组。后面也有很多模组作者单干了去做独立游戏了，很多做的也是这种自动化游戏。</p>
+<p>好像到现在为止，只说了 IC 的内容，MJ 三元老还没讲呢。BC，建筑，它其实不是做建筑的……BC 一开始最重要的是提供了“管道”，这是一种物流方式，用管道连接两个容器，比如两个箱子或者一个箱子一个熔炉，可以将物品从一个容器转移到另一个容器里。早期科技类模组没有传送带，但是有管道，管道可以任意方向随便搭建，其实比传送带灵活得多。于是，早期大家将 IC 和 BC 搭配在一起用，用管道在机器间传输物品，实现自动化。当然，BC 也不完全愧对于它的名字，它具有“采石场”和“建筑机”，前者自动采空一个范围内的所有方块，可以视为某种自动采矿机，后者根据蓝图进行建造。在最早期，采石场可以说是为数不多的采矿设备了，不过它会造成比较明显的地形破坏，就是粗暴地把一整个地方都采空，后来大家更倾向于用一些只采矿而不采石头的采矿机了……说实话，后者听起来才不像是采矿机呢，只采矿这不是魔法是什么（</p>
+<p>RC 一直以来被很多人忽略，似乎在早期之后玩的人就不多了——管道传输已经很好用了，为什么要用铁路？铁路不能直接垂直运输，还需要慢慢爬坡，铁路物流的许多机器也向真实铁路靠拢，各种扳道搞得人头昏眼花，自然就没太多人用了。不过实话说，RC 提供的铁路物流体系还是很适合超远距离传输的，因为铁路实际上在工业体系成熟后造价比管道低、容量很大而且火车头本身也很快，但似乎大伙不太有这个需求……另外，RC 提供了自己的发电设备，实际上在早期 MJ 三元老里 RC 的发电机是最好用的，所以后来很多人装 RC 就是图它个发电机……</p>
+<p>还有 FR，林业，这个就很有趣了。FR 顾名思义，当然可以种出各种各样的树，有各种颜色的树也有耐火的树，但更重要的是它的养蜂体系。FR 可以将蜜蜂进行复杂的“杂交”，而不同品种的蜜蜂可以产出不同的东西，如食物（蜂蜜）、矿物甚至末影龙蛋……但杂交真的是个很痛苦且碰运气的过程，两种蜜蜂，雄蜂和公主蜂结合会变成蜂后，蜂后死了会诞下新的雄蜂和公主蜂，通常雄蜂若干，公主蜂只有一只，但如果蜜蜂的属性太差，产生后代的量太低，很多是会断代的，比如卑贱种公主蜂在一百多代之后有小概率蜂后死了就没公主蜂了，而卑贱种公主蜂的野外爆率在七成的样子，所以只有另一种始祖种公主蜂适合长期自动化养殖。另外，蜜蜂产生雄蜂的数量也不同，有些品种只会产生量只雄蜂，不利于养出一个杂交品种后扩散到其他蜜蜂上实现规模养殖，有些则会产生四只。有些品种有耐雨飞行性，雨天也会采蜜，有些有夜行性，夜里采蜜，有些有穴居性，可以在不见阳光的情况下采蜜……另外，蜜蜂也有寿命，短寿甚至早夭的蜜蜂可以快速多代杂交，而长寿的蜜蜂可以在一代内产生更多的产物（就是之前说的矿物、食物、羊毛之类的），呃，不过自动化之后长寿也没啥用，就是早夭不太利于自动化，经常啥都没产出就到下一代了，短寿比较合适。另外，蜜蜂有隐性基因和显性基因，杂交就是突变的过程，你需要慢慢把蜜蜂的两个基因都洗成你需要的基因，否则养着养着就返祖了，不利用自动化……这可痛苦了，有时候突变出了想要的蜜蜂，但只有两个雄蜂，想去将它们的基因扩散到其他蜜蜂上去，结果都没留下基因，只能从头突变……很有孟德尔那味儿了。另外也有一套蝴蝶和树木杂交体系，也是一个道理，但是难度要更大，因为蝴蝶很难抓……</p>
+<p>FR 蜜蜂养殖的复杂性导致自动化很困难，也有一些模组专门提供了 FR 的自动化扩展，什么蜜蜂扫描机之类的，帮助你解析蜜蜂的每一个基因并且自动化。说实话，要搭建一套从无到有突变出对应品种蜜蜂的自动化产线非常复杂，很多时候大家只是单纯的人工半自动化养殖，等基因稳定了再上生产线……另外也有一些有些“BUG”的模组可以通过基因改造强行改造一个蜜蜂的基因，无中生有，说实话我也玩过，但很没意思，本来很复杂有趣的杂交这就跟作弊一样了。</p>
+<p>不过说实在话，FR 的蜜蜂虽然足够强大，但其复杂性不是很多人能接受的。我曾经养了差不多一个月才养出一个比较基础的蜜蜂帝皇蜂，它的产物是很多其他品种的前置。很多人更喜欢简单粗暴的做法，而且也不一定搞得明白这个杂交体系，所以很多无脑的科技类模组很多人喜欢。而 IC 这种还带电压的，机器合成还要各种加工后零件的，耗电还高机器还慢的，很多人其实也不太喜欢的，说起来 TE 那边倒是比 IC 简单粗暴很多。</p>
+<p>说到 TE，现在也是形成整个 RF 阵营了，并且 BC 现在也在里头。用 RF 作为能量单位的模组非常多，多到我乍一想都想不起来具体有哪些例子……这里头也并非都是简单粗暴的，也有一些建模很精致玩法也很棒的模组，MeC（Mechanism，通用机械）之类的都很有趣，BR（Big Reactor，大型反应堆）、MgC（Magenetic Craft）等，都很棒。IE（Immersive Engineering，沉浸工程）说实话也不错，但这个其实主要是建模精美，说到底玩法其实挺一般的，机器太少……</p>
+<p>不过其实现在这类传统的科技类模组似乎不那么受欢迎了。现在有些更新奇模组如 Create（机器动力）很受欢迎，尤其是国内欢迎。也有一些更早的如 Embers 提供了一些独特的美术风格带来了不一样的体验。其实，还有很早的一个 RoC（Rotary Craft，旋转工艺）使用旋转能作为能量，做得相当不错，建模在当时非常棒，现在也很少有能比的，可惜作者常年停留在 1.7.10 不想动，不知道现在有没有更新到新版本了……RoC 作者还有一个联动的模组 ReC（Reactor Craft），专门提供各种各样（巨量）的核反应堆用于产生巨量的旋转能，只有你想不到没有它整不出来的核反应堆……不过我还真没玩过 ReC，当年玩 RoC 的时候能源需求没到这个地步……</p>
+<p>RoC 作者当年还有个 Eln（Electrical Age，电力时代，这缩写我也不知道咋来的，这个 n 谁知道怎么来的，后来改名 Electric Craft 了），做得相当相当精致，基本上是一比一复刻现实世界的电力系统，也没有什么单方块的魔法火力发电机，你要发电就要自己搭线圈做马达烧蒸汽，一系列东西配套起来才能整火电……嗯，当然这个有点过于硬核了加上作者就是惦记着他那 1.7.10 所以没见过太多人在玩，现在已经凉了吧？</p>
+<p>去 Curseforge 上查了一下，RoC 作者今年 6 月份还在更他那 1.7.10 的 RoC，从 15 年到现在快十年了，真牛批。作者昵称大家简称为 Reika，目前一个模组没停更，还在 1.7.10 奋斗，并且模组都有 GitHub Pages 作为文档……说起来缤纷纪元这个魔法模组也是他的。有些喜欢玩 Reika 模组的人曾经被戏称为加入了 Reika 邪教（</p>
+<p>说到 1.7.10，这真是个辉煌的 MC 版本，应该是最辉煌的一个了。在这周围，还有 1.2.5、1.5.2、1.6.2、1.6.4、1.8.10、1.9.4、1.10.2、1.12.2 等几个模组较多的游戏版本，其中 1.6.4 和 1.12.2 应该是两个相对模组更多的版本，但比 1.7.10 差了不少，1.2.5 也多，但是太老了。到现在还有大量模组停留在 1.7.10 或者断更在 1.7.10. 虽然现在 MC 都 1.20 了吧？但是 1.7.10 玩的人还是那么多。说实话，在 1.12 之后，我玩的就不那么多了，也就在之后的高版本接触过一点 Create 之类的模组，要再向小时候那样投入玩模组的时间，再也没有了。</p>
+<p>说起来，还没讲整合包呢。整合包就是将许多模组放在一块的、别人配好的游戏包，很多人乍一听觉得这有啥难度。其实不然，整合包大多数会进行所谓的“魔改”，也就是修改模组的合成配方、世界生成文件、各模组的配置文件等，甚至自己做一个模组专门服务于这个整合包，以将这些模组更好地整合在一起，比如将多个不同模组的科技树整在一起形成一套庞大的科技树，将许多强大的冒险类模组物品的合成配方改成需要某种机器的产物，加入更多有挑战性的生存压力使游戏变得有趣等。深度魔改的整合包常常像是创造了一个新的游戏，比如著名的 GTNH，这是一个以格雷科技为主的整合包，含两百多个模组，形成了一套以格雷科技为主配合各种魔法与冒险模组的整条科技树，魔改程度相当深，也有许多整合包标配的任务书引导，相当好玩，就是爬完科技树耗时太长，第一次玩保底三个月。说实在话，我至今没有爬完过 GTNH 的科技树，通常玩到一半就开始盯着我创造的一切开始发呆，静静地看阳光照在我搭建的工厂上，看远处有怪物刷新，在我搭建的下界驿站里一遍又一遍地参观，然后恍然一切变得凄惨、浪漫、毫无意义，又极其美好。于是我便失去了继续爬科技树的意义。这有点像经历一个渺小文明的诞生与覆灭后的惘然，于是通常在这之后，我便再也玩不下去了，得找另一个整合包或者自己组一个重新开始了。</p>
+<p>说起来，我也曾经想组一个自己的整合包，但终究没有这样的创造力和时间，毕竟组一个平衡性很好又耐玩的整合包需要堵死一切跳科技树的手段，真的很困难，而且很需要能力，而我也没有动辄半年一年的时间去做一个整合包。当然，做一个诸如水星迫降的整合包没那么困难，但说实话这稍微有些粗制滥造了，对我来说已经不好玩了，或许对于初次接触的人来说有些新奇吧。当然，实际上我自己也不一定真能做一个水星迫降出来，口嗨谁不会呢？</p>
+<p>其实也有很多模组专门提供了用于魔改的 API 给整合包作者使用，作者只需要改配置文件就可以魔改了。后来有一个很强的模组叫做 KubeJS，可以用 JS 做魔改……实际上我觉得这有点像写一个新模组，只是用 JS 在写，这东西做的其实是和 Forge 一样的事情……</p>
+<p>顺便也有不少模组可以自定义 HUD 的，有些整合包作者用这些模组在整合包的游戏界面上打上整合包的名字……嗯……不过很多人也会自己装上用来显示时间，甚至身上的魔力、TC 的腐化等数值。<br>说到现在，好像也只有科技类模组说了。也有一类魔法类模组，其实说到底和科技类有点像，只是艺术风格不太一样，通常建模也更精细。不过，除了 BoC（其实也有人简称 Bot，好像 Bot 更常见些，下面写 Bot 了）这种就是纯科技类换皮，TC 这种还是下功夫的。TC 有一个“腐化”机制，你研究某些禁忌知识会沾染污染，导致间歇性引发神志不清（产生反胃 Debuff）甚至周围突然刷怪等等问题，其实说实话这些怪的威胁性一般，但你在搭生产线做研究的时候突然来一阵视野变化然后出现诡异的心跳 BGM 还怪吓人的，当然 TC 也提供了方案可以清除身上的污染，大多只能临时清除，而且代价非常大。TC 还有一种被称为“腐化之域”的生物群系，里边东西都是紫的，刷出一堆恶心的怪，还会扩散污染其他群系，要还原腐化之域代价很大，仅仅阻止扩散也需要费一番功夫，所以如果建家在腐化之域旁边到后面经常就因为腐化之域区块不停加载蔓延到家门口了，一般不建议这么干……另外其实可以自己人工造一个腐化之域用来获得一些腐化之域的特产，以进行邪术学研究，顺便这个邪术学研究是需要身上的污染达到一定程度才能研究的，里边的东西都相当不错，所以要开全研究还真要身上污染达到一定水平才行……另外，TC 的一些设备比如坩埚如果将里边的混乱魔力强行释放是会产生污染云从而日积月累导致区域腐化的，所以很多时候自家变成腐化之域也可能是自己不注意乱整搞坏了……</p>
+<p>另外相比科技类模组基本上只有少数需要跑图的点比如找石油啥的，魔法类模组的跑图需求通常大得多，TC 就经常需要找各种天然的灵气节点以获取魔力，后期可以把灵气节点带回家，但初期不行只能到处跑，Bot 也需要到处找天然诞生的魔力花，不过 Bot 的跑图需求确实低，找全了几种花之后天天在家催熟养花材料就够了……有些魔法类模组像缤纷纪元还加入了大量冒险类元素，有各种地牢谜题可以探索，做得很有趣。还有魔法艺术可以让玩家自己学会魔法，血魔法需要献祭血液驱动机器等——说实话血魔法做得相对一般，不知道为什么这东西在一段时间内相当受西方玩家的欢迎……</p>
+<p>当然，也有冒险类模组，像是暮色森林、以太这种。说实话，常玩科技类模组的核心模组圈玩家不主要玩这些，并且由于这些是“小学生”和“熊孩子”喜欢的模组而有些歧视，觉得冒险类玩家都是低能儿……其实这些模组做得都挺好的，有些整合包把它们和科技魔法类模组放在一起也融合的很好，我个人因为兴趣原因不太爱玩，但呆家里工厂搭久了去打打怪其实也挺有意思的。</p>
+<p>另外，冒险类模组是真的有直播效果，你直播搁家里搭生产线只有你自己开心观众看着没劲，除非观众从第一集开始看才能慢慢看进去，但冒险类模组玩着大家看着都有意思，并且随便一个片段拿出来大家看着都有意思，主播爱播，估计这也是冒险类模组流行度很高的原因之一。还有也是喜欢玩自动化的确实是小众，大多数人还是更喜欢竞技一点。</p>
+<p>当然，还有各种其他类型的模组，采矿群系优化、饥饿系统调整等各种都有，还有一些给服务器用的登录认证插件啥的，地图生成调整之类的，比如有些模组装上之后会修改原版的地形生成器，生成很宏伟的地形比如两百多格高的巨山，巨大且复杂的河流，很接近真实的生态系统，相当震撼，当然现在 MC 也有这种地形了，但早期一百格就算高山了呐。也有一些像是加速火把之类的除了降低游戏难度让游戏变得毫无意思意外真没啥意义的模组，我也不知道这些东西装上去干啥，装个加速火把直接把整个作物系统毁掉，还能加速科技模组的机器生产速度，造价只要一个火把四个钟，为啥会有人爱装这个？加速火把对我来说的主要用处就是做教程展示的时候演示作物生长过程用……<br>另外日系模组总是独树一帜，像是竹、拔刀剑之类，我记得中间还出过一个有独特矿物体系和机器体系的有趣模组，现在名字都忘了，但是当时玩着很新奇也很有意思。不过竹拔刀这类太多服务器都在装了，当年所谓什么“科技魔法服务器”就是装个 IC+TC+拔刀+竹（还要写成和风不写竹）然后装个 G 键合成表就完事了，被当时（包括现在）的模组核心圈玩家觉得非常低级，感觉这群人压根就不会玩，于是大伙都不太研究竹和拔刀这俩模组。其实拔刀做得挺有意思的，竹的装饰方块搭房子当年很好用，不过现在 MC 原版好像也有竹子了？但榻榻米方块和日系门应该还没有吧。</p>
+<p>说到 G 键合成表，这东西当年谁也不知道怎么火起来的，因为这东西哪儿都不如 NEI 查合成表好使（后来 JEI 接过了 NEI），唯一的优点是 G 键的合成表会带 NBT 数据，查拔刀那种合成表好使，其他就没有优点了，或许这可能就是 G 键当年被广泛使用的原因吧，毕竟拔刀当年那么流行呢。</p>
+<p>说到 NEI、JEI 这种查合成表的模组，还有一些辅助模组像高亮显示（Waila、TOP 等），可以展示指向方块的信息，如机器的电量、魔力量、名称、采掘工具、耐久等信息（当然显示能量之类通常要装扩展模组）。还有提供声音包的模组，如 Ambient Sounds，会根据你所处环境的不同播放不同的环境音，嗯，很浪漫，我很喜欢。还有 Blur 这种，功能很简单，就是打开 GUI 时有个背景虚化，但提升的体验很明显，我也很喜欢。</p>
+<h2 id="社区，一些回忆"><a href="#社区，一些回忆" class="headerlink" title="社区，一些回忆"></a>社区，一些回忆</h2><p>我记得曾有人说过“模组社区就像是一个红巨星，看起来很大，实际上核心就那么一点”。说起来，我甚至不知道全国真会去 Curseforge 上折腾模组下整合包的人到不到百万人甚至十万人……其实，世界范围内模组圈也是这个样子，大多数人在玩原版 MC，其中一部分接触过模组，但基本也就是大家耳熟能详的几个常见整合包、常见模组之类。说起来国内知道科技类模组除了 IC 以及最近的 Create、IE 这些爆款之外的 MgC、PnC 这些模组的人甚至 RoC 的人能有几个呢，真的很少的。</p>
+<p>说起来，我当年接触到这些东西也是费了好大劲。我小学时好几年都没学会装模组，当然这也和国内的网络环境有关……后来知道了所谓“基础整合包”，就是有人给你把 Forge 装好，再装几个像是 NEI、小地图之类的必备模组（其实小地图不那么必备，这东西有时候挺 BUG 的，后来我更倾向于用 Antique Altas 了……），然后把整个游戏包发出来，你可以自己往 &#x2F;mods 文件夹里添模组，这我总算是回了。说实话当年我还不知道模组需要对应游戏版本，经常下个 1.5.4 的模组装到 1.6.4 的游戏里，然后打不开游戏，百思不得其解。对了，当年我初次开始接触模组应该是 1.6.4 时代的开端，当时还大约是 1.6.2 刚出的时候呢。其实相比于后来的 1.7.10，1.6.4 的辉煌给我的印象更深，毕竟是经历的第一个模组辉煌时代。</p>
+<p>当然，当年装 Forge 也确实麻烦，还是网络问题，而且工具也不成熟，当年也没人搭代理服务。后来有了各种启动器，有人搭代理服务器，一键就可以下载 MC 并自动安装 Forge，真是件大好事。其实现在我感觉装模组好像还没有 pip 或 npm 这样的命令行的管理工具还蛮奇怪的，其实 MC 装模组和起个 npm 项目一样呐，不也是往里边装包然后改各种配置，而 Curseforge 这种就是相当于包的仓库源啊，怎么就没人产生这样的联想呢。哪天吃饱了撑的定一个通用的协议做个 CLI，以后大家都往一个中心仓库里发模组包，用命令行下载，然后也可以有各种图形化界面做管理，就像 GitHub Desktop 那样。</p>
+<p>再后来，似乎也没太多可以说的了。真要聊一堆细节，几个月也讲不完。但总体上，就是自己折腾配个简陋整合包，玩一段时间懒得玩了换下一个，这次换点没玩过的新模组。后来觉得自己做的整合包实在简陋，也很少魔改，就玩了几个别人做的整合包，也不多，印象最深的是 GTNH，玩了很久，但科技树也没爬多高，IOE 也挺好玩，可惜是 1.10.2 的包，而 1.10.2 只是个过渡阶段，辉煌的模组并不多。后来，Create 也稍微玩了玩，但高版本没什么好的整合包，像是 All The Mods 这种虽然更新快但只能说是粗制滥造……于是只能自己配配。再后来，进了大学，就很少玩了。当然，时不时还会关注一下社区的事情，但现在想来，或许真有两年没有启动 MC 了吧，真遗憾啊。</p>
+<p>其实中间也有尝试做过模组，但我本身是真没太多创造力，而且当时代码能力也烂得发指。说起来，我最初对 Java 的印象可没今天这么坏，当年我第一次听说 Java 是因为启动 MC 需要 Java，后来知道 MC 就是 Java 写的，当我当年跟着一些寥寥无几的中文教程写 Mod 做出了自己的第一个方块时可兴奋了，但应该是没开窍，所以都没学下去，代码也不咋会写。说起来当时的模组开发中文教程也可都够烂的，一个个开了坑都不写完的（笑）。不过这也不怪他们，写代码本来就是主要看文档的，看教程入个门就行，当年我也不知道，英文也很差，只能看看这些乱七八糟的中文教程。并且，Forge 的 API 更新也真快，或许和 MC 本身的 API 更新很快有关吧，教程没几个月就过时了，真的也很难写。现在似乎都有出版书教你开发模组了？真好啊。</p>
+<p>说起来，我倒真没怎么玩过联机模式。是的，我连起床战争都没玩过，PVP 碰都没碰过。或许也很有意思吧，但我一开始便是自动化开始的，玩到后边，也是一个人这么些模组整合包折腾着玩，有时候会觉得孤单，但也没感觉那么有必要找人一起玩。有过一次有人邀请我去服务器一起玩，还是两三次有些忘了。服务器里其实还不错，有人在，不那么孤单，但我终归还是习惯于独自一人了。一个人建造世界，在那里发呆，盯着虚幻的太阳落下升起，光影打在墙面上，远处的机器隆隆作响，楼下有羊圈里的羊在叫。一切有条不紊，似乎没有我也可以就这样一直下去，但我知道只要我不在，这个世界就会停下。于是我就这样发着呆看着我自己的一切这样下去。有一段时间，我科技树爬到一半之后再也不想做了，于是每天晚上，写作业前打开 MC，游戏里坐在一把椅子上，旁边有一个落地钟（当然也是游戏里的）在发出声音，时不时产生游戏里的各种环境音，然后我也在那里坐着，写会儿作业，盯着游戏界面发呆，有时候从那把虚拟的椅子上下来走走，到处看看我挖出来的史诗级大地洞和各个房间里机器的运作情况。就这样可能持续了好几个月甚至半年。这样的场景不止一次出现。在我最忙的时候，高二高三那会儿，我还在这么做呢。那段时间可真不要命，六点回来玩 MC 到十点半甚至十一点，然后开始写作业做到两点甚至四点。有意思的是，同学们还在上晚自习，九点半十点多才回来，而我晚自习请假，他们肯定做梦也没想到我居然在玩 MC，甚至等他们睡觉了才开始写作业。</p>
+<p>就这样一次又一次，我有时感觉在 Curseforge 上找模组反而更有意思，有时候花了半个月折腾好一个整合包，两天玩下来就没劲了。我骨子里似乎有一种虚无和浪漫的交织。“浪漫”，我很喜欢这个词，SF，我之前提到的曾经做模组视频教程的一个 UP 主，他曾有一段时间发了一些自己玩 MC 的录像，我每集必看。SF 的视频节奏很慢，在视频中像自言自语地和观众聊聊天，科技树也很少去故意爬，时不时去搭搭建筑，折腾一些似乎没有意义的事情，一集几十分钟一个小时似乎什么都没干就结束了。但是我很喜欢，或许就像 SF 在视频中反复提到的，“我觉得这很浪漫”“我的整合包里的所有模组都是浪漫的模组”。“浪漫”，一种缓慢的节奏，不为什么目的，不刻意，没有明确的科技树分层，自由，发呆，孤独，盯着阳光跌落，坐在矿车上听着铁路的声音，花很多时间漫不经心地做完一件毫无意义的事情……浪漫总是这样，多样、复杂又简单，无意义而又充满虚无。理所应当的，SF 的那些视频最后渐渐有些抵抗不了虚无的侵蚀了，他在游戏里做的事情愈发没有意义，将大量时间倾注在一些很小的细节上，比如决定屋檐的样式，科技树也不再爬了……我很快知道，这局游戏要“凝固”了，就像我经常遇到的那样，科技树就此停止，我能做的只有无力地看着日升日落，看着一切照常运转，或者离开我之后便陷入死寂。果然，后来 SF 就不更新了。</p>
+<p>有机会的话，我也会录这样一系列 MC 实况，就纯当纪念吧。如果能做下去那就太好了，但如果不能做下去，能在“凝固”之前给一些和我一样的观众提供几个月的心理慰藉，也不错。</p>
+<p>慢慢的，所谓“中文模组核心圈”似乎也不那么显然了，甚至有点要不存在了。当年的那批人，都是初中生高中生的模样，如今也大学甚至工作了，没什么时间再玩这些了。而新生代似乎完全没有接上的意思，从始至终似乎就是这么一些人。当然，后来也不是完全没有人加入其中，但真的太少了。于是，这一切就理所应当地没落了，成为了过去的一道残影。现在依旧有人做模组，依旧有人玩模组，但不复当年了。似乎世界范围内的模组社区也是如此，像个红巨星一样，已经步入暮年了。MC 更新太快了，快到我们跟不上了。</p>
+<p>其实，或许只是回忆的问题。模组社区或许一直以来就只有这么点人，没有变小，也没有变大。只是我记忆中的那个时代过去了，感觉太过落寞吧。</p>
+<p>回忆到这里为止吧。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>编程的本质是状态机</div>
+      <div>https://snowfly-t.github.io/2023/07/27/一些关于“我的世界”的回忆/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Snowflyt</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年7月27日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/06/10/%E5%85%B3%E4%BA%8EVue%E9%80%89%E9%A1%B9%E5%BC%8F%E4%B8%8E%E7%BB%84%E5%90%88%E5%BC%8FAPI%E7%9A%84%E4%B8%80%E4%BA%9B%E6%80%9D%E8%80%83/" title="关于 Vue 选项式与组合式 API 的一些思考">
+                        <span class="hidden-mobile">关于 Vue 选项式与组合式 API 的一些思考</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'Snowfly-T/Snowfly-T.github.io');
+      s.setAttribute('issue-term', 'title');
+      
+      s.setAttribute('label', 'utterances');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.0/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
